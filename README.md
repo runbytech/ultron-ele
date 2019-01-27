@@ -1,7 +1,7 @@
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <p align="center">
   <a href="https://www.gatsbyjs.org">
-    <img alt="Gatsby" src="logo.png" width="200" height="60" />
+    <img alt="Gatsby" src="logo_ultronele_3.png" width="300" height="180"/>
   </a>
 </p>
 <h1 align="center">
@@ -11,6 +11,8 @@
 This is a gatsby starter project used to generate a LMS(learning management system) skeleton site.
 
 @2019/01/27
+
+Logo image is designed in [designevo](https://www.designevo.com/)
 
 ## Demo
 
