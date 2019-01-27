@@ -10,9 +10,9 @@
 
 This is a gatsby starter project used to generate a LMS(learning management system) skeleton site.
 
-@2019/01/27
 
-Logo image is designed in [designevo](https://www.designevo.com/)
+Logo image is designed in [designevo](https://www.designevo.com/)@2019/01/27
+
 
 ## Demo
 
