@@ -1,18 +1,36 @@
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <p align="center">
   <a href="https://www.gatsbyjs.org">
-    <img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="60" />
+    <img alt="Gatsby" src="logo.png" width="200" height="60" />
   </a>
 </p>
 <h1 align="center">
-  Gatsby's default starter
+  the world’s fastest LMS engine
 </h1>
 
-Kick off your project with this default boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
+This is a gatsby starter project used to generate a LMS(learning management system) skeleton site.
 
-_Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://www.gatsbyjs.org/docs/gatsby-starters/)._
+@2019/01/27
+
+## Demo
+
+coming soon...
+
+
+## Features
+
+* Easy setup
+* Fast running
+* Gamification
+* Learning path
+* Assessment report
+* Certificate generation
+
 
 ## 🚀 Quick start
+
+Just for a couple of commands, you will have your own LMS, here we go:
+
 
 1.  **Create a Gatsby site.**
 
