@@ -60,7 +60,14 @@ function SEO({ description, lang, meta, keywords, title }) {
                   : []
               )
               .concat(meta)}
-          />
+          >
+            <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon-180.png" />
+            <link rel="icon" type="image/png" href="/img/favicon-32.png" sizes="32x32" />
+            <link rel="icon" type="image/png" href="/img/favicon-16.png" sizes="16x16" />
+    
+            <link rel="mask-icon" href="/img/safari-pinned-tab.svg" color="#ff4400" />
+            <meta name="theme-color" content="#fff" />
+          </Helmet>
         )
       }}
     />

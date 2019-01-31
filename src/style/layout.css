@@ -5,6 +5,7 @@ html {
 }
 body {
   margin: 0;
+  background-color: #F5F5F5;
 }
 article,
 aside,
@@ -40,6 +41,7 @@ template {
 a {
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
+  color: #333; 
 }
 a:active,
 a:hover {
@@ -613,6 +615,13 @@ pre tt:before,
 pre tt:after {
   content: '';
 }
+
+/* interactive section @2019/01/28*/
+a:hover {
+  color: #47BA47;
+}
+
+/* responsive section */
 @media only screen and (max-width: 480px) {
   html {
     font-size: 100%;

@@ -1,0 +1,16 @@
+.rightMenu {
+  display: flex;
+}
+
+.avatarImg {
+  display: flex;
+  align-items: center;
+  margin-left: 2em;
+  margin-right: 1em;
+}
+
+.avatarImg img {
+  margin-bottom: 0;
+  width: 24px;
+  height: 24px;
+}
