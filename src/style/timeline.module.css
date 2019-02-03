@@ -1,0 +1,34 @@
+ul.timeline {
+  display: block;
+  padding: 10px 0 0 0;
+  margin: 0 0 0 20px;
+  border-left: 1px solid #BBBBBB;
+  height: 100%;
+}
+
+ul.timeline li {
+  list-style-type: none;
+  padding: 0 0 10px 20px;
+  position: relative;
+}
+
+ul.timeline li::after {
+  width: 16px;
+  height: 16px;
+  display: block;
+  top: .3em;
+  position: absolute;
+  left: -9px;
+  border-radius: 8px;
+  content: '';
+  border: 2px solid #BBBBBB;
+  background: #F5F5F5;
+}
+
+.greyP {
+  color: #A1B4C4;
+}
+
+.library {
+  color: #6f6d85;
+}

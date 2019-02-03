@@ -27,7 +27,7 @@ coming soon...
 * Learning path
 * Assessment report
 * Certificate generation
-
+* Progress tracking
 
 ## 🚀 Quick start
 

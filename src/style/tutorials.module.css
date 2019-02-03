@@ -1,0 +1,40 @@
+.tutorialsColumn {
+  display: flex;
+  margin-bottom: 30px;
+  min-height: 400px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 100%;
+  margin: 10px;
+  /* border: 1px solid #FEFEFE; */
+}
+
+.tutHeadCard {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #BBBBBB;
+  width: 100%;
+  height: 180px;
+  max-height: 180px;
+  min-height: 180px;
+  overflow: hidden;
+}
+
+.tutHeadImg {
+  height: 120px;
+  margin-bottom: 0;
+}
+
+.tutHeadFooter {
+  height: 60px;
+  background-color: #FFF;
+  padding: 4px;
+}
+
+.tutHeadTitle {
+  margin-bottom: 0;
+}

@@ -1,6 +1,6 @@
+import React from 'react'
 import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
-import React from 'react'
 
 import avatar from '../images/avatar.png'
 import styles from '../style/header.module.css'
@@ -25,7 +25,10 @@ const Header = ({ siteTitle, siteLogo }) => (
     style={{
       background: `#FFF`,
       marginBottom: `1.45rem`,
-      borderBottom: `1px solid #CCC`
+      borderBottom: `1px solid #CCC`,
+      position: `fixed`,
+      zIndex: 3000,
+      width: `100%`,
     }}
   >
     <div
