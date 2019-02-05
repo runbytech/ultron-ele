@@ -19,6 +19,7 @@ const PandasPage = ({data, pageContext}) => (
 
 export default PandasPage
 
+// accept parameter from pageContext
 export const pageQuery = graphql`
   query PageBySlug($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {

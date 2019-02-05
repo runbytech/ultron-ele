@@ -9,13 +9,18 @@ const Footer = () => (
       margin: `4em auto`,
       textAlign: `center`
     }}>
-    <span>
+    <div>
       © {new Date().getFullYear()}, Present by{` `}<a href="https://runbytech.co">Runbytech</a>
-    </span>
-    <div 
-      style={{
-        marginTop: `25px`,
-      }}>
+      <span style={{marginLeft: `40px`, color: `#888`}}>
+        Logo made with 
+        <a style={{marginLeft: `4px`}}
+          href="https://www.designevo.com/en/" 
+          title="Free Online Logo Maker"
+          >DesignEvo</a>
+      </span>
+    </div>
+
+    <div style={{ marginTop: `25px`,}}>
       <Link to="/" style={{margin:`10px`}}>
         <img src={github} style={{width:`32px`, height:`32px`}}/>
       </Link>

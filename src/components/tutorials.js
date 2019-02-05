@@ -3,13 +3,13 @@
  */
 import React from 'react'
 import { Link } from 'gatsby'
+
 import styles from '../style/tutorials.module.css'
 import tstyle from '../style/timeline.module.css'
 
 const TutHeadCard = ({image}) => (
   <div className={styles.tutHeadCard}>
-    <img className={styles.tutHeadImg} 
-      src={image}/>
+    <img className={styles.tutHeadImg} src={image} alt=''/>
     <div className={styles.tutHeadFooter}>
       <p className={styles.tutHeadTitle}>
         _this is tutorials title...may be has a longer title and must wrap to second line...
