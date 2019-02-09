@@ -11,9 +11,11 @@ const TutHeadCard = ({image}) => (
   <div className={styles.tutHeadCard}>
     <img className={styles.tutHeadImg} src={image} alt=''/>
     <div className={styles.tutHeadFooter}>
-      <p className={styles.tutHeadTitle}>
-        _this is tutorials title...may be has a longer title and must wrap to second line...
-      </p>
+      <Link to="/tutorial" style={{textDecoration: `none`, display: `block`}}>
+        <h3 className={styles.tutHeadTitle}>
+          Data Science Fundamentals...may a longer title need wrap! 
+        </h3>
+      </Link>
     </div>
   </div>
 )

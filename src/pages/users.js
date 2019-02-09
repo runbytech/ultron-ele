@@ -21,7 +21,8 @@ export default () => (
   <Layout>
     <SEO title="Users" />
     <Container>
-      <h1>About CSS Modules</h1>
+
+      <h1 style={{marginTop: `1.45rem`}}>About CSS Modules</h1>
       <p>CSS Modules are cool</p>
       <User
         username="Jane Doe"

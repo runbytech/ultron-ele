@@ -1,0 +1,12 @@
+.greenColor {
+  color: #47BA47;
+}
+
+/* interactive section @2019/01/28*/
+a:hover {
+  color: #47BA47;
+}
+
+a h3:hover, a h2:hover, a h1:hover {
+  color: #47BA47;
+}

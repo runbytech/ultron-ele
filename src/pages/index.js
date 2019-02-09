@@ -1,3 +1,6 @@
+/**
+ * @2019/02/02
+ */
 import React from 'react'
 // import { Link } from 'gatsby'
 
@@ -9,7 +12,8 @@ import Tutorials from '../components/tutorials'
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" keywords={[`gatsby`, `elms`, `elearning`]} />
-    <h3>Topics and Skills</h3>
+    
+    <h3 style={{marginTop: `1.45rem`}}>Topics and Skills</h3>
     {/** category galery */}
     <Gallery />
 

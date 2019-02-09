@@ -1,0 +1,265 @@
+
+.lrcolumn {
+  display: flex;
+}
+
+.leftContent {
+  flex: 1;
+  background-color: #FFF;
+  padding: 40px 60px;
+  margin-top: 62px;
+  height: calc(100vh - 62px);
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.rightContent {
+  width: 300px;
+  margin-top: 62px;
+  height: calc(100vh - 62px);
+  overflow-y: scroll;
+  overflow-x: hidden;
+  border-left: 1px solid #CCC;
+}
+
+.breadcrumb {
+  font-size: 16px;
+  font-weight: 400;
+  color: #666;
+  margin-bottom: .5rem;
+}
+
+.tutTitle {
+  /* font-weight: 400; */
+  text-align: center;
+}
+
+.tutAuthor {
+  color: #666;
+  font-size: 15px;
+  font-weight: 400;
+  margin-bottom: .5rem;
+  text-align: center;
+}
+
+.introBlock {
+  color: #444;
+  border-left: 4px solid #DDD;
+  padding-left: 16px;
+  margin: 40px 0 60px;
+}
+
+.videoCntr {
+  display: flex;
+  justify-content: center;
+  min-height: 300px;
+}
+
+.tutContent {
+  margin: 2rem 0 4rem;
+}
+
+.othereads h3 {
+  font-size: 18px;
+}
+
+.othereads li {
+  font-size: 16px;
+}
+
+.unlockgame {
+  margin: 80px 0;
+  width: 100%;
+  min-height: 450px;
+}
+
+.topline {
+  display: flex;
+}
+
+.line {
+  flex: 1;
+}
+
+.line span {
+  display: block;
+  width: 100%;
+  height: 8px;
+  border-bottom: 2px solid #DDD;
+}
+
+.unlockTitle {
+  width: 240px;
+  font-size: 14px;
+  line-height: 1;
+  padding-left: 8px;
+  font-weight: bold;
+}
+
+.whichTrue {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.answers {
+  width: 100%;
+  padding: 20px 40px;
+}
+
+.answerRow {
+  /* width: 100%; */
+  display: flex;
+  margin-bottom: 40px;
+}
+
+.answer {
+  flex: 1;
+  display: flex;
+}
+
+.answer + .answer {
+  margin-left: 20px;
+}
+
+.greyCircle {
+  display: block;
+  min-width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  border: 2px solid #CCC;
+  border-radius: 10px;
+}
+
+.checkedImg {
+  min-width: 20px;
+  height: 20px;
+  width: 20px;
+  margin-right: 10px;
+  border: 2px solid #47BA47;
+  border-radius: 10px;
+}
+
+.confetti {
+  width: 100%;
+  height: 120px;
+  position: relative;
+  border-top: 1px solid #CCC;
+  border-bottom: 1px solid #CCC;
+}
+
+.welldone {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin-top: 40px;
+  text-align: center;
+  font-weight: bold;
+  color: #47BA47;
+  font-size: 18px;
+}
+
+.nextstepSection {
+  display: flex;
+  min-height: 150px;
+  margin-bottom: 40px;
+  /* border: 1px solid #CCC; */
+}
+
+.leftTitle {
+  flex: 1;
+}
+
+.leftTitle h3 {
+  margin-bottom: 1rem;
+}
+
+.rightBtn {
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  border-left: 1px solid #CCC;
+}
+
+.next {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.description {
+  font-size: 16px;
+  color: #666;
+  padding-right: 50px;
+}
+
+.link {
+  color: #EEE;
+  text-decoration: none;
+}
+
+.link:hover {
+  color: #FFF;
+}
+
+.bigBtn {
+  padding: 10px 20px;
+  background-color: #47BA47;
+  border-radius: 4px;
+}
+
+.headerImg {
+  width: 100%;
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+  background-color: #FFF;
+  max-height: 180px;
+  overflow: hidden;
+  border-bottom: 1px solid #CCC;
+}
+
+.headerImg img {
+  width: 100%;
+  height: 120px;
+  margin-bottom: 0;
+}
+
+.titleBG {
+  padding: 6px 10px 6px 10px;
+  color: #666;
+  font-weight: 400;
+  margin-bottom: 0;
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+.stepLineCntr {
+  width: 100%;
+  height: calc(100vh - 320px);
+  overflow-y: scroll;
+  position: relative;
+}
+
+.gradientBox {
+  width: 100%;
+  height: 40px;
+  position: fixed;
+  bottom: 78px;
+  background: linear-gradient(to bottom,rgba(245, 245, 245, 0),rgba(245, 245, 245, 1));
+}
+
+.endTutBtnSection {
+  width: 100%;
+  height: 76px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.longLinkBtn {
+  padding: 8px 24px;
+  background-color: #47BA47;
+  border-radius: 18px;
+}

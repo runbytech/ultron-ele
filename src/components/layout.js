@@ -4,9 +4,11 @@ import { StaticQuery, graphql } from 'gatsby'
 
 import Header from './header'
 import Footer from './footer'
-import '../style/layout.css'
+import '../style/global.css'
+import '../style/theme.module.css'
+import styles from '../style/layout.module.css'
 
-const Layout = ({ children }) => (
+const Layout = ({ children, nofoot, fullwidth }) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -19,19 +21,13 @@ const Layout = ({ children }) => (
       }
     `}
     render={data => (
-      <div style={{backgroundColor: `#F5F5F5`}}>
+      <div className={styles.background}>
         <Header 
           siteTitle={data.site.siteMetadata.title} 
           siteLogo={data.site.siteMetadata.logoImg} />
-        <div
-          style={{
-            margin: `0 auto`,
-            maxWidth: 1100,
-            padding: `3.5rem 0rem 1rem`,
-          }}
-        >
+        <div className={!!fullwidth? styles.fullWidth:styles.layout}>
           {children}
-          <Footer />
+          {!nofoot && <Footer />}
         </div>
       </div>
     )}

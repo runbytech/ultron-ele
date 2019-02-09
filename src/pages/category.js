@@ -78,7 +78,7 @@ const TutorialItem = ({coverImg, title, excerpt, date, slug}) => (
           <span className={styles.tutoTag}>tagC</span>
         </div>
         <div className={styles.tutoFooterMore}>
-          <Link to="/">Learn More...</Link>
+          <Link to="/tutorial">Learn More...</Link>
         </div>
       </div>
     </div>

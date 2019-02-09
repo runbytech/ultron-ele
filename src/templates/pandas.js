@@ -7,7 +7,8 @@ import SEO from '../components/seo'
 const PandasPage = ({data, pageContext}) => (
   <Layout>
     <SEO title="Page Pandas" />
-    <h1>{data.markdownRemark.frontmatter.title}</h1>
+    
+    <h1 style={{marginTop: `1.45rem`}}>{data.markdownRemark.frontmatter.title}</h1>
     <p>Create at: {data.markdownRemark.frontmatter.date}</p>
     
     <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} />

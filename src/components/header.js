@@ -12,7 +12,7 @@ const ListLink = props => (
     </Link>
   </li>
 )
-// fixed version of link for Normal height @2019/01/29
+// fixed version of link for N-ormal height @2019/01/29
 const NLink = props => (
   <Link to={props.to} style={{lineHeight: .9}} >
     {props.children}
