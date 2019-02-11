@@ -22,10 +22,10 @@ const Footer = () => (
 
     <div style={{ marginTop: `25px`,}}>
       <Link to="/" style={{margin:`10px`}}>
-        <img src={github} style={{width:`32px`, height:`32px`}}/>
+        <img src={github} style={{width:`32px`, height:`32px`}} alt="github" />
       </Link>
       <Link to="/" style={{margin:`10px`}}>
-        <img src={twitter} style={{width:`32px`, height:`32px`}}/>
+        <img src={twitter} style={{width:`32px`, height:`32px`}} alt="twitter" />
       </Link>
     </div>
   </footer>

@@ -7,7 +7,7 @@ import styles from '../style/gallery.module.css'
 
 const CategoryCard = ({imgPath, url, isMain, title, type}) => (
   <Link to={url} className={styles.darkenLink} state={{ imgPath, title, type, }}>
-    <img className={styles.imgInColumn} src={imgPath} />
+    <img className={styles.imgInColumn} src={imgPath} alt="cover" />
     <h4 className={isMain?styles.mainCategoryTitle:styles.subCategoryTitle}>{title}</h4>
   </Link>
 )

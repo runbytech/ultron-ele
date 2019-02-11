@@ -12,9 +12,9 @@ import SEO from '../components/seo'
 import styles from '../style/category.module.css'
 
 
-function BackGround({children}){
-  return <div className={styles.topImgBanner}>{children}</div>
-}
+// function BackGround({children}){
+//   return <div className={styles.topImgBanner}>{children}</div>
+// }
 
 
 // const BlurBannerImage 
@@ -45,7 +45,7 @@ class BlurBannerImage extends React.Component {
   }
 
   render() {
-    const {src, children} = this.props
+    const { children}  = this.props
   
     return (
       <div className={styles.topImgBanner} >
@@ -62,7 +62,7 @@ class BlurBannerImage extends React.Component {
 const TutorialItem = ({coverImg, title, excerpt, date, slug}) => (
   <div className={styles.tutoitem}>
     <div className={styles.leftImage}>
-      <img src={coverImg} className={styles.tutoCover}/>
+      <img src={coverImg} className={styles.tutoCover} alt="cover"/>
       <div className={styles.coverOnBotm}></div>
       <div className={styles.coverText}>2019-02-05</div>
     </div>
@@ -85,7 +85,7 @@ const TutorialItem = ({coverImg, title, excerpt, date, slug}) => (
   </div>
 )
 
-const FeaturesPanel = ({}) => (
+const FeaturesPanel = () => (
   <div className={styles.featuresPanel}>
     <div className={styles.seprateItem}>
       <span className={styles.alignRight}>Difficulty:</span>

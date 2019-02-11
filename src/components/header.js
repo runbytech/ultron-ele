@@ -59,8 +59,8 @@ const Header = ({ siteTitle, siteLogo }) => (
       
       <div className={styles.rightMenu} >
         <ul style={{ listStyle: `none`, display: `block`, marginBottom: 0, }}>
-          <ListLink to="/pandas/">Pandas</ListLink>
-          <ListLink to="/users/">Users</ListLink>
+          <ListLink to="/pandas/">Use Guide</ListLink>
+          <ListLink to="/users/">Roadmap</ListLink>
           <ListLink to="/about/">About</ListLink>
         </ul>
         <div className={styles.avatarImg}>

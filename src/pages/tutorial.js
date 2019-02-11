@@ -1,6 +1,6 @@
 /**
- * tutorial detail page
- * @2019/02/06-09
+ * tutorial detail static page
+ * @2019/02/06,08-09,
  */
 import React from 'react'
 import { Link } from 'gatsby'
@@ -115,7 +115,7 @@ const TutorialPage = () => (
                 C. Pareto principle is a top-down modeling method
               </div>
               <div className={styles.answer}>
-                <img className={styles.checkedImg} src={yesimg}/>
+                <img className={styles.checkedImg} src={yesimg} alt="checkbox"/>
                 D. Data Science is the discipline of extracting knowledge from the data landscape
               </div>
             </div>
@@ -145,7 +145,7 @@ const TutorialPage = () => (
       <div className={styles.rightContent}>
         <div className={styles.headerImg}>
           <img src="/img/chamuditha-dilhan-1335612-unsplash-278x120.png" 
-            alt="header image"/>
+            alt="header"/>
           <h3 className={styles.titleBG}>
             Data Science Fundamentals...may a longer title need wrap! 
           </h3>
