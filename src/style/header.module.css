@@ -1,3 +1,40 @@
+.headerFixed {
+  background-color: #FFF;
+  margin-bottom: 1.45rem;
+  border-bottom: 1px solid #CCC;
+  position: fixed;
+  z-index: 3000;
+  width: 100%;
+}
+
+.headerBar {
+  min-height: 60px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.siteTitle {
+  color: #47BA47;
+  text-decoration: none;
+  display: block;
+  margin: .2em 0;
+}
+
+.siteLogo {
+  width: 200px;
+  height: 60px;
+  margin-bottom: 0;
+}
+
+
+.menuItem {
+  /* display: `inline-block`, margin: `1em 1em`, fontWeight: 500 */
+  display: inline-block;
+  margin: 1em 1em;
+  font-weight: 500;
+}
+
 .rightMenu {
   display: flex;
 }

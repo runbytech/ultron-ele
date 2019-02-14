@@ -5,8 +5,9 @@ import PropTypes from 'prop-types'
 import avatar from '../images/avatar.png'
 import styles from '../style/header.module.css'
 
+
 const ListLink = props => (
-  <li style={{ display: `inline-block`, margin: `1em 1em`}}>
+  <li className={styles.menuItem}>
     <Link to={props.to} style={{textDecoration: `none`, lineHeight: .9 }} >
       {props.children}
     </Link>
@@ -20,40 +21,16 @@ const NLink = props => (
 )
 
 const Header = ({ siteTitle, siteLogo }) => (
-  <div
-    className="header"
-    style={{
-      background: `#FFF`,
-      marginBottom: `1.45rem`,
-      borderBottom: `1px solid #CCC`,
-      position: `fixed`,
-      zIndex: 3000,
-      width: `100%`,
-    }}
-  >
-    <div
-      style={{
-        minHeight: `60px`,
-        margin: `0 auto`,
-        padding: `0 10px`,
-        display: `flex`,
-        justifyContent: `space-between`
-      }}
-    >
+  <div className={styles.headerFixed}>
+    <div className={styles.headerBar}>
       {/** left logo */}
       {siteTitle && siteLogo ?
         (<NLink to="/" >
-          <img src={siteLogo} alt="Logo" style={{width:200, height:60, marginBottom:0}}/>
+          <img src={siteLogo} alt="Logo" className={styles.siteLogo}/>
         </NLink>):
         (<h1 style={{ margin: 0, display: `block` }}>
-          <Link
-            to="/"
-            style={{
-              color: `#47BA47`,
-              textDecoration: `none`,
-              display: `block`,
-              margin: `.2em 0`
-            }}>{siteTitle}
+          <Link to="/" className={styles.siteTitle}>
+            {siteTitle}
           </Link>
         </h1>)
       }
