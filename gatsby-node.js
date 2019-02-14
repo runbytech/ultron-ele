@@ -62,7 +62,9 @@ exports.createPages = ({ graphql, actions }) => {
       createPage({
         path: page.node.fields.slug,
         component: path.resolve(
+          // one on one mapping!
           `src/templates${String(page.node.fields.slug).slice(0, -1)}.js`
+          // TODO, use templateKey in .md @2019/02/13
         ),
         // Data passed to context is available
         // in page queries as GraphQL variables.

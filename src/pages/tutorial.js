@@ -7,12 +7,12 @@ import { Link } from 'gatsby'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
+import Button from '../components/button'
+import QAnwsers from '../components/qanwsers'
 
 import styles from '../style/tutorial.module.css'
 import theme from '../style/theme.module.css'
 import tstyle from '../style/timeline.module.css'
-
-import yesimg from '../images/yes_green.png'
 
 import Confetti from 'react-confetti'
 
@@ -67,7 +67,6 @@ const TutorialPage = () => (
           
           <p>This at times requires both a cultural shift as well as a better understanding of the interplay of how the data landscape comes together. </p>
 
-
           <p>The Data Science and Machine Learning teams not only need unstructured access to data, they also need the ability to experiment with external data sets. Unlike aggregate analytics, often Data Science teams are attempting to model reality by iterating through raw situations, the more successful these teams are, the better they are at predicting the future and optimizing inputs. </p>
           
           <p>Intricitys Data Moat Strategy is a springboard to help the organization develop a data landscape that produces a defensible position in the machine learning marketplace, and makes the most of the organizations data assets. </p>
@@ -97,29 +96,7 @@ const TutorialPage = () => (
             </div>
             <div className={styles.line}><span></span></div>
           </div>
-          <h2 className={styles.whichTrue}>Which of these statements is true?</h2>
-          <div className={styles.answers}>
-            <div className={styles.answerRow}>
-              <div className={styles.answer}>
-                <span className={styles.greyCircle}></span>
-                A. Organizations can win without using data science
-              </div>
-              <div className={styles.answer}>
-                <span className={styles.greyCircle}></span>
-                B. Data science can predict the future
-              </div>
-            </div>
-            <div className={styles.answerRow}>
-              <div className={styles.answer}>
-                <span className={styles.greyCircle}></span>
-                C. Pareto principle is a top-down modeling method
-              </div>
-              <div className={styles.answer}>
-                <img className={styles.checkedImg} src={yesimg} alt="checkbox"/>
-                D. Data Science is the discipline of extracting knowledge from the data landscape
-              </div>
-            </div>
-          </div>
+          <QAnwsers />
           {/** success bonus */}
           <div className={styles.confetti}>
             <Confetti numberOfPieces={200} width='860' height='120' 
@@ -132,12 +109,12 @@ const TutorialPage = () => (
           <div className={styles.leftTitle}>
             <div className={styles.next}>NEXT STEP</div>
             <h3>Data Modeling basics</h3>
-            <div className={styles.description}>In this step you will be familiar with some data models and learn how to use them... </div>
+            <div className={styles.description}>
+              In this step you will be familiar with some data models and learn how to use them... 
+            </div>
           </div>
           <div className={styles.rightBtn}>
-            <Link to="/" className={styles.link}>
-              <span className={styles.bigBtn}>GO NEXT</span>
-            </Link>
+            <Button to="/" >GO NEXT</Button>
           </div>
         </div>
       </div>
@@ -147,7 +124,7 @@ const TutorialPage = () => (
           <img src="/img/chamuditha-dilhan-1335612-unsplash-278x120.png" 
             alt="header"/>
           <h3 className={styles.titleBG}>
-            Data Science Fundamentals...may a longer title need wrap! 
+            Data Science Fundamentals...may be longer title need wrap! 
           </h3>
         </div>
         <div className={styles.stepLineCntr}>
@@ -155,9 +132,9 @@ const TutorialPage = () => (
           <div className={styles.gradientBox}></div>
         </div>
         <div className={styles.endTutBtnSection}>
-          <Link to="/" className={styles.link}>
-            <span className={styles.longLinkBtn}>TAKE QUIZ</span>
-          </Link>
+          <Button to="/quiz" styles={{borderRadius: '18px', padding: '8px 24px'}}>
+            TAKE QUIZ
+          </Button>
         </div>
       </div>
     </div>

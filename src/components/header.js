@@ -40,27 +40,29 @@ const Header = ({ siteTitle, siteLogo }) => (
         justifyContent: `space-between`
       }}
     >
-    {siteTitle && siteLogo ?
-      (<NLink to="/" >
-        <img src={siteLogo} alt="Logo" style={{width:200, height:60, marginBottom:0}}/>
-      </NLink>):
-      (<h1 style={{ margin: 0, display: `block` }}>
-        <Link
-          to="/"
-          style={{
-            color: `#47BA47`,
-            textDecoration: `none`,
-            display: `block`,
-            margin: `.2em 0`
-          }}>{siteTitle}
-        </Link>
-      </h1>)
-    }
-      
+      {/** left logo */}
+      {siteTitle && siteLogo ?
+        (<NLink to="/" >
+          <img src={siteLogo} alt="Logo" style={{width:200, height:60, marginBottom:0}}/>
+        </NLink>):
+        (<h1 style={{ margin: 0, display: `block` }}>
+          <Link
+            to="/"
+            style={{
+              color: `#47BA47`,
+              textDecoration: `none`,
+              display: `block`,
+              margin: `.2em 0`
+            }}>{siteTitle}
+          </Link>
+        </h1>)
+      }
+      {/** right menu */}
       <div className={styles.rightMenu} >
         <ul style={{ listStyle: `none`, display: `block`, marginBottom: 0, }}>
           <ListLink to="/pandas/">Use Guide</ListLink>
-          <ListLink to="/users/">Roadmap</ListLink>
+          <ListLink to="/roadmap/">Roadmap</ListLink>
+          <ListLink to="/users/">Widgets Store</ListLink>
           <ListLink to="/about/">About</ListLink>
         </ul>
         <div className={styles.avatarImg}>

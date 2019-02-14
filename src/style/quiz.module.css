@@ -1,0 +1,35 @@
+.qzEnter {
+  margin-top: 2.45rem;
+  font-size: 15px;
+  font-weight: 400;
+  color: #999;
+}
+
+.qzGuide {
+  /* width: 480px; */
+  /* max-width: 720px; */
+  color: #666;
+}
+
+.qzBtnRow {
+  display: flex;
+  margin: 40px 0 30px 0;
+  padding: 20px;
+  width: 100%;
+}
+
+.qzQanwsers {
+  width: 100%;
+  margin: 80px 0 60px 0;
+}
+
+.qagroup {
+  padding: 0 20px;
+}
+
+.endQzRow {
+  min-height: 40px;
+  margin: 0 0 100px 0;
+  display: flex;
+  justify-content: center;
+}

@@ -6,16 +6,18 @@ import twitter from '../images/twitter56.png'
 const Footer = () => (
   <footer
     style={{
-      margin: `4em auto`,
+      margin: `4em auto 0em auto`,
       textAlign: `center`
     }}>
     <div>
-      © {new Date().getFullYear()}, Present by{` `}<a href="https://runbytech.co">Runbytech</a>
+      © {new Date().getFullYear()}, Present by{` `}
+      <a href="http://runbytech.co" target="_blank">Runbytech</a>
       <span style={{marginLeft: `40px`, color: `#888`}}>
         Logo made with 
         <a style={{marginLeft: `4px`}}
           href="https://www.designevo.com/en/" 
           title="Free Online Logo Maker"
+          target="_blank"
           >DesignEvo</a>
       </span>
     </div>

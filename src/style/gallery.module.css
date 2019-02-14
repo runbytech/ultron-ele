@@ -54,6 +54,7 @@
 
 .darkenLink:hover h4 {
   color: #FFF;
+  font-weight: 400;
 }
 
 .darkenLink h4 {

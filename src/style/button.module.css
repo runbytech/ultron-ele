@@ -1,0 +1,45 @@
+.link {
+  color: #EEE;
+  text-decoration: none;
+}
+
+.link:hover {
+  color: #FFF;
+}
+
+.bigBtn {
+  padding: 10px 20px;
+  background-color: #47BA47;
+  border-radius: 4px;
+  display: block;
+  text-align: center;
+}
+
+.bigBtnBlue {
+  background-color: #127CC9;
+  padding: 10px 20px;
+  border-radius: 4px;
+}
+
+.roundBitBtn {
+  padding: 8px 24px;
+  background-color: #47BA47;
+  border-radius: 18px;
+}
+
+.btn {
+  border: none;
+  background-color: #47BA47;
+  padding: 10px 20px;
+  border-radius: 4px;
+  color: #FFF;
+}
+
+button:focus, .btn:focus {
+  outline: 0;
+  /* outline: 1px solid #127CC9; */
+}
+button:active, .btn:active {
+  color: #888;
+  background-color: #1d953f;
+}

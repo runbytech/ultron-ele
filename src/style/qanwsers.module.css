@@ -1,0 +1,42 @@
+.whichTrue {
+  text-align: center;
+  margin-top: 40px;
+  display: block;
+}
+
+.answers {
+  width: 100%;
+  padding: 20px 40px;
+}
+
+.answerRow {
+  display: flex;
+  margin-bottom: 40px;
+}
+
+.answer {
+  flex: 1;
+  display: flex;
+}
+
+.answer + .answer {
+  margin-left: 20px;
+}
+
+.greyCircle {
+  display: block;
+  min-width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  border: 2px solid #CCC;
+  border-radius: 10px;
+}
+
+.checkedImg {
+  min-width: 20px;
+  height: 20px;
+  width: 20px;
+  margin-right: 10px;
+  border: 2px solid #47BA47;
+  border-radius: 10px;
+}
