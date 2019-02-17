@@ -4,4 +4,6 @@
  * See: https://www.gatsbyjs.org/docs/browser-apis/
  */
 
-// You can delete this file if you're not using it
+// @2019/02/14
+import './src/style/global.css'
+import './src/style/theme.module.css'

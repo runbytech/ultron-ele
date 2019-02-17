@@ -23,14 +23,14 @@
 .cateColumnRow {
   height: 160px;
   width: 100%;
-  background-color: beige;
+  /* background-color: beige; */
   overflow: hidden;
 }
 
 .cateColumnRowTop {
   height: 160px;
   width: 100%;
-  background-color: beige;
+  /* background-color: beige; */
   margin-bottom: 16px;
   overflow: hidden;
 }

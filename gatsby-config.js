@@ -7,6 +7,13 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/data`,
+        name: 'data',
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/content`,
@@ -34,6 +41,7 @@ module.exports = {
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
+    'gatsby-transformer-yaml',
     `gatsby-transformer-remark`,
     `gatsby-plugin-react-helmet`,
     // this (optional) plugin enables Progressive Web App + Offline functionality

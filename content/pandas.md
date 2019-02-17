@@ -1,6 +1,6 @@
 ---
 title: "Sweet Pandas Eating Sweets"
-date: "2019-01-30"
+date: 2019-01-30
 ---
 
 Pandas are really sweet.

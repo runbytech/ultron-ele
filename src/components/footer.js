@@ -11,13 +11,14 @@ const Footer = () => (
     }}>
     <div>
       © {new Date().getFullYear()}, Present by{` `}
-      <a href="http://runbytech.co" target="_blank">Runbytech</a>
+      <a href="http://runbytech.co" target="_blank" rel="noopener noreferrer">Runbytech</a>
       <span style={{marginLeft: `40px`, color: `#888`}}>
         Logo made with 
         <a style={{marginLeft: `4px`}}
           href="https://www.designevo.com/en/" 
           title="Free Online Logo Maker"
           target="_blank"
+          rel="noopener noreferrer"
           >DesignEvo</a>
       </span>
     </div>

@@ -59,18 +59,23 @@ exports.createPages = ({ graphql, actions }) => {
     const pages = result.data.pages.edges;
 
     pages.forEach((page, index) => {
+
+      const {slug} = page.node.fields
+
+      if(slug.includes('/category/')) return
+
       createPage({
-        path: page.node.fields.slug,
+        path: slug,
         component: path.resolve(
           // one on one mapping!
-          `src/templates${String(page.node.fields.slug).slice(0, -1)}.js`
+          `src/templates${String(slug).slice(0, -1)}.js`
           // TODO, use templateKey in .md @2019/02/13
         ),
         // Data passed to context is available
         // in page queries as GraphQL variables.
         // also available in props.pageContext of component
         context: {
-          slug: page.node.fields.slug,
+          slug: slug,
         },
       })
     });
