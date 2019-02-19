@@ -3,13 +3,14 @@
  */
 import React from 'react'
 import { Link } from 'gatsby'
+import Image from 'gatsby-image'
 
 import styles from '../style/tutorials.module.css'
 import tstyle from '../style/timeline.module.css'
 
-const TutHeadCard = ({image, tutorial, path}) => (
+const TutHeadCard = ({cover, tutorial, path}) => (
   <div className={styles.tutHeadCard}>
-    <img className={styles.tutHeadImg} src={image} alt=''/>
+    <Image fluid={cover.childImageSharp.fluid}/>
     <div className={styles.tutHeadFooter}>
       <Link to="/tutorial" style={{textDecoration: `none`, display: `block`}}>
         <h3 className={styles.tutHeadTitle}>
@@ -31,7 +32,7 @@ const Step = ({title, subtitle}) => (
 )
 
 const TutStepLine = ({sections}) => {
-  console.log(sections);
+  // console.log(sections);
 
   return <ul className={tstyle.timeline}>
           {sections && 
@@ -64,59 +65,40 @@ const groupTutorials = edges => {
 
   let groups = []
   tutorialTitles.forEach(title => 
-    groups.push({tutori: title, sections: tutorialDict[title]}))
+    groups.push({
+      cover   : tutorialDict[title][0].node.frontmatter.cover,
+      tutori  : title, 
+      sections: tutorialDict[title]
+    }))
 
   return groups
 }
 
+// latest 4 tutorials
 const Tutorials = ({data}) => { 
   
+  const fourBlank = Array(4).fill(false)
   const groups = groupTutorials(data.edges)
-  console.log(groups)
+  const fourLatest = groups.slice(0, 3)
+  fourLatest.map((e,i) => fourBlank[i] = e)  
+  // console.log(fourBlank)
 
   return (
     <div className={styles.tutorialsColumn}>
-      {/** 1st column */}
-      <div className={styles.column}>
-        
-        {groups[0] && 
-          (<>
-            <TutHeadCard 
-            image="/img/chamuditha-dilhan-1335612-unsplash-278x120.png"
-            tutorial={groups[0].tutori}
-            />
-            <TutStepLine sections={groups[0].sections} />
-           </>)
-        }
-
-      </div>
-      {/** 2cd column */}
-      <div className={styles.column}>
-        
-        {groups[1] && 
-          (<>
-            <TutHeadCard 
-            image="/img/dose-juice-1184457-278x120.png"
-            tutorial={groups[1].tutori}
-            />
-            <TutStepLine sections={groups[1].sections} />
-           </>)
-        }
-
-      </div>
-      {/** 3rd column */}
-      <div className={styles.column}>
-        
-        <TutHeadCard image="/img/bence-balla-schottner-1332731-270x120.png" />
-        <TutStepLine />
-      </div>
-      {/** 4rt column */}
-      <div className={styles.column}>
-        
-        <TutHeadCard image="/img/martin-sanchez-253914-278x120.png" />
-        <TutStepLine />
-      </div>
-      {/** end of column */}
+      {fourBlank.map(
+        (o, i) => 
+        <div className={styles.column} key={i}>
+          {o && 
+            (<>
+              <TutHeadCard
+                cover={o.cover}
+                tutorial={o.tutori}
+              />
+              <TutStepLine sections={o.sections} />
+            </>)
+          }
+        </div>
+      )}
     </div>
   )
 }

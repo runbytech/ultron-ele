@@ -38,12 +38,28 @@ export default IndexPage
 export const IndexQuery = graphql`
   query IndexQuery {
     
-    categories: file(relativePath: { regex: "/index-gallery/" }) {
-      childDataYaml {
+    # categories: file(relativePath: { regex: "/index-gallery/" }) {
+    #   childDataYaml {
+    #     categories {
+    #       name
+    #       path
+    #       cover
+    #     }
+    #   }
+    # }
+
+    categories: markdownRemark(fields: { slug: { eq: "/category/categories/" } }) {
+      frontmatter {
         categories {
-          name
+          cover {
+            childImageSharp {
+              fluid(maxWidth: 345){
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
           path
-          cover
+          name
         }
       }
     }
@@ -57,6 +73,13 @@ export const IndexQuery = graphql`
               slug
             }
             frontmatter {
+              cover {
+                childImageSharp {
+                  fluid(maxWidth: 250, maxHeight: 100){
+                    ...GatsbyImageSharpFluid
+                  }
+                }
+              }
               tutorial
               title
               date(formatString: "MMMM DD, YYYY")

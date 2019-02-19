@@ -17,9 +17,9 @@
   flex-direction: column;
   border: 1px solid #BBBBBB;
   width: 100%;
-  height: 180px;
+  height: 160px;
   max-height: 180px;
-  min-height: 180px;
+  min-height: 160px;
   overflow: hidden;
 }
 
