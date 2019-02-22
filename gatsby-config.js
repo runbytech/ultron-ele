@@ -7,7 +7,13 @@ module.exports = {
   },
   plugins: [
     {
-      // keep as first gatsby-source-filesystem plugin for gatsby image support
+      // Keep as first gatsby-source-filesystem plugin for gatsby image support!
+      // TRICKY PART:
+      // IF you build process couldn't recognize image File type field in .md, 
+      // following this: 
+      // remove this part first to restart, when compiler reports error, ctrl+c,
+      // then restore this part, and re-run: $ gatsby develip
+      // it's weird!!!
       resolve: 'gatsby-source-filesystem',
       options: {
         path: `${__dirname}/static/img`,

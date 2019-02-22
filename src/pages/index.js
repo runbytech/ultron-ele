@@ -21,7 +21,7 @@ const IndexPage = ({data}) => {
     <Layout>
       <SEO title="Home" keywords={[`gatsby`, `elms`, `elearning`]} />
       
-      <h3 style={{marginTop: `1.45rem`}}>Topics and Skills</h3>
+      <h3 style={{paddingTop: `1.45rem`}}>Topics and Skills</h3>
       {/** category galery */}
       <Gallery data={categories} />
       {/** latest tutorials */}
@@ -37,7 +37,7 @@ export default IndexPage
 
 export const IndexQuery = graphql`
   query IndexQuery {
-    
+    # this is obsolete @2019/02/20
     # categories: file(relativePath: { regex: "/index-gallery/" }) {
     #   childDataYaml {
     #     categories {
@@ -47,8 +47,8 @@ export const IndexQuery = graphql`
     #     }
     #   }
     # }
-
-    categories: markdownRemark(fields: { slug: { eq: "/category/categories/" } }) {
+    # query content/category/categories.md
+    categories: markdownRemark(fields: { slug: { eq: "/categories/" } }) {
       frontmatter {
         categories {
           cover {
@@ -63,7 +63,7 @@ export const IndexQuery = graphql`
         }
       }
     }
-
+    # query latest tutorials files
     tutorials: allMarkdownRemark(
       filter: {frontmatter: {title: {ne: ""}, tutorial: {ne: null}}},
       sort: { fields: [frontmatter___date], order: DESC }) {

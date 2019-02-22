@@ -26,8 +26,11 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 
 // 2. then create pages by template & .md content
 exports.createPages = ({ graphql, actions }) => {
+  
   const { createPage } = actions
-
+  const categoryTplt = path.resolve(`src/templates/category.js`)
+  const tutorialTplt = path.resolve(`src/templates/tutorial.js`)
+  
   return graphql(
     `
       {
@@ -37,13 +40,8 @@ exports.createPages = ({ graphql, actions }) => {
         ) {
           edges {
             node {
-              excerpt
               fields {
                 slug
-              }
-              frontmatter {
-                title
-                date(formatString: "MMMM DD, YYYY")
               }
             }
           }
@@ -62,14 +60,33 @@ exports.createPages = ({ graphql, actions }) => {
 
       const {slug} = page.node.fields
 
-      if(slug.includes('/category/')) return
+      if(/\/category\/[\w-]+\/$/.test(slug)){// create category by index.md
+        // console.log('>>> category index.md: ', slug)
+        createPage({
+          path: slug,
+          component: categoryTplt,
+          context: {slug}
+        })
+        return
+      }
+      if(/\/category\/([\w-]+\/){3}/.test(slug)){// create tutorial section
+        // console.log('>>> tutorial section: ', slug)
+        createPage({
+          path: slug,
+          component: tutorialTplt,
+          context: {slug}
+        })
+        return
+      }
 
+      if(slug.includes('/categories/')) return // no need to generate categories page
+
+      // Last: to generate page of navi bar menu!
       createPage({
         path: slug,
         component: path.resolve(
           // one on one mapping!
           `src/templates${String(slug).slice(0, -1)}.js`
-          // TODO, use templateKey in .md @2019/02/13
         ),
         // Data passed to context is available
         // in page queries as GraphQL variables.
@@ -78,7 +95,10 @@ exports.createPages = ({ graphql, actions }) => {
           slug: slug,
         },
       })
-    });
 
-  })
+    // end of pages loop
+    });
+  // end of graphql resolve callback
+  });
+// end of createPages
 }

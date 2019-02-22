@@ -1,4 +1,6 @@
 /**
+ * the latest tutorials in homepage
+ * 
  * @2019/02/01
  */
 import React from 'react'
@@ -8,6 +10,7 @@ import Image from 'gatsby-image'
 import styles from '../style/tutorials.module.css'
 import tstyle from '../style/timeline.module.css'
 
+// TODO, default to point to the first section of the tutorial
 const TutHeadCard = ({cover, tutorial, path}) => (
   <div className={styles.tutHeadCard}>
     <Image fluid={cover.childImageSharp.fluid}/>
@@ -81,7 +84,7 @@ const Tutorials = ({data}) => {
   const groups = groupTutorials(data.edges)
   const fourLatest = groups.slice(0, 3)
   fourLatest.map((e,i) => fourBlank[i] = e)  
-  // console.log(fourBlank)
+  console.log(fourBlank)
 
   return (
     <div className={styles.tutorialsColumn}>

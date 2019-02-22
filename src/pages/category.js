@@ -1,5 +1,5 @@
 /**
- * category for tutorials
+ * static category template for tutorials
  * @2019/02/04
  */
 
@@ -8,6 +8,9 @@ import { Link } from 'gatsby'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
+import BlurBannerImage from '../components/blurBanner'
+import TutorialItem from '../components/tutorialItem'
+import FeaturesPanel from '../components/featuresPanel'
 
 import styles from '../style/category.module.css'
 
@@ -16,105 +19,6 @@ import styles from '../style/category.module.css'
 //   return <div className={styles.topImgBanner}>{children}</div>
 // }
 
-
-// const BlurBannerImage 
-class BlurBannerImage extends React.Component {
-
-  constructor(props) {
-    super(props)
-    this.state = {load: false}
-    this.drawImg = this.drawImg.bind(this)
-  }
-
-  drawImg() {
-    // this check is a MUST! or cause multiple render @2019/02/04
-    if(this.state.load) return
-
-    const ctx = this.canvas.getContext('2d')
-    
-    ctx.drawImage(this.img, 0, 0, 600, 100, 0, 0, 1200, 200)
-  }
-
-  componentDidMount() {
-    const {src} = this.props
-
-    this.img = new Image()
-    this.img.src = src
-    if (this.img.complete) this.drawImg()  
-    else this.img.onload = this.drawImg
-  }
-
-  render() {
-    const { children}  = this.props
-  
-    return (
-      <div className={styles.topImgBanner} >
-        <canvas className={styles.bannerCanvas}
-          ref={canvas => this.canvas = canvas}/>
-        <div className={styles.childrenLayer}>
-          {children}
-        </div>
-      </div>
-    )
-  }
-}
-
-const TutorialItem = ({coverImg, title, excerpt, date, slug}) => (
-  <div className={styles.tutoitem}>
-    <div className={styles.leftImage}>
-      <img src={coverImg} className={styles.tutoCover} alt="cover"/>
-      <div className={styles.coverOnBotm}></div>
-      <div className={styles.coverText}>2019-02-05</div>
-    </div>
-    <div className={styles.rightIntro}>
-      <h4 className={styles.tutoTitle}>{title}</h4>
-      <p className={styles.excerpt}>
-        {excerpt}
-      </p>
-      <div className={styles.tutoFooter}>
-        <div className={styles.tutoFooterTags}>
-          <span className={styles.tutoTag}>tagA</span>
-          <span className={styles.tutoTag}>tagB</span>
-          <span className={styles.tutoTag}>tagC</span>
-        </div>
-        <div className={styles.tutoFooterMore}>
-          <Link to="/tutorial">Learn More...</Link>
-        </div>
-      </div>
-    </div>
-  </div>
-)
-
-const FeaturesPanel = () => (
-  <div className={styles.featuresPanel}>
-    <div className={styles.seprateItem}>
-      <span className={styles.alignRight}>Difficulty:</span>
-      <span>Medium</span>
-    </div>
-    <div className={styles.seprateItem}>
-      <span className={styles.alignRight}>Audience:</span>
-      <span>students</span>
-    </div>
-    <div className={styles.seprateItem}>
-      <span className={styles.alignRight}>Prerequisites:</span>
-      <ul>
-        <li>Mathematics</li>
-        <li>Statistics</li>
-        <li>Perserverance</li>
-        <li>Curiosity</li>
-      </ul>
-    </div>
-    <div className={styles.seprateItem+` last`}>
-      <span className={styles.alignRight}>Youwill learn:</span>
-      <ul>
-        <li>Many Buzzwords</li>
-        <li>Business analytics</li>
-        <li>Predictive modeling</li>
-        <li>Data processing</li>
-      </ul>
-    </div>       
-  </div>
-)
 
 const CategoryPage = ({location}) => (
   <Layout>

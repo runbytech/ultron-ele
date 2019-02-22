@@ -1,0 +1,41 @@
+/* for right side panel */
+.featuresPanel {
+  width: 100%;
+  min-height: 400px;
+  border: 1px solid #DEDEDE;
+  /* border-left: 1px solid #CCC; */
+  border-radius: 4px;
+  background-color: #FEFEFE;
+  margin-top: 30px;
+  padding: 10px 20px;
+}
+
+.seprateItem {
+  display: flex;
+  flex-direction: row;
+  align-content: space-between;
+  border-bottom: 1px solid #EEE;
+}
+
+.seprateItem:last-child {
+  border-bottom: none;
+}
+
+.seprateItem span, .seprateItem ul {
+  display: block;
+  flex: 1;
+  padding: 10px 0 10px 10px;
+  font-size: 15px;
+  margin-bottom: 0;
+}
+
+.seprateItem ul li {
+  margin-bottom: .5rem;
+  line-height: 1.5;
+}
+
+.seprateItem .alignRight {
+  text-align: right;
+  padding-left: 0;
+  font-weight: bold;
+}
