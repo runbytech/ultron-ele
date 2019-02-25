@@ -70,11 +70,12 @@ exports.createPages = ({ graphql, actions }) => {
         return
       }
       if(/\/category\/([\w-]+\/){3}/.test(slug)){// create tutorial section
-        // console.log('>>> tutorial section: ', slug)
+        const tutorialPath = slug.match(/\/category\/([\w-]+\/){2}/g)[0]
+        // console.log('>>> tutorial section: ', tutorialPath)
         createPage({
           path: slug,
           component: tutorialTplt,
-          context: {slug}
+          context: {slug, tutpath: tutorialPath}
         })
         return
       }

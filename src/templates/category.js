@@ -12,39 +12,10 @@ import SEO from '../components/seo'
 import BlurBannerImage from '../components/blurBanner'
 import TutorialItem from '../components/tutorialItem'
 import FeaturesPanel from '../components/featuresPanel'
+import { getCategory, } from '../utils/cache'
+import { groupTutorials, } from '../utils/helper'
 
 import styles from '../style/category.module.css'
-
-
-
-const groupTutorials = edges => {
-  // console.log(edges)
-  let tutorialTitles = []
-  let tutorialDict = {}
-  let title
-  edges.forEach(edge => {
-    title = edge.node.frontmatter.tutorial
-    if(!tutorialTitles.includes(title)) { // check exist
-      tutorialTitles.push(title)
-      tutorialDict[title] = [edge]
-    }else{
-      tutorialDict[title].splice(0, 0, edge) // insert to first
-    }
-  })
-
-  let groups = []
-  tutorialTitles.forEach(title => 
-    groups.push({
-      slug    : tutorialDict[title][0].node.fields.slug,
-      date    : tutorialDict[title][0].node.frontmatter.date,
-      cover   : tutorialDict[title][0].node.frontmatter.cover,
-      tags    : tutorialDict[title][0].node.frontmatter.tags,
-      tutori  : title, 
-      sections: tutorialDict[title]
-    }))
-
-  return groups
-}
 
 
 const CategoryPage = ({location, data, pageContxt}) => {
@@ -52,17 +23,20 @@ const CategoryPage = ({location, data, pageContxt}) => {
   const {frontmatter:fm, html:intro} = data.catdef
   const tutorials = data.tutorials.edges
   const grouptuts = groupTutorials(tutorials)
-
-  console.log(fm)
-  console.log(tutorials);
-  console.log(grouptuts)
+  const pathname = location.pathname
+  const category = getCategory(pathname)
+  
 
   return (
     <Layout>
       <SEO title={fm.category} />
       
-      <BlurBannerImage src={location.state.imgPath}>
-        <h2 className={styles.category}>{location.state.title}</h2>
+      <BlurBannerImage 
+        src={location.state.imgPath||
+          (category && category.cover.childImageSharp.fluid.src)}>
+        <h2 className={styles.category}>
+          {location.state.title|| (category && category.name)}
+        </h2>
         <div className={styles.tags}>
           {fm.tags && 
             fm.tags.map((t,i) => 
@@ -95,6 +69,7 @@ const CategoryPage = ({location, data, pageContxt}) => {
                     title={t.tutori}
                     tags={t.tags}
                     excerpt={t.sections[0].node.excerpt}
+                    category={fm.category}
                   />
               )
             }
@@ -132,7 +107,7 @@ export const pageQuery = graphql`
       }
     }
 
-    # TODO: tutorials in this category
+    # tutorials in this category
     tutorials: allMarkdownRemark(
       filter: {
         fields: {slug: {regex: $slug}},

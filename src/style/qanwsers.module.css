@@ -40,3 +40,12 @@
   border: 2px solid #47BA47;
   border-radius: 10px;
 }
+
+.wrong {
+  color: #333;
+}
+
+.outer {
+  color: red;
+  text-decoration: line-through;
+}

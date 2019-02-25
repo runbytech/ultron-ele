@@ -1,7 +1,8 @@
 ---
-category: Data science  # required
+category: Data Science  # required
 date: 2019-02-14T18:03:15.507Z # required
 type: category index  # required
+cover: 
 tags:  # option info
   - Analysis
   - Algorthm

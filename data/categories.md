@@ -1,4 +1,6 @@
 ---
+# TODO: move this config to each category index.md
+
 # tutorials categories definition
 # @2019/02/19
 
@@ -8,7 +10,7 @@ date: 2019-02-19
 categories:
 - cover: /img/data_science.jpeg
   name: Data Science
-  path: /category/data-science/
+  path: /category/data-science
 - cover: /img/business.jpeg
   name: Business
   path: /category/business

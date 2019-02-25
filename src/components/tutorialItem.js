@@ -7,7 +7,7 @@ import Image from 'gatsby-image'
 
 import look from '../style/tutitem.module.css'
 
-const TutorialItem = ({coverImg, title, excerpt, date, slug, tags}) => (
+const TutorialItem = ({coverImg, title, excerpt, date, slug, tags, category}) => (
   <div className={look.tutoitem}>
     <div className={look.leftImage}>
       <Image 
@@ -33,7 +33,7 @@ const TutorialItem = ({coverImg, title, excerpt, date, slug, tags}) => (
           }
         </div>
         <div className={look.tutoFooterMore}>
-          <Link to={slug}>Learn More...</Link>
+          <Link to={slug} state={{category}}>Learn More...</Link>
         </div>
       </div>
     </div>

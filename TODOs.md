@@ -7,6 +7,7 @@ todo functionalities or features
 ## Functionalites
 
 ### First Phase
+* move categories.md config to each category index.md
 * create tutorial sections query  -- DN
 * content samples collect  --  DN
 * content(category/tutorial) structure definition  -- Working

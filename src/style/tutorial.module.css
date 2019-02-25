@@ -70,7 +70,7 @@
 .unlockgame {
   margin: 80px 0;
   width: 100%;
-  min-height: 450px;
+  /* min-height: 400px; */
 }
 
 .topline {
@@ -170,8 +170,8 @@
 
 .titleBG {
   padding: 6px 10px 6px 10px;
-  color: #666;
-  font-weight: 400;
+  color: #333;
+  font-weight: 500;
   margin-bottom: 0;
   font-size: 18px;
   line-height: 1.4;

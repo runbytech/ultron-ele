@@ -96,7 +96,9 @@ const TutorialPage = () => (
             </div>
             <div className={styles.line}><span></span></div>
           </div>
+          
           <QAnwsers />
+
           {/** success bonus */}
           <div className={styles.confetti}>
             <Confetti numberOfPieces={200} width='860' height='120' 
