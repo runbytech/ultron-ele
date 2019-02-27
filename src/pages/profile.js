@@ -4,27 +4,11 @@ import React from 'react'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import Button from '../components/button'
+import ProfileSection from '../sections/profileSection'
 
 import styles from '../style/profile.module.css'
 
 
-const ProfileSection = () => (
-  <>
-    <h3 className={styles.secTitle}>My Profile</h3>
-    <hr/>
-    <div className={styles.inputGroup}>
-      <h4 className={styles.fieldTitle}>Name</h4>
-      <input name="name" type="text" className={styles.formControl} />
-    </div>
-    <div className={styles.inputGroup}>
-      <h4 className={styles.fieldTitle}>Email</h4>
-      <input name="email" type="text" className={styles.formControl} />
-    </div>
-    <div className={styles.btnRow}>
-      <Button onClick={()=>{console.log('save the user...')}} >Save</Button>
-    </div>
-  </>
-)
 
 const LearningPathSection = () => (
   <>

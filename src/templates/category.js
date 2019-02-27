@@ -12,7 +12,7 @@ import SEO from '../components/seo'
 import BlurBannerImage from '../components/blurBanner'
 import TutorialItem from '../components/tutorialItem'
 import FeaturesPanel from '../components/featuresPanel'
-import { getCategory, } from '../utils/cache'
+// import { getCategory, } from '../utils/cache'
 import { groupTutorials, } from '../utils/helper'
 
 import styles from '../style/category.module.css'
@@ -24,18 +24,15 @@ const CategoryPage = ({location, data, pageContxt}) => {
   const tutorials = data.tutorials.edges
   const grouptuts = groupTutorials(tutorials)
   const pathname = location.pathname
-  const category = getCategory(pathname)
   
 
   return (
     <Layout>
       <SEO title={fm.category} />
       
-      <BlurBannerImage 
-        src={location.state.imgPath||
-          (category && category.cover.childImageSharp.fluid.src)}>
+      <BlurBannerImage src={fm.cover.childImageSharp.fluid.src}>
         <h2 className={styles.category}>
-          {location.state.title|| (category && category.name)}
+          {fm.category}
         </h2>
         <div className={styles.tags}>
           {fm.tags && 
@@ -93,7 +90,6 @@ export const pageQuery = graphql`
 
     # category definition in index.md
     catdef: markdownRemark(fields: { slug: { eq: $slug } }) {
-      id
       excerpt(pruneLength: 160)
       html
       frontmatter {
@@ -104,6 +100,13 @@ export const pageQuery = graphql`
         audience
         prerequisites
         uwillearn
+        cover {
+          childImageSharp {
+            fluid(maxWidth: 345){
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
     }
 

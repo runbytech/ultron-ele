@@ -13,40 +13,12 @@ import Layout from '../components/layout'
 import SEO from '../components/seo'
 import Button from '../components/button'
 import QAnwsers from '../components/qanwsers'
+import TutStepLine from '../components/tutStepLine'
 import { scrollTo, } from '../utils/helper'
+// import { getCategory, } from '../utils/cache'
 
 import styles from '../style/tutorial.module.css'
 import theme from '../style/theme.module.css'
-import tstyle from '../style/timeline.module.css'
-
-
-
-
-const Step = ({title, subtitle, slug}) => (
-  <li><Link to={slug} style={{textDecoration: 'none'}}>
-    <p className={tstyle.greyP}>
-      <strong className={tstyle.library}>{title}</strong>
-      <br/>
-      {subtitle}
-    </p></Link>
-  </li> 
-)
-
-const TutStepLine = ({sections}) => (
-  <ul className={tstyle.timeline}>
-    {
-      sections &&
-        sections.map((s, i)=>(
-          <Step key={i}
-            title={s.node.frontmatter.title}
-            subtitle={s.node.frontmatter.date}
-            slug={s.node.fields.slug}
-          />
-        ))
-    }
-  </ul>
-)
-
 
 
 export default class TutorialPage extends React.Component {
@@ -79,24 +51,24 @@ export default class TutorialPage extends React.Component {
     const tsec = data.tsec
     const fm = tsec.frontmatter
     const { edges:sections } = data.sections
+    const { category } = data.catdef.frontmatter
 
     const pageslug = pageContext.slug
     const pathname = location.pathname // the same as pageContext.slug
     const catepath = pathname.split('/').slice(0,3).join('/')
-    // console.log(pathname)
+    
     // console.log(pageContext)
-    // console.log(sections)
+    // console.log(catdef)
 
     let n = 0
     let next = null
     
     sections.map((s,i) => {
-      if(s.node.fields.slug == pageslug) n = i
+      if(s.node.fields.slug === pageslug) n = i
     })
 
     if(n+1<sections.length) next = sections[n+1]
-
-    console.log(next);
+    // console.log(next);
 
     return (
       <Layout nofoot={true} fullwidth={true}>
@@ -108,7 +80,7 @@ export default class TutorialPage extends React.Component {
           <div className={styles.leftContent} ref={el => { this.leftel = el; }}>
 
             <h3 className={styles.breadcrumb}>
-              <Link to={catepath} >{location.state.category}</Link> / 
+              <Link to={catepath} >{category}</Link> / 
             </h3>
 
             <h2 className={styles.tutTitle}>{fm.title}</h2>
@@ -221,7 +193,7 @@ export default class TutorialPage extends React.Component {
 
 // accept parameter from pageContext
 export const pageQuery = graphql`
-  query PageByTutorial($slug: String!, $tutpath: String!) {
+  query PageByTutorial($slug: String!, $tutpath: String!, $catpath: String!) {
 
     # query section by slug
     tsec: markdownRemark(fields: { slug: { eq: $slug } }) {
@@ -272,6 +244,14 @@ export const pageQuery = graphql`
           }
         }
     }
+
+    # Query current category index.md 
+    catdef: markdownRemark(fields: { slug: { eq: $catpath } }) {
+      frontmatter {
+        category
+      }
+    }
+   
 
   }
 `

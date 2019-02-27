@@ -28,35 +28,26 @@ const QuizPage = () => (
     <hr/>
     <div className={styles.qzQanwsers}>
       <div className={styles.qagroup}>
-        <QAnwsers seq="1" />
+        <QAnwsers seq="1" qas={[
+          {q:'what',a:false}, {q:'when',a:false}, {q:'where',a:false}, {q:'why',a:false}
+        ]}/>
       </div>
       <div className={styles.qagroup}>
-        <QAnwsers seq="2" />
+        <QAnwsers seq="2" qas={[
+          {q:'what',a:false}, {q:'when',a:false}, {q:'where',a:false}, {q:'why',a:false}
+        ]}/>
       </div>
       <div className={styles.qagroup}>
-        <QAnwsers seq="3" />
+        <QAnwsers seq="3" qas={[
+          {q:'what',a:false}, {q:'when',a:false}, {q:'where',a:false}, {q:'why',a:false}
+        ]}/>
       </div>
       <div className={styles.qagroup}>
-        <QAnwsers seq="4" />
+        <QAnwsers seq="4" qas={[
+          {q:'what',a:false}, {q:'when',a:false}, {q:'where',a:false}, {q:'why',a:false}
+        ]}/>
       </div>
-      <div className={styles.qagroup}>
-        <QAnwsers seq="5" />
-      </div>
-      <div className={styles.qagroup}>
-        <QAnwsers seq="6" />
-      </div>
-      <div className={styles.qagroup}>
-        <QAnwsers seq="7" />
-      </div>
-      <div className={styles.qagroup}>
-        <QAnwsers seq="8" />
-      </div>
-      <div className={styles.qagroup}>
-        <QAnwsers seq="9" />
-      </div>
-      <div className={styles.qagroup}>
-        <QAnwsers seq="10" />
-      </div>
+      
     </div>
 
     <div className={styles.endQzRow}>

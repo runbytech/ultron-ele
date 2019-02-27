@@ -1,3 +1,8 @@
+/**
+ * Never try to transform this into a react component !!!
+ * 
+ * @2019/02/27
+ */
 import React from 'react'
 import PropTypes from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'

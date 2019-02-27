@@ -30,6 +30,7 @@ exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
   const categoryTplt = path.resolve(`src/templates/category.js`)
   const tutorialTplt = path.resolve(`src/templates/tutorial.js`)
+  const quizTplt     = path.resolve(`src/templates/quiz.js`)
   
   return graphql(
     `
@@ -60,8 +61,10 @@ exports.createPages = ({ graphql, actions }) => {
 
       const {slug} = page.node.fields
 
+      // console.log(slug)
+
       if(/\/category\/[\w-]+\/$/.test(slug)){// create category by index.md
-        // console.log('>>> category index.md: ', slug)
+        // console.log('>>> create category index.md: ', slug)
         createPage({
           path: slug,
           component: categoryTplt,
@@ -69,13 +72,27 @@ exports.createPages = ({ graphql, actions }) => {
         })
         return
       }
+
+      // MUST:  placed BEFORE the tutorial section creation
+      if(/\/category\/([\w-]+\/){2}test\//.test(slug)){// create quiz page
+        const tutorialPath = slug.match(/\/category\/([\w-]+\/){2}/g)[0]
+        // console.log('>>> create quiz page ...')
+        createPage({
+          path: slug,
+          component: quizTplt,
+          context: {slug, tutpath:tutorialPath}
+        })
+        return
+      }
+
       if(/\/category\/([\w-]+\/){3}/.test(slug)){// create tutorial section
         const tutorialPath = slug.match(/\/category\/([\w-]+\/){2}/g)[0]
-        // console.log('>>> tutorial section: ', tutorialPath)
+        const categoryPath = slug.match(/\/category\/([\w-]+\/){1}/g)[0]
+        // console.log('>>> create tutorial section: ', tutorialPath)
         createPage({
           path: slug,
           component: tutorialTplt,
-          context: {slug, tutpath: tutorialPath}
+          context: {slug, tutpath:tutorialPath, catpath:categoryPath}
         })
         return
       }

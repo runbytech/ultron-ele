@@ -33,3 +33,8 @@
   display: flex;
   justify-content: center;
 }
+
+.table {
+  width: 400px;
+  margin-bottom: 40px;
+}

@@ -9,13 +9,15 @@ import Image from 'gatsby-image'
 
 import styles from '../style/tutorials.module.css'
 import tstyle from '../style/timeline.module.css'
+import { groupTutorials, } from '../utils/helper'
+
 
 // TODO, default to point to the first section of the tutorial
 const TutHeadCard = ({cover, tutorial, path}) => (
   <div className={styles.tutHeadCard}>
     <Image fluid={cover.childImageSharp.fluid}/>
     <div className={styles.tutHeadFooter}>
-      <Link to="/tutorial" style={{textDecoration: `none`, display: `block`}}>
+      <Link to={path} style={{textDecoration: `none`, display: `block`}}>
         <h3 className={styles.tutHeadTitle}>
           {tutorial}
         </h3>
@@ -51,32 +53,6 @@ const TutStepLine = ({sections}) => {
 }
 
 
-const groupTutorials = edges => {
-  // console.log(edges)
-  let tutorialTitles = []
-  let tutorialDict = {}
-  let title
-  edges.forEach(edge => {
-    title = edge.node.frontmatter.tutorial
-    if(!tutorialTitles.includes(title)) { // check exist
-      tutorialTitles.push(title)
-      tutorialDict[title] = [edge]
-    }else{
-      tutorialDict[title].splice(0, 0, edge) // insert to first
-    }
-  })
-
-  let groups = []
-  tutorialTitles.forEach(title => 
-    groups.push({
-      cover   : tutorialDict[title][0].node.frontmatter.cover,
-      tutori  : title, 
-      sections: tutorialDict[title]
-    }))
-
-  return groups
-}
-
 // latest 4 tutorials
 const Tutorials = ({data}) => { 
   
@@ -84,7 +60,7 @@ const Tutorials = ({data}) => {
   const groups = groupTutorials(data.edges)
   const fourLatest = groups.slice(0, 3)
   fourLatest.map((e,i) => fourBlank[i] = e)  
-  console.log(fourBlank)
+  // console.log(fourBlank)
 
   return (
     <div className={styles.tutorialsColumn}>
@@ -96,6 +72,7 @@ const Tutorials = ({data}) => {
               <TutHeadCard
                 cover={o.cover}
                 tutorial={o.tutori}
+                path={o.slug}
               />
               <TutStepLine sections={o.sections} />
             </>)

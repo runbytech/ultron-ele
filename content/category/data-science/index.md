@@ -2,7 +2,7 @@
 category: Data Science  # required
 date: 2019-02-14T18:03:15.507Z # required
 type: category index  # required
-cover: 
+cover: /img/data_science.jpeg
 tags:  # option info
   - Analysis
   - Algorthm

@@ -57,6 +57,7 @@ export const IndexQuery = graphql`
     #   }
     # }
     # query content/category/categories.md
+    # TODO: Query all the category index.md to compose this group
     categories: markdownRemark(fields: { slug: { eq: "/categories/" } }) {
       frontmatter {
         categories {

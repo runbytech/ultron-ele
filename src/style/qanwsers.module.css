@@ -32,6 +32,16 @@
   border-radius: 10px;
 }
 
+.greenCircle {
+  display: block;
+  min-width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  border: 2px solid #47BA47;
+  border-radius: 10px;
+  background-color: #FFF;
+}
+
 .checkedImg {
   min-width: 20px;
   height: 20px;
@@ -39,6 +49,7 @@
   margin-right: 10px;
   border: 2px solid #47BA47;
   border-radius: 10px;
+  margin-bottom: 0;
 }
 
 .wrong {

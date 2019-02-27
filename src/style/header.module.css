@@ -43,11 +43,30 @@
   display: flex;
   align-items: center;
   margin-left: 2em;
-  margin-right: 1em;
+  margin-right: 2em;
 }
 
 .avatarImg img {
   margin-bottom: 0;
   width: 24px;
   height: 24px;
+}
+
+.avatarImg span {
+  display: block;
+  width: 24px;
+  height: 24px;
+  margin-bottom: 0;
+  background-color: green;
+  color: #FFF;
+  font-size: 24px;
+  font-weight: 800;
+  border-radius: 12px;
+  padding-left: 4px;
+}
+
+.avatarImg span:hover {
+  color: green;
+  background-color: #FFF;
+  border: 2px solid green;
 }
