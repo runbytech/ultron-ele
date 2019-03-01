@@ -26,7 +26,6 @@ export default class ProfileSection extends React.Component {
 
   componentDidMount() {
     let user = getUser()
-    console.log(user)
     if(user){
       this.setState({
         title: 'Welcome',

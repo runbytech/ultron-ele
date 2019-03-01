@@ -15,15 +15,12 @@ const IndexPage = ({data}) => {
 
   const { categories, tutorials } = data
   
-  console.log(categories);
+  // console.log(categories);
   // console.log(tutorials)
 
   // TODO: Need to cache something like category and its slug?
   categories.frontmatter.categories.map(
-    c => {
-      console.log(c)
-      saveCategory(c.path, c.name, c.cover)
-    }
+    c => saveCategory(c.path, c.name, c.cover)
   )
   
   return (

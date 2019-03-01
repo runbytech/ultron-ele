@@ -7,10 +7,11 @@ todo functionalities or features
 ## Functionalites
 
 ### First Phase
+* add learning track entry in: start, unlock, quiz, complete
 * move categories.md config to each category index.md
 * create tutorial sections query  -- DN
 * content samples collect  --  DN
-* content(category/tutorial) structure definition  -- Working
+* content(category/tutorial) structure definition  -- DN
 * display content structure in hompage  -- DN
 * add gatsby-remark-images plugin to config to handle image in .md  -- DN
 

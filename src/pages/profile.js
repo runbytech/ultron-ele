@@ -5,40 +5,39 @@ import Layout from '../components/layout'
 import SEO from '../components/seo'
 import Button from '../components/button'
 import ProfileSection from '../sections/profileSection'
+import LearningPathSection from '../sections/learningPath'
 
 import styles from '../style/profile.module.css'
 
 
 
-const LearningPathSection = () => (
-  <>
-    <h3 className={styles.secTitle}>Learning Path</h3>
-    <hr/>
-  </>
-)
 
 const TestReptSection = () => (
   <>
     <h3 className={styles.secTitle}>Test Reports</h3>
     <hr/>
+    <p>pending...</p>
   </>
 )
 const CertificateSection = () => (
   <>
     <h3 className={styles.secTitle}>Certificates</h3>
     <hr/>
+    <p>todo...</p>
   </>
 )
 const FavoritesSection = () => (
   <>
     <h3 className={styles.secTitle}>Favorites</h3>
     <hr/>
+    <p>pending...</p>
   </>
 )
 const SettingsSection = () => (
   <>
     <h3 className={styles.secTitle}>Settings</h3>
     <hr/>
+    <p>todo...</p>
   </>
 )
 
@@ -50,6 +49,13 @@ class ProfilePageRC extends React.Component {
     
       this.state = {section: 'profile'}; // initial state
       this.changeSection = this.changeSection.bind(this)
+    }
+
+    componentDidMount() {
+      const { location } = this.props
+      
+      const section = location.state.section
+      if(section) this.changeSection(section)
     }
 
     changeSection(type) {

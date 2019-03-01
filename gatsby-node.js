@@ -63,7 +63,7 @@ exports.createPages = ({ graphql, actions }) => {
 
       // console.log(slug)
 
-      if(/\/category\/[\w-]+\/$/.test(slug)){// create category by index.md
+      if(/\/category\/[\w-]+\/$/.test(slug)){// create `category` by index.md
         // console.log('>>> create category index.md: ', slug)
         createPage({
           path: slug,
@@ -74,25 +74,27 @@ exports.createPages = ({ graphql, actions }) => {
       }
 
       // MUST:  placed BEFORE the tutorial section creation
-      if(/\/category\/([\w-]+\/){2}test\//.test(slug)){// create quiz page
-        const tutorialPath = slug.match(/\/category\/([\w-]+\/){2}/g)[0]
-        // console.log('>>> create quiz page ...')
+      if(/\/category\/([\w-]+\/){2}test\//.test(slug)){// create `quiz` page
+        const tutpath = slug.match(/\/category\/([\w-]+\/){2}/g)[0]
+        const catpath = slug.match(/\/category\/([\w-]+\/){1}/g)[0]
+        // console.log('>>> create quiz page ...', slug)
         createPage({
           path: slug,
           component: quizTplt,
-          context: {slug, tutpath:tutorialPath}
+          context: {slug, tutpath, catpath}
         })
         return
       }
 
-      if(/\/category\/([\w-]+\/){3}/.test(slug)){// create tutorial section
-        const tutorialPath = slug.match(/\/category\/([\w-]+\/){2}/g)[0]
-        const categoryPath = slug.match(/\/category\/([\w-]+\/){1}/g)[0]
-        // console.log('>>> create tutorial section: ', tutorialPath)
+      if(/\/category\/([\w-]+\/){3}/.test(slug)){// create `tutorial` section
+        const tutpath = slug.match(/\/category\/([\w-]+\/){2}/g)[0]
+        const catpath = slug.match(/\/category\/([\w-]+\/){1}/g)[0]
+        const quizpath= tutpath+'test/'
+        // console.log('>>> create tutorial section: ', tutpath)
         createPage({
           path: slug,
           component: tutorialTplt,
-          context: {slug, tutpath:tutorialPath, catpath:categoryPath}
+          context: {slug, tutpath, catpath, quizpath}
         })
         return
       }

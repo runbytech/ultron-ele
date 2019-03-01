@@ -12,17 +12,26 @@ import yesimg from '../images/yes_green.png'
 
 /**
  * 
- * @param {*} s: sequence, q: question, a: true/false, t: through text line
+ * @param {*} s: sequence, q: question, 
  * b: blind mode, used in quiz which doesnt give user right/error hint
  * h: selected status, while click on each answer
+ * a: true/false,
+ * t: through text line
  */
-const Answer = ({s, q, a, t, b, h}) => (
-  <>
-    {a && !b?
-      (<img className={styles.checkedImg} src={yesimg} alt="checkbox"/>):
-      (h?<img className={styles.checkedImg} src={yesimg} alt="checkbox"/>:
-         <span className={styles.greyCircle}></span>)
+const Answer = ({s, q, a, t, b, h}) => {
+  
+  return (<>
+    {!b &&
+      (a?
+        <img className={styles.checkedImg} src={yesimg} alt="checkbox"/>:
+        <span className={styles.greyCircle}></span>)
+    } 
+    {b &&
+      (h?
+        <img className={styles.checkedImg} src={yesimg} alt="checkbox"/>:
+        <span className={styles.greyCircle}></span>)
     }
+    
     {t && !b?
       (
         <span className={styles.outer}>
@@ -31,8 +40,8 @@ const Answer = ({s, q, a, t, b, h}) => (
       ):
       (<span className={styles.wrong}>{s}. {q}</span>)
     }
-  </>
-)
+  </>)
+}
 
 
 export default class QAnwsers extends React.Component {
@@ -64,6 +73,12 @@ export default class QAnwsers extends React.Component {
       let through = this.state.through
       through[i] = true
       this.setState({through})
+    }
+
+    // save selected value to qas
+    if(blind){
+      qas.map(q => q.selected = false)
+      qas[i].selected = true
     }
   }
 

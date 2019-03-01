@@ -4,13 +4,13 @@
  */
 
 import React from 'react'
-import { Link, graphql, navigateTo } from 'gatsby'
+import { Link, graphql, navigate } from 'gatsby'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import Button from '../components/button'
 import QAnwsers from '../components/qanwsers'
-import { getUser } from '../utils/cache'
+import { getUser, saveLearningTrack, saveUserQuiz } from '../utils/cache'
 
 import styles from '../style/quiz.module.css'
 
@@ -24,16 +24,46 @@ export default class QuizPage extends React.Component {
        showQuiz: false
     }
     this.openQuiz = this.openQuiz.bind(this)
+    this.saveQuiz = this.saveQuiz.bind(this)
   }
 
   openQuiz() {
     let user = getUser()
     if(user){
       this.setState({showQuiz:true})
+      this.saveTrack('quiz')
     }else{
       console.log('NO USER...to navigate profile')
-      navigateTo('/profile')
+      navigate('/profile')
     }
+  }
+
+  saveTrack(status) {
+    const { data, pageContext} = this.props
+    const pageslug = pageContext.slug
+    const { frontmatter:fm } = data.quiz
+    const { category } = data.catdef.frontmatter
+    const date = new Date().toISOString()
+    saveLearningTrack(pageslug, fm.for, category, date, status)
+  }
+
+  saveQuiz() {
+    const { data, pageContext} = this.props
+    const pageslug = pageContext.slug
+    // console.log(this.qaset)
+    let user = getUser()
+    const ans = []
+    this.qaset.map(qa => {
+      // save each selected item index of statement option
+      qa.group.map((g,i) => {if(g.selected) ans.push(i)})
+    })
+    // check completion is a must!
+    if(ans.length<this.qaset.length){
+      alert('Please anwser All the questions!')
+      return
+    }
+    saveUserQuiz(pageslug, user.userName, ans)
+    navigate('/profile', {state: {section: 'testrept'}})
   }
 
   componentDidUpdate() {
@@ -47,14 +77,15 @@ export default class QuizPage extends React.Component {
     const { data, pageContext } = this.props
     const { frontmatter:fm } = data.quiz
     const { edges:tutorial } = data.sections
-    const qaset = fm.qaset
-    const quizLength= qaset.length
+    // save to component level to retrieve other function
+    this.qaset = fm.qaset
+    const quizLength= this.qaset.length
     const firstSection = tutorial[0].node.fields.slug
-    const excellent = Math.floor(qaset.length*0.8)
-    const qualified = Math.floor(qaset.length*0.6)
-    const failed    = Math.floor(qaset.length*0.6)-1
+    const excellent = Math.floor(this.qaset.length*0.8)
+    const qualified = Math.floor(this.qaset.length*0.6)
+    const failed    = Math.floor(this.qaset.length*0.6)-1
     
-    console.log(qaset)
+    console.log(this.qaset)
 
     return (
       <Layout >
@@ -106,8 +137,8 @@ export default class QuizPage extends React.Component {
           <>
             <div className={styles.qzQanwsers}>
               <div className={styles.qagroup}>
-                {qaset &&
-                  qaset.map(
+                {this.qaset &&
+                  this.qaset.map(
                     (qa,i) => 
                       (<QAnwsers key={i} seq={i+1} qas={qa.group} blind={true}/>)
                   )
@@ -115,7 +146,8 @@ export default class QuizPage extends React.Component {
               </div>
             </div>
             <div className={styles.endQzRow}>
-              <Button to="/profile" styles={{borderRadius: '20px', padding: '9px 24px'}}>
+              <Button styles={{borderRadius: '20px', padding: '9px 24px'}}
+                onClick={this.saveQuiz}>
                 Done, to check results
               </Button>
             </div>
@@ -133,7 +165,7 @@ export default class QuizPage extends React.Component {
 
 // accept parameter from pageContext
 export const pageQuery = graphql`
-  query QuizBySlug($slug: String!, $tutpath: String!) {
+  query QuizBySlug($slug: String!, $tutpath: String!, $catpath: String!) {
     # query test.md
     quiz: markdownRemark(fields: { slug: { eq: $slug } }) {
       frontmatter {
@@ -148,6 +180,7 @@ export const pageQuery = graphql`
       }
     }
     # query all the sections of this tutorial
+    # used in going back tutorial review
     sections: allMarkdownRemark(
       filter: {
         fields: {slug: {regex: $tutpath}}, 
@@ -162,6 +195,14 @@ export const pageQuery = graphql`
           }
         }
     }
+
+    # Query current category index.md 
+    catdef: markdownRemark(fields: { slug: { eq: $catpath } }) {
+      frontmatter {
+        category
+      }
+    }
+    
 
   }
 `

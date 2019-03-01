@@ -15,7 +15,7 @@ import Button from '../components/button'
 import QAnwsers from '../components/qanwsers'
 import TutStepLine from '../components/tutStepLine'
 import { scrollTo, } from '../utils/helper'
-// import { getCategory, } from '../utils/cache'
+import { getUser, saveLearningTrack, getLearningTrack} from '../utils/cache'
 
 import styles from '../style/tutorial.module.css'
 import theme from '../style/theme.module.css'
@@ -32,6 +32,11 @@ export default class TutorialPage extends React.Component {
     this.anwserDone = this.anwserDone.bind(this)
   }
 
+  componentDidMount() {
+    this.saveTrack('start')
+    console.log('record learning start...');
+  }
+
   // rerender completed
   componentDidUpdate() {
     this.scrollToBottom()
@@ -43,22 +48,34 @@ export default class TutorialPage extends React.Component {
 
   anwserDone() {
     this.setState({showBonus:true})
+    this.saveTrack('unlock')
+    console.log('record learging unlock...')
+  }
+
+  saveTrack(status) {
+    const { data, pageContext} = this.props
+    const pageslug = pageContext.slug
+    const fm = data.tsec.frontmatter
+    const { category } = data.catdef.frontmatter
+    const date = new Date().toISOString()
+    saveLearningTrack(pageslug, fm.title, category, date, status)
   }
 
   render() {
 
     const {location, data, pageContext} = this.props
-    const tsec = data.tsec
-    const fm = tsec.frontmatter
+    const fm = data.tsec.frontmatter
     const { edges:sections } = data.sections
     const { category } = data.catdef.frontmatter
 
     const pageslug = pageContext.slug
+    const quizPath = pageContext.quizpath
     const pathname = location.pathname // the same as pageContext.slug
     const catepath = pathname.split('/').slice(0,3).join('/')
     
     // console.log(pageContext)
     // console.log(catdef)
+    // console.log(data.quiz);
 
     let n = 0
     let next = null
@@ -92,7 +109,7 @@ export default class TutorialPage extends React.Component {
 
             <div 
               className={styles.tutContent}
-              dangerouslySetInnerHTML={{ __html: tsec.html }} 
+              dangerouslySetInnerHTML={{ __html: data.tsec.html }} 
             />
             {/** other reads */}
             <div className={styles.othereads}>
@@ -174,9 +191,11 @@ export default class TutorialPage extends React.Component {
               <div className={styles.gradientBox}></div>
             </div>
             <div className={styles.endTutBtnSection}>
-              <Button to="/quiz" styles={{borderRadius: '18px', padding: '8px 24px'}}>
-                TAKE QUIZ
-              </Button>
+              {data.quiz &&
+                <Button to={quizPath} styles={{borderRadius: '18px', padding: '8px 24px'}}>
+                  TAKE QUIZ
+                </Button> 
+              }
             </div>
             {/** end of right panel */}
           </div>
@@ -193,7 +212,12 @@ export default class TutorialPage extends React.Component {
 
 // accept parameter from pageContext
 export const pageQuery = graphql`
-  query PageByTutorial($slug: String!, $tutpath: String!, $catpath: String!) {
+  query PageByTutorial(
+    $slug: String!, 
+    $tutpath: String!, 
+    $catpath: String!,
+    $quizpath:String!,
+  ) {
 
     # query section by slug
     tsec: markdownRemark(fields: { slug: { eq: $slug } }) {
@@ -252,6 +276,12 @@ export const pageQuery = graphql`
       }
     }
    
+    # Query quiz content: test.md
+    quiz: markdownRemark(fields: { slug: { eq: $quizpath } }) {
+      frontmatter {
+        for
+      }
+    }
 
   }
 `
