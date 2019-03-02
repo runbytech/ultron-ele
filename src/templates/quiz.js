@@ -4,13 +4,14 @@
  */
 
 import React from 'react'
-import { Link, graphql, navigate } from 'gatsby'
+import { graphql, navigate } from 'gatsby'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import Button from '../components/button'
-import QAnwsers from '../components/qanwsers'
-import { getUser, saveLearningTrack, saveUserQuiz } from '../utils/cache'
+import Qagroups from '../components/qagroups'
+import { getUser, saveLearningTrack, saveUserQuiz, getQuiz } from '../utils/cache'
+import { scrollTo } from '../utils/helper'
 
 import styles from '../style/quiz.module.css'
 
@@ -21,10 +22,24 @@ export default class QuizPage extends React.Component {
     super(props)
   
     this.state = {
-       showQuiz: false
+       showQuiz: false,
+       showDone:false
     }
     this.openQuiz = this.openQuiz.bind(this)
-    this.saveQuiz = this.saveQuiz.bind(this)
+    this.checkQuizRpt = this.checkQuizRpt.bind(this)
+    this.quizDone = this.quizDone.bind(this)
+  }
+
+  componentDidMount() {
+    let user = getUser()
+    const pageslug = this.props.pageContext.slug
+    const saved = getQuiz(user.userName, pageslug)
+    // if(saved) {
+    //   this.setState({
+    //     showQuiz: true,
+    //     showDone: true
+    //   })
+    // }
   }
 
   openQuiz() {
@@ -47,29 +62,45 @@ export default class QuizPage extends React.Component {
     saveLearningTrack(pageslug, fm.for, category, date, status)
   }
 
-  saveQuiz() {
-    const { data, pageContext} = this.props
-    const pageslug = pageContext.slug
-    // console.log(this.qaset)
-    let user = getUser()
-    const ans = []
-    this.qaset.map(qa => {
-      // save each selected item index of statement option
-      qa.group.map((g,i) => {if(g.selected) ans.push(i)})
-    })
-    // check completion is a must!
-    if(ans.length<this.qaset.length){
-      alert('Please anwser All the questions!')
-      return
-    }
-    saveUserQuiz(pageslug, user.userName, ans)
+  checkQuizRpt() {
     navigate('/profile', {state: {section: 'testrept'}})
   }
 
+  quizDone() {
+    this.setState({showDone:true})
+
+    const ans = []
+    this.qaset.map(qa => {
+      // save each selected item index of statement option
+      qa.group.map((g,i) => {
+        if(g.selected) ans.push(i)
+        return
+      })
+      return
+    })
+    let user = getUser()
+    const pageslug = this.props.pageContext.slug
+    const saved = getQuiz(user.userName, pageslug)
+    if(saved) return // do not save repeatedly
+    
+    saveUserQuiz(pageslug, user.userName, ans)
+  }
+
   componentDidUpdate() {
-    // console.log('updated!')
-    document.documentElement.scrollTop = 630 // scroll page to show questions
-    // window.scrollTo(0,630) // or, use this method
+    // scroll page to show questions
+    // document.documentElement.scrollTop += 200
+    let origHight = document.documentElement.scrollTop
+    scrollTo(document.documentElement, origHight+300, 200)
+  }
+
+  resetSelected() {
+    let user = getUser()
+    const pageslug = this.props.pageContext.slug
+    const saved = getQuiz(user.userName, pageslug)
+    // console.log(saved)
+    if(!saved) return // do not reset not saved
+    // which item was selected
+    this.qaset.map((qa,n) => qa.sidx = saved.ans[n])
   }
 
   render() {
@@ -77,15 +108,17 @@ export default class QuizPage extends React.Component {
     const { data, pageContext } = this.props
     const { frontmatter:fm } = data.quiz
     const { edges:tutorial } = data.sections
-    // save to component level to retrieve other function
+    // NOTE: save qaset to component level here 
+    // for other function retrieving
     this.qaset = fm.qaset
+
     const quizLength= this.qaset.length
     const firstSection = tutorial[0].node.fields.slug
     const excellent = Math.floor(this.qaset.length*0.8)
     const qualified = Math.floor(this.qaset.length*0.6)
     const failed    = Math.floor(this.qaset.length*0.6)-1
-    
-    console.log(this.qaset)
+    // show original checked result
+    this.resetSelected()
 
     return (
       <Layout >
@@ -137,20 +170,20 @@ export default class QuizPage extends React.Component {
           <>
             <div className={styles.qzQanwsers}>
               <div className={styles.qagroup}>
-                {this.qaset &&
-                  this.qaset.map(
-                    (qa,i) => 
-                      (<QAnwsers key={i} seq={i+1} qas={qa.group} blind={true}/>)
-                  )
-                }
+                <Qagroups 
+                  qaset={this.qaset}
+                  done={this.quizDone}
+                  />
               </div>
             </div>
-            <div className={styles.endQzRow}>
-              <Button styles={{borderRadius: '20px', padding: '9px 24px'}}
-                onClick={this.saveQuiz}>
-                Done, to check results
-              </Button>
-            </div>
+            {this.state.showDone &&
+              <div className={styles.endQzRow}>
+                <Button styles={{borderRadius: '20px', padding: '9px 24px'}}
+                  onClick={this.checkQuizRpt}>
+                  Done, to check results
+                </Button>
+              </div>
+            }
           </>
         }
               

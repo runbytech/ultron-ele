@@ -28,6 +28,7 @@ const userQuizMap = [
  export const getCategory = (path) => categoryMap[path]
  export const printCategories = () => console.log(categoryMap)
 
+
 //  ------ user info process ------------------------------
  export const saveUser = (userName, userEmail) => {
   userInfoMap.userName = userName
@@ -51,18 +52,34 @@ const userQuizMap = [
 
    return null
  }
+
+
 //  ------------ learning track recording ---------------
+const initLearningTrack = () => {
+  if(userLearnTracks.length) return // only init once
+  let saved = JSON.parse(localStorage.getItem('userLearnTracks'))
+  if(saved) saved.map(o => userLearnTracks.push(o))
+}
 // status: start, unlock, quiz, complete
 // need to remove repetition?
 export const saveLearningTrack = (slug, title, category, date, status) => {
+  initLearningTrack() // init first
   userLearnTracks.splice(0, 0, {slug, title, category, date, status}) // insert to first
   localStorage.setItem('userLearnTracks', JSON.stringify(userLearnTracks))
 }
 
 export const getLearningTrack = () => JSON.parse(localStorage.getItem('userLearnTracks'))
 
+
 // ------------- quiz submition records -----------------
+const initUserQuiz = () => {
+  if(userQuizMap.length) return // only init once
+  let saved = JSON.parse(localStorage.getItem('userQuizMap'))
+  if(saved) saved.map(o => userQuizMap.push(o))
+}
+
 export const saveUserQuiz = (slug, user, ans) => {
+  initUserQuiz() // init first
   userQuizMap.splice(0, 0, {slug, user, ans})
   localStorage.setItem('userQuizMap', JSON.stringify(userQuizMap))
 }
@@ -72,6 +89,15 @@ export const getUserQuizs = (userName) => {
   let saved = JSON.parse(localStorage.getItem('userQuizMap'))
   saved.map(q => {
     if(q.user==userName) searched.splice(0, 0, q)
+  })
+  return searched
+}
+
+export const getQuiz = (userName, slug) => {
+  let searched
+  let saved = JSON.parse(localStorage.getItem('userQuizMap'))
+  saved.map(q => {
+    if(q.user==userName && q.slug==slug) searched = q
   })
   return searched
 }

@@ -57,8 +57,19 @@ export default class QAnwsers extends React.Component {
     this.anwserChooser = this.anwserChooser.bind(this)
   };
 
+  componentDidMount() {
+    // whick item is selected
+    const { sidx } = this.props
+
+    if(typeof(sidx) === 'undefined') return
+
+    let origs = this.state.selected
+    origs[sidx] = true // reset selected status by index
+    this.setState({selected: origs})
+  }
+
   anwserChooser (i) {
-    const { qas, done, blind } = this.props
+    const { qas, done, blind, select } = this.props
 
     let selected = Array(4).fill(false) // reset select
     selected[i] = true
@@ -80,6 +91,9 @@ export default class QAnwsers extends React.Component {
       qas.map(q => q.selected = false)
       qas[i].selected = true
     }
+
+    // notify outside one anwser selectd
+    if(select) select()
   }
 
   render() {
