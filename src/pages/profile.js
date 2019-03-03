@@ -1,31 +1,20 @@
+/**
+ * user sections, switch menu to display
+ */
 import React from 'react'
-// import { Link } from 'gatsby'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import Button from '../components/button'
 import ProfileSection from '../sections/profileSection'
 import LearningPathSection from '../sections/learningPath'
+import TestReptSection from '../sections/testReptSection'
+import CertificateSection from '../sections/certificateSection'
 
 import styles from '../style/profile.module.css'
 
 
 
-
-const TestReptSection = () => (
-  <>
-    <h3 className={styles.secTitle}>Test Reports</h3>
-    <hr/>
-    <p>pending...</p>
-  </>
-)
-const CertificateSection = () => (
-  <>
-    <h3 className={styles.secTitle}>Certificates</h3>
-    <hr/>
-    <p>todo...</p>
-  </>
-)
 const FavoritesSection = () => (
   <>
     <h3 className={styles.secTitle}>Favorites</h3>
@@ -51,7 +40,7 @@ class ProfilePageRC extends React.Component {
       this.changeSection = this.changeSection.bind(this)
     }
 
-    componentDidMount() {
+    componentWillMount() {
       const { location } = this.props
       
       const section = location.state.section

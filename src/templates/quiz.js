@@ -23,30 +23,32 @@ export default class QuizPage extends React.Component {
   
     this.state = {
        showQuiz: false,
-       showDone:false
+       showDone:false,
+       startTime: 0
     }
     this.openQuiz = this.openQuiz.bind(this)
     this.checkQuizRpt = this.checkQuizRpt.bind(this)
     this.quizDone = this.quizDone.bind(this)
   }
 
-  componentDidMount() {
+  componentWillMount() {// update state before render
     let user = getUser()
     const pageslug = this.props.pageContext.slug
     const saved = getQuiz(user.userName, pageslug)
-    // if(saved) {
-    //   this.setState({
-    //     showQuiz: true,
-    //     showDone: true
-    //   })
-    // }
+    if(saved) this.setState({showQuiz: true, showDone: true})
   }
 
   openQuiz() {
+    const { data, pageContext} = this.props
+    const pageslug = pageContext.slug
     let user = getUser()
     if(user){
       this.setState({showQuiz:true})
+      const saved = getQuiz(user.userName, pageslug)
+      if(saved) return // do not open repeatedly
+
       this.saveTrack('quiz')
+      this.setState({startTime: new Date().getTime()}) // remember start to calculate duration
     }else{
       console.log('NO USER...to navigate profile')
       navigate('/profile')
@@ -83,7 +85,40 @@ export default class QuizPage extends React.Component {
     const saved = getQuiz(user.userName, pageslug)
     if(saved) return // do not save repeatedly
     
-    saveUserQuiz(pageslug, user.userName, ans)
+    // only save once for each quiz by one user
+    const { data, pageContext} = this.props
+    const { frontmatter:fm } = data.quiz
+    const level = this.calculateLevel()
+    const now = new Date()
+    const duration = now - this.state.startTime
+    
+    saveUserQuiz(
+      fm.for, 
+      pageslug, 
+      user.userName, 
+      ans, 
+      level,
+      duration,
+      now.toISOString()
+    )
+    
+    this.saveTrack('complete')
+  }
+
+  calculateLevel() {
+    let right = 0
+    let size = this.qaset.length
+    this.qaset.map(qa => {
+      // save each selected item index of statement option
+      qa.group.map((g,i) => {
+        if(g.selected && g.a) right ++
+        return
+      })
+      return
+    })
+    if(right >= Math.floor(size*0.8)) return 'Excellent'
+    if(right >= Math.floor(size*0.6) && right < Math.floor(size*0.8)) return 'Qualified'
+    if(right < Math.floor(size*0.6)) return 'Failed'
   }
 
   componentDidUpdate() {
@@ -93,6 +128,7 @@ export default class QuizPage extends React.Component {
     scrollTo(document.documentElement, origHight+300, 200)
   }
 
+  // check if quiz already done, then add sidx property to each group
   resetSelected() {
     let user = getUser()
     const pageslug = this.props.pageContext.slug
@@ -118,6 +154,7 @@ export default class QuizPage extends React.Component {
     const qualified = Math.floor(this.qaset.length*0.6)
     const failed    = Math.floor(this.qaset.length*0.6)-1
     // show original checked result
+    // by assign sidex to each group
     this.resetSelected()
 
     return (

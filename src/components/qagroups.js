@@ -7,6 +7,7 @@ import React, { Component } from 'react'
 
 import QAnwsers from './qanwsers'
 
+
 export default class Qagroups extends Component {
 
   constructor(props) {
@@ -16,6 +17,13 @@ export default class Qagroups extends Component {
        completed: false
     }
     this.selectHandler = this.selectHandler.bind(this)
+  }
+
+  componentWillMount() {// update state before render
+    const { qaset, } = this.props
+    let anwsered = false
+    qaset.map(qa => {if(typeof qa.sidx !== 'undefined') anwsered = true})
+    if(anwsered) this.setState({completed: true})
   }
   
   selectHandler() {
@@ -28,8 +36,13 @@ export default class Qagroups extends Component {
       qa.group.map((g,i) => {if(g.selected) ans.push(i)})
     })
     
+    if(this.state.completed) return // only dispatch once
+    
     // check completion by select count
-    if(ans.length == qaset.length) done()
+    if(ans.length == qaset.length) {
+      this.setState({completed: true})
+      done()
+    }
   }
 
   render() {

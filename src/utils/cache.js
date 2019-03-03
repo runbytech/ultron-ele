@@ -14,7 +14,7 @@ const userLearnTracks  = [
 ]
 // quiz records
 const userQuizMap = [
-  // {slug: '', user: '', ans: ['a','b','c','d']}, ...
+  // {title:'', slug: '', user: '', ans: ['a','b','c','d']}, ...
 ]
 
 
@@ -78,15 +78,17 @@ const initUserQuiz = () => {
   if(saved) saved.map(o => userQuizMap.push(o))
 }
 
-export const saveUserQuiz = (slug, user, ans) => {
+export const saveUserQuiz = (title, slug, user, ans, level, duration, completion) => {
   initUserQuiz() // init first
-  userQuizMap.splice(0, 0, {slug, user, ans})
+  let record = {title, slug, user, ans, level, duration, completion}
+  userQuizMap.splice(0, 0, record)
   localStorage.setItem('userQuizMap', JSON.stringify(userQuizMap))
 }
 
 export const getUserQuizs = (userName) => {
   let searched = []
   let saved = JSON.parse(localStorage.getItem('userQuizMap'))
+  if(!saved) return null
   saved.map(q => {
     if(q.user==userName) searched.splice(0, 0, q)
   })
@@ -96,6 +98,7 @@ export const getUserQuizs = (userName) => {
 export const getQuiz = (userName, slug) => {
   let searched
   let saved = JSON.parse(localStorage.getItem('userQuizMap'))
+  if(!saved) return null
   saved.map(q => {
     if(q.user==userName && q.slug==slug) searched = q
   })

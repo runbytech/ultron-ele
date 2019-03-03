@@ -97,3 +97,18 @@
   display: flex;
   margin-top: 60px;
 }
+
+.table {
+  width: 400px;
+  margin-bottom: 40px;
+}
+
+.headRow {
+  background-color: #FFF
+}
+
+.delBtn {
+  color: #FFF;
+  background-color: red;
+  border: none;
+}
