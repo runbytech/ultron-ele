@@ -21,8 +21,8 @@ import styles from '../style/category.module.css'
 const CategoryPage = ({location, data, pageContxt}) => {
 
   const {frontmatter:fm, html:intro} = data.catdef
-  const tutorials = data.tutorials.edges
-  const grouptuts = groupTutorials(tutorials)
+  const tutorials = data.tutorials?data.tutorials.edges:null
+  const grouptuts = tutorials?groupTutorials(tutorials):null
   const pathname = location.pathname
   
 

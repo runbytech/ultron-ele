@@ -2,6 +2,8 @@
  * tutorial steps vertical line
  * 
  * @2019/02/25
+ * @2019/03/03, add color change when started
+ * 
  */
 
  import React from 'react';
@@ -11,10 +13,12 @@
  import tstyle from '../style/timeline.module.css'
 
  
- const Step = ({title, subtitle, slug}) => (
+ const Step = ({title, subtitle, slug, started}) => (
   <li><Link to={slug} style={{textDecoration: 'none'}}>
     <p className={tstyle.greyP}>
-      <strong className={tstyle.library}>{title}</strong>
+      <strong className={started? tstyle.started:tstyle.library}>
+        {title}
+      </strong>
       <br/>
       {subtitle}
     </p></Link>
@@ -30,6 +34,7 @@ const TutStepLine = ({sections}) => (
             title={s.node.frontmatter.title}
             subtitle={s.node.frontmatter.date}
             slug={s.node.fields.slug}
+            started={s.started}
           />
         ))
     }

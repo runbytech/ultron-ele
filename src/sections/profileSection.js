@@ -36,7 +36,7 @@ export default class ProfileSection extends React.Component {
   }
 
   componentDidUpdate() {
-    console.log('updated!')
+    
   }
 
   changeNameHandler(e) {

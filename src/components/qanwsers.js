@@ -57,6 +57,22 @@ export default class QAnwsers extends React.Component {
     this.anwserChooser = this.anwserChooser.bind(this)
   };
 
+  componentWillMount() {
+    const { qas, started } = this.props
+    // this property only used in none blind mode
+    if(!started) return // if the section not unlocked
+
+    let index = 0 // which is right
+    qas.map((q,i) => { if(q.a) index = i })
+    let results = this.state.results
+    results[index] = true
+    this.setState({results}) // reset the right statement
+
+    let through = Array(4).fill(true)
+    through[index] = false
+    this.setState({through}) // reset text through appearance
+  }
+
   componentDidMount() {
     // whick item is selected
     const { sidx } = this.props
@@ -69,7 +85,9 @@ export default class QAnwsers extends React.Component {
   }
 
   anwserChooser (i) {
-    const { qas, done, blind, select } = this.props
+    const { qas, done, blind, select, started } = this.props
+    // this property only used in none blind mode
+    if(started) return // if the tutorial unlocked, do nothing
 
     let selected = Array(4).fill(false) // reset select
     selected[i] = true

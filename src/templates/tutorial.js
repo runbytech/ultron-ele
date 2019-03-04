@@ -2,7 +2,8 @@
  * tutorial section template to show each tutorial section .md data,
  * multipal sections in one directory consists of a tutorial
  * 
- * @2019/02/21
+ * 03/03, add unlocked section hightlights and restore unlock mini game;
+ * @2019/02/21 ~ 03/03
  */
 import React from 'react'
 import { Link, graphql } from 'gatsby'
@@ -15,7 +16,7 @@ import Button from '../components/button'
 import QAnwsers from '../components/qanwsers'
 import TutStepLine from '../components/tutStepLine'
 import { scrollTo, } from '../utils/helper'
-import { getUser, saveLearningTrack, getLearningTrack} from '../utils/cache'
+import { saveLearningTrack, getLearningTrackBy, getLearningTracks} from '../utils/cache'
 
 import styles from '../style/tutorial.module.css'
 import theme from '../style/theme.module.css'
@@ -27,14 +28,24 @@ export default class TutorialPage extends React.Component {
     super(props)
   
     this.state = {
-       showBonus: false
+      showBonus: false,
+      started  : false,
     }
     this.anwserDone = this.anwserDone.bind(this)
   }
 
+  componentWillMount() {
+    this.tracks = getLearningTracks()
+    const pageslug = this.props.pageContext.slug
+    if(this.tracks) this.tracks.map(t => {
+      if(pageslug === t.slug && t.status === 'unlock') {
+        this.setState({showBonus: true, started: true})
+      }
+    })
+  }
+
   componentDidMount() {
     this.saveTrack('start')
-    console.log('record learning start...');
   }
 
   // rerender completed
@@ -49,7 +60,6 @@ export default class TutorialPage extends React.Component {
   anwserDone() {
     this.setState({showBonus:true})
     this.saveTrack('unlock')
-    console.log('record learging unlock...')
   }
 
   saveTrack(status) {
@@ -58,6 +68,11 @@ export default class TutorialPage extends React.Component {
     const fm = data.tsec.frontmatter
     const { category } = data.catdef.frontmatter
     const date = new Date().toISOString()
+    const tracks = getLearningTrackBy(pageslug)
+    let saved = false
+    tracks.map(t => { if(t.status === status) saved = true })
+    if(saved) return
+
     saveLearningTrack(pageslug, fm.title, category, date, status)
   }
 
@@ -72,20 +87,19 @@ export default class TutorialPage extends React.Component {
     const quizPath = pageContext.quizpath
     const pathname = location.pathname // the same as pageContext.slug
     const catepath = pathname.split('/').slice(0,3).join('/')
-    
-    // console.log(pageContext)
-    // console.log(catdef)
-    // console.log(data.quiz);
 
     let n = 0
     let next = null
-    
+    // calculate next section to unlock
     sections.map((s,i) => {
       if(s.node.fields.slug === pageslug) n = i
     })
-
     if(n+1<sections.length) next = sections[n+1]
-    // console.log(next);
+    
+    // check each section status by `unlock`
+    if(this.tracks) this.tracks.map(t => sections.map(s => {
+      if(s.node.fields.slug === t.slug && t.status === 'unlock') s.started = true
+    }))
 
     return (
       <Layout nofoot={true} fullwidth={true}>
@@ -113,7 +127,7 @@ export default class TutorialPage extends React.Component {
             />
             {/** other reads */}
             <div className={styles.othereads}>
-              <h3>Extends Reads</h3>
+              {fm.othereads && <h3>Extends Reads</h3>}
               <ul>
                 {fm.othereads &&
                   fm.othereads.map(
@@ -127,7 +141,7 @@ export default class TutorialPage extends React.Component {
               </ul>
             </div>
             {/** mini game to unlock next section */}
-            {fm.ulocknext?
+            {fm.ulocknext &&
               (
                 <div className={styles.unlockgame}>
                   <div className={styles.topline}>
@@ -138,21 +152,24 @@ export default class TutorialPage extends React.Component {
                     <div className={styles.line}><span></span></div>
                   </div>
                   
-                  <QAnwsers qas={fm.ulocknext} done={this.anwserDone}/>
+                  <QAnwsers 
+                    qas={fm.ulocknext} 
+                    done={this.anwserDone} 
+                    started={this.state.started}/>
 
                   {/** success bonus */}
-                  {this.state.showBonus?
+                  {this.state.showBonus &&
                     (<div className={styles.confetti}>
                       <Confetti numberOfPieces={200} width='860' height='120' 
                         confettiSource={{x: 0, y: 0, w: 1200, h:0}}/>
                       <span className={styles.welldone}>Well done, you unlocked the next step!</span>
-                    </div>):false
+                    </div>)
                   }
                 </div>
-              ):false
+              )
             }
             {/** next step */}
-            {this.state.showBonus?
+            {this.state.showBonus &&
               (
                 <div className={styles.nextstepSection}>
                   <div className={styles.leftTitle}>
@@ -172,7 +189,7 @@ export default class TutorialPage extends React.Component {
                     <Button to={next.node.fields.slug} >GO NEXT</Button>
                   </div>
                 </div>
-              ):false
+              )
             }
             {/** end of left content */}
           </div>

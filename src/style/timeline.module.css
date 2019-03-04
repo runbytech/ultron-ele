@@ -31,3 +31,7 @@ ul.timeline li::after {
 .library {
   color: #6f6d85;
 }
+
+.started {
+  color: green;
+}

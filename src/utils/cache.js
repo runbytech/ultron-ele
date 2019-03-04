@@ -68,8 +68,15 @@ export const saveLearningTrack = (slug, title, category, date, status) => {
   localStorage.setItem('userLearnTracks', JSON.stringify(userLearnTracks))
 }
 
-export const getLearningTrack = () => JSON.parse(localStorage.getItem('userLearnTracks'))
+export const getLearningTracks = () => JSON.parse(localStorage.getItem('userLearnTracks'))
 
+export const getLearningTrackBy= (slug) => {
+  let saved = JSON.parse(localStorage.getItem('userLearnTracks'))
+  if(!saved) return null
+  let tracks = []
+  saved.map(t => { if(t.slug === slug) tracks.push(t) })
+  return tracks
+}
 
 // ------------- quiz submition records -----------------
 const initUserQuiz = () => {
@@ -90,7 +97,7 @@ export const getUserQuizs = (userName) => {
   let saved = JSON.parse(localStorage.getItem('userQuizMap'))
   if(!saved) return null
   saved.map(q => {
-    if(q.user==userName) searched.splice(0, 0, q)
+    if(q.user===userName) searched.splice(0, 0, q)
   })
   return searched
 }
@@ -100,7 +107,20 @@ export const getQuiz = (userName, slug) => {
   let saved = JSON.parse(localStorage.getItem('userQuizMap'))
   if(!saved) return null
   saved.map(q => {
-    if(q.user==userName && q.slug==slug) searched = q
+    if(q.user===userName && q.slug===slug) searched = q
   })
   return searched
+}
+
+export const deleteQuiz = (userName, slug) => {
+  let saved = JSON.parse(localStorage.getItem('userQuizMap'))
+  if(!saved) return null
+  let index // which to delete
+  saved.map(
+    (q, i) => {
+      if(q.user===userName && q.slug===slug) index = i
+    }
+  )
+  saved.splice(index, 1)
+  localStorage.setItem('userQuizMap', JSON.stringify(saved))
 }

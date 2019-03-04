@@ -6,7 +6,7 @@
 
  import React from 'react';
 
- import { getUser, getUserQuizs } from '../utils/cache'
+ import { getUser, getUserQuizs, deleteQuiz } from '../utils/cache'
  
  import styles from '../style/profile.module.css'
 
@@ -17,22 +17,31 @@
     super(props)
   
     this.state = {
-       
+      quizs: [] 
     };
+    this.deleteQuiz = this.deleteQuiz.bind(this)
   };
 
   componentWillMount() {
-
+    let user = getUser()
+    const quizs = getUserQuizs(user.userName)
+    
+    this.setState({quizs})
   }
 
   componentDidMount() {
 
   }
+
+  deleteQuiz(slug) {
+    let user = getUser()
+    deleteQuiz(user.userName, slug)
+    const quizs = getUserQuizs(user.userName)
+    this.setState({quizs})
+  }
   
   render() {
-    let user = getUser()
-    const quizs = getUserQuizs(user.userName)
-    console.log(quizs)
+    
 
     return (
       <>
@@ -49,15 +58,18 @@
             </tr>
           </thead>
           <tbody>
-            {quizs &&
-              quizs.map((q,i) => 
-                <tr key={i}>
+            {this.state.quizs &&
+              this.state.quizs.map(q => 
+                <tr key={q.slug}>
                   <td>{q.title}</td>
                   <td>{Math.floor(q.duration/1000)}s</td>
                   <td>{q.level}</td>
                   <td>{(q.completion).split('T')[0]}</td>
                   <td>
-                    <button className={styles.delBtn}>Delete</button>
+                    <button 
+                      className={styles.delBtn}
+                      onClick={()=> this.deleteQuiz(q.slug)}
+                    >Delete</button>
                   </td>
                 </tr>
               )

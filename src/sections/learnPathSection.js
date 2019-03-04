@@ -6,7 +6,7 @@
 
 import React, { Component } from 'react'
 
-import { getUser, getLearningTrack} from '../utils/cache'
+import { getUser, getLearningTracks} from '../utils/cache'
 
 import styles from '../style/profile.module.css'
 
@@ -22,7 +22,7 @@ export default class LearningPathSection extends Component {
   }
 
   componentDidMount() {
-    const tracks = getLearningTrack()
+    const tracks = getLearningTracks()
     console.log(tracks)
   }
 

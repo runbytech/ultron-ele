@@ -1,5 +1,6 @@
 ---
-# TODO: move this config to each category index.md
+# Deprecated @2019/03/03
+# move this config to each category index.md
 
 # tutorials categories definition
 # @2019/02/19

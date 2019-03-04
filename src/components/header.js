@@ -65,7 +65,7 @@ export default class Header extends React.Component {
             <ul style={{ listStyle: `none`, display: `block`, marginBottom: 0, }}>
               <ListLink to="/pandas/">Use Guide</ListLink>
               <ListLink to="/roadmap/">Roadmap</ListLink>
-              <ListLink to="/users/">Widgets Store</ListLink>
+              <ListLink to="/users/">Team</ListLink>
               <ListLink to="/about/">About</ListLink>
             </ul>
             <div className={styles.avatarImg}>

@@ -19,10 +19,10 @@ const User = props => (
 
 export default () => (
   <Layout>
-    <SEO title="Users" />
+    <SEO title="Team" />
     <Container>
 
-      <h1 style={{paddingTop: `1.45rem`}}>About CSS Modules</h1>
+      <h1 style={{paddingTop: `1.45rem`}}>About Us</h1>
       <p>CSS Modules are cool</p>
       <User
         username="Jane Doe"

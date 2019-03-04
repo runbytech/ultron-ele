@@ -7,7 +7,7 @@ import Layout from '../components/layout'
 import SEO from '../components/seo'
 import Button from '../components/button'
 import ProfileSection from '../sections/profileSection'
-import LearningPathSection from '../sections/learningPath'
+import LearningPathSection from '../sections/learnPathSection'
 import TestReptSection from '../sections/testReptSection'
 import CertificateSection from '../sections/certificateSection'
 
@@ -52,8 +52,7 @@ class ProfilePageRC extends React.Component {
     }
 
     render() {
-      const {section} = this.state 
-      console.log('current section: ', section)
+      const { section } = this.state
 
       return (
         <Layout>
