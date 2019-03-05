@@ -70,7 +70,7 @@ export default class TutorialPage extends React.Component {
     const date = new Date().toISOString()
     const tracks = getLearningTrackBy(pageslug)
     let saved = false
-    tracks.map(t => { if(t.status === status) saved = true })
+    if(tracks) tracks.map(t => { if(t.status === status) saved = true })
     if(saved) return
 
     saveLearningTrack(pageslug, fm.title, category, date, status)

@@ -1,4 +1,6 @@
 /**
+ * Ultra-ELE homepage
+ * 
  * @2019/02/02
  */
 import React from 'react'
@@ -17,26 +19,14 @@ const IndexPage = ({data}) => {
   
   // console.log(catedocs);
   // console.log(tutorials)
-  // Need to cache something like category and its slug?
-  // categories.frontmatter.categories.map(
-  //   c => saveCategory(c.path, c.name, c.cover)
-  // )
-  let categories = []
-  let tempCates = catedocs.edges
-  tempCates.map((cat,i) => {// find the head
-    if(cat.node.frontmatter.ishead) categories.push(cat)
-  })
-  tempCates.map((cat,i) => {// find the other
-    if(!cat.node.frontmatter.ishead) categories.push(cat)
-  })
-  
+   
   return (
     <Layout>
       <SEO title="Home" keywords={[`gatsby`, `elms`, `elearning`]} />
       
       <h3 style={{paddingTop: `1.45rem`}}>Topics and Skills</h3>
       {/** category galery */}
-      <Gallery data={categories} />
+      <Gallery data={catedocs} />
       {/** latest tutorials */}
       <h3>Start your journey</h3>
       <Tutorials data={tutorials} />
@@ -77,7 +67,7 @@ export const IndexQuery = graphql`
             date
             cover {
               childImageSharp {
-                fluid(maxWidth: 345) {
+                fluid(maxWidth: 345, maxHeight: 328) {
                   ...GatsbyImageSharpFluid
                 }
               }

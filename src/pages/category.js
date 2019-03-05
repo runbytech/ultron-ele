@@ -1,5 +1,5 @@
 /**
- * static category template for tutorials
+ * static category template for tutorials, just for design use
  * @2019/02/04
  */
 

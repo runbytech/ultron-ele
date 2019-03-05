@@ -36,7 +36,8 @@ class ProfilePageRC extends React.Component {
     constructor(props) {
       super(props)
     
-      this.state = {section: 'profile'}; // initial state
+      this.state = {section: 'learningPath'}; // initial state
+      // this.state = {section: 'profile'}; // initial state
       this.changeSection = this.changeSection.bind(this)
     }
 
