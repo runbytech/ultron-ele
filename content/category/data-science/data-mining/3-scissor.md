@@ -1,5 +1,5 @@
 ---
-title: the scissor section
+title: Data Mining - the scissor section
 date: 2019-02-18T21:41:17.507Z
 tutorial: Data Mining
 type: tutorial section

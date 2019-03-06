@@ -1,5 +1,5 @@
 ---
-title: the stone section
+title: Data Mining - the stone section
 date: 2019-02-18T21:41:15.507Z
 tutorial: Data Mining
 type: tutorial section

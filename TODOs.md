@@ -18,6 +18,7 @@ todo functionalities or features
 * add gatsby-remark-images plugin to config to handle image in .md  -- DN
 
 ### Second Phase - 2 wk
+* responsive layout support
 * Create category by cli
 * Create tutorial by select category id/sequence in console
 * Create component by cli

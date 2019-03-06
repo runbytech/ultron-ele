@@ -1,5 +1,5 @@
 ---
-title: the paper section
+title: Data Mining - the paper section
 date: 2019-02-18T21:41:16.507Z
 tutorial: Data Mining
 type: tutorial section

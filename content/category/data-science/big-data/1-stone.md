@@ -1,5 +1,5 @@
 ---
-title: the stone section
+title: Big Data - the stone section
 date: 2019-02-18T21:40:15.507Z
 tutorial: Big Data
 type: tutorial section

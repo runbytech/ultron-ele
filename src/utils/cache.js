@@ -68,7 +68,11 @@ export const saveLearningTrack = (slug, title, category, date, status) => {
   localStorage.setItem('userLearnTracks', JSON.stringify(userLearnTracks))
 }
 
-export const getLearningTracks = () => JSON.parse(localStorage.getItem('userLearnTracks'))
+export const getLearningTracks = () => {
+  let saved = JSON.parse(localStorage.getItem('userLearnTracks'))
+  if(saved) return saved.reverse()
+  return null
+}
 
 export const getLearningTrackBy= (slug) => {
   let saved = JSON.parse(localStorage.getItem('userLearnTracks'))

@@ -34,8 +34,13 @@ export default class LearningPathSection extends Component {
   }
 
   componentDidMount() {
-    const tracks = getLearningTracks()
-    console.log(tracks)
+    let origTracks = getLearningTracks()
+
+    const tracks = [].
+      concat(origTracks).concat(origTracks).concat(origTracks).concat(origTracks)
+    while(tracks.length>17){
+      tracks.pop()
+    }
     if(!tracks) return
 
     this.stage = new Konva.Stage({
@@ -45,28 +50,27 @@ export default class LearningPathSection extends Component {
     });
 
     var layer = new Konva.Layer()
+    this.redrawLayer = new Konva.Layer()
     this.drawLearningPath(tracks, layer)
+    // add legend layer
     var legend= new Konva.Layer()
     this.drawLegend(legend)
-    // add legend layer
     this.stage.add(legend)
 
     this.msgTxt = new Konva.Text({
       x: 0,
       y: 0,
       fontFamily: 'Calibri',
-      fontSize: 24,
+      fontSize: 20,
       text: '',
       fill: 'black'
     });
-
-    this.redrawLayer = new Konva.Layer();
 
     this.msgTxtCtnr = new Konva.Rect({
       x: 0,
       y: 0,
       width: 92,
-      height: 28,
+      height: 24,
       stroke: '#666',
       strokeWidth: 1,
       cornerRadius: 4,
@@ -90,10 +94,9 @@ export default class LearningPathSection extends Component {
       var mpos = this.stage.getPointerPosition()
       var hitResult = this.checkHitResult()
       if(hitResult){
-        // console.log(hitResult)
-        this.writeMessage(hitResult.title, {x:(mpos.x+10),y:(mpos.y)})
+        this.writeMessage(hitResult.title, {x:(mpos.x+10),y:(mpos.y+10)})
       }else{
-        this.writeMessage('move me', {x:(mpos.x+10),y:(mpos.y)})
+        this.writeMessage('move me', {x:(mpos.x+10),y:(mpos.y+10)})
       }
         
       if(mpos.y<20 || mpos.y>415 || mpos.x<20 || mpos.x>760){
@@ -120,22 +123,32 @@ export default class LearningPathSection extends Component {
   }
 
   writeMessage(message, position) {
-    this.msgTxt.text(message);
-    this.msgTxt.position(position)
+    // mouse postion
+    var mpos = this.stage.getPointerPosition()
+    
+    this.msgTxt.text(message) // render text first to get width
+
+    let txtLeng = this.msgTxt.getTextWidth()
+    let fixPosx = mpos.x>600?(mpos.x-txtLeng):(mpos.x+10)
+    this.msgTxt.position({x:fixPosx, y:position.y})
+
     this.msgTxtCtnr.width(this.msgTxt.getTextWidth()+2)
-    this.msgTxtCtnr.position(position)
+    this.msgTxtCtnr.position({x:fixPosx, y:position.y})
     this.msgTxtCtnr.visible(true)
-    this.redrawLayer.draw();
+
+    this.redrawLayer.draw() // rerender lastly
   }
 
   drawLearningPath(tracks, layer, w, h) {
-
+    var lEndX = 0
+    var lEndY = 0
     tracks.map((t, i) => {
-      console.log(t)
+      // console.log(t)
       var color    = this.colorDict[t.status]
-      var distance = 150;
-      var cStartX  = 50+i*distance;
-      var cStartY  = 60;
+      var distance = 120
+      var cStartX  = (i===0)?lEndX+50:lEndX
+      var cStartY  = (i===0)?lEndY+60:lEndY
+      
       // circle
       var circle = new Konva.Circle({
         x: cStartX,
@@ -150,10 +163,15 @@ export default class LearningPathSection extends Component {
         rect: {tx:cStartX-10, ty:cStartY-10, bx:cStartX+10, by:cStartY+10}, 
         title: t.title
       })
-      console.log(this.hitTestPots)
-
-      var lEndX = cStartX+distance;
-      var lEndY = cStartY;
+      // save the last end point
+      lEndX = parseInt((i+1)/6)%2?(cStartX - distance):(cStartX + distance)
+      lEndY = cStartY
+      // the 6th point line, reset end x/y
+      if(i>0 && (i+1)%6===0){//get line down in the n 6th point
+        // console.log('draw down line ...')
+        lEndX = cStartX
+        lEndY = cStartY + distance
+      }
       // line
       var line = new Konva.Line({
         points: [cStartX, cStartY, lEndX, lEndY],
@@ -170,17 +188,16 @@ export default class LearningPathSection extends Component {
         fill: 'white',
       });
 
-
       var vline = new Konva.Line({
-        points: [cStartX, cStartY, cStartX, (i%2)?cStartY+30:cStartY-30],
+        points: [cStartX, cStartY, cStartX, (i%2)?cStartY-30:cStartY+30],
         stroke: 'black',
         strokeWidth: 2,
       });
-    
 
       var dateTxt = new Konva.Text({
         x: cStartX-40,
-        y: (i%2)?cStartY+34:cStartY-50,
+        y: (i%2)?cStartY-50:cStartY+34,
+        // text: ''+i,
         text: t.date.split('T')[0],
         fontSize: 14,
         fontFamily: 'Calibri',
@@ -189,14 +206,13 @@ export default class LearningPathSection extends Component {
 
       var roundRect = new Konva.Rect({
         x: cStartX-46,
-        y: (i%2)?cStartY+30:cStartY-54,
+        y: (i%2)?cStartY-54:cStartY+30,
         width: 92,
         height: 24,
         stroke: '#666',
         strokeWidth: 1,
         cornerRadius: 4
       });
-  
 
       layer.add(vline);
       layer.add(line);

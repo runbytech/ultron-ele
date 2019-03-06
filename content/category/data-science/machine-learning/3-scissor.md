@@ -1,5 +1,5 @@
 ---
-title: the scissor section
+title: Machine Learning - the scissor section
 date: 2019-02-18T21:42:17.507Z
 tutorial: Machine Learning
 type: tutorial section

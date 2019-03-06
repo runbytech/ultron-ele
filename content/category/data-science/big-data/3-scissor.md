@@ -1,5 +1,5 @@
 ---
-title: the scissor section
+title: Big Data - the scissor section
 date: 2019-02-18T21:40:17.507Z
 tutorial: Big Data
 type: tutorial section
