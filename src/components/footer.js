@@ -24,12 +24,14 @@ const Footer = () => (
     </div>
 
     <div style={{ marginTop: `25px`,}}>
-      <Link to="/" style={{margin:`10px`}}>
+      <a href="https://github.com/runbytech/ultron-ele" style={{margin:`10px`}}
+        target="_blank" rel="noopener noreferrer">
         <img src={github} style={{width:`32px`, height:`32px`}} alt="github" />
-      </Link>
-      <Link to="/" style={{margin:`10px`}}>
+      </a>
+      <a href="https://twitter.com/runbytech" style={{margin:`10px`}}
+        target="_blank" rel="noopener noreferrer">
         <img src={twitter} style={{width:`32px`, height:`32px`}} alt="twitter" />
-      </Link>
+      </a>
     </div>
   </footer>
 )

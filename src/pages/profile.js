@@ -26,7 +26,13 @@ const SettingsSection = () => (
   <>
     <h3 className={styles.secTitle}>Settings</h3>
     <hr/>
-    <p>todo...</p>
+    <p>TODO:</p>
+    <ul>
+      <li>cache data management</li>
+      <li>certificate template setting</li>
+      <li>logout</li>
+      <li>may be more</li>
+    </ul>
   </>
 )
 
@@ -36,7 +42,7 @@ class ProfilePageRC extends React.Component {
     constructor(props) {
       super(props)
     
-      this.state = {section: 'learningPath'}; // initial state
+      this.state = {section: 'certificates'}; // initial state
       // this.state = {section: 'profile'}; // initial state
       this.changeSection = this.changeSection.bind(this)
     }

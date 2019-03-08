@@ -5,8 +5,7 @@
  */
 
 import React, { Component } from 'react'
-import { Stage, Layer, Rect, Text } from 'react-konva';
-import Konva from 'konva';
+import Konva from 'konva'
 
 import { getUser, getLearningTracks} from '../utils/cache'
 
@@ -36,8 +35,8 @@ export default class LearningPathSection extends Component {
   componentDidMount() {
     let origTracks = getLearningTracks()
 
-    const tracks = [].
-      concat(origTracks).concat(origTracks).concat(origTracks).concat(origTracks)
+    const tracks = [].concat(origTracks)
+      // concat(origTracks).concat(origTracks).concat(origTracks).concat(origTracks)
     while(tracks.length>17){
       tracks.pop()
     }
@@ -142,12 +141,14 @@ export default class LearningPathSection extends Component {
   drawLearningPath(tracks, layer, w, h) {
     var lEndX = 0
     var lEndY = 0
+    var offsetX = 80
+    var offsetY = 80
     tracks.map((t, i) => {
       // console.log(t)
       var color    = this.colorDict[t.status]
       var distance = 120
-      var cStartX  = (i===0)?lEndX+50:lEndX
-      var cStartY  = (i===0)?lEndY+60:lEndY
+      var cStartX  = (i===0)?lEndX+offsetX:lEndX
+      var cStartY  = (i===0)?lEndY+offsetY:lEndY
       
       // circle
       var circle = new Konva.Circle({
@@ -305,10 +306,6 @@ export default class LearningPathSection extends Component {
       fill: '#EE0000'
     });
     layer.add(completeTxt)
-  
-
-    // add the shape to the layer
-    // layer.add(rect);
   }
 
   componentDidUpdate() {

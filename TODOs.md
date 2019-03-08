@@ -6,9 +6,9 @@ todo functionalities or features
 
 ## Functionalites
 
-### First Phase - 2 mon
-* add learning track Graph in profile/Learning Path section
-* add certificates for each completion
+### First Phase - 1 mon
+* add certificates for each completion  -- 
+* add learning track Graph in profile/Learning Path section  -- DN
 * add learning track entry in: start, unlock, quiz, complete  -- DN
 * move categories.md config to each category index.md  -- DN
 * create tutorial sections query  -- DN
@@ -17,14 +17,15 @@ todo functionalities or features
 * display content structure in hompage  -- DN
 * add gatsby-remark-images plugin to config to handle image in .md  -- DN
 
-### Second Phase - 2 wk
+### Second Phase - 2 wks
 * responsive layout support
 * Create category by cli
 * Create tutorial by select category id/sequence in console
 * Create component by cli
 
 ### Third Phase
-* tutorial content supplement 
+* tutorial content supplement
+* other navigation menu page content
 
 ### Fourth Phase
 * test
