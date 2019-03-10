@@ -3,6 +3,7 @@ module.exports = {
     title: `Ultron-ELE`,
     description: `the world's fastest LMS based on Gatsby.`,
     author: `@lwz7512`,
+    signiture: `Robin w li`,
     logoImg:`/img/logo_ultronele.png`
   },
   plugins: [

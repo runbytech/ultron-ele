@@ -3,6 +3,8 @@
  */
 import React from 'react'
 
+import { graphql } from 'gatsby'
+
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import Button from '../components/button'
@@ -48,8 +50,8 @@ class ProfilePageRC extends React.Component {
     }
 
     componentWillMount() {
-      const { location } = this.props
-      
+      const { location, data } = this.props
+      // console.log(data)
       const section = location.state.section
       if(section) this.changeSection(section)
     }
@@ -59,6 +61,7 @@ class ProfilePageRC extends React.Component {
     }
 
     render() {
+      const { location, data } = this.props
       const { section } = this.state
 
       return (
@@ -93,7 +96,8 @@ class ProfilePageRC extends React.Component {
               {section==='profile' && <ProfileSection/> }
               {section==='learningPath' && <LearningPathSection/> }
               {section==='testrept' && <TestReptSection/> }
-              {section==='certificates' && <CertificateSection/> }
+              {section==='certificates' && 
+                <CertificateSection signiture={data.site.siteMetadata.signiture}/> }
               {section==='favorites' && <FavoritesSection/> }
               {section==='settings' && <SettingsSection/> }
             </div>
@@ -107,3 +111,13 @@ class ProfilePageRC extends React.Component {
 }
 
 export default ProfilePageRC
+
+export const profileQuery = graphql`
+  query siteQuery {
+    site {
+      siteMetadata {
+        signiture
+      }
+    }
+  }
+`

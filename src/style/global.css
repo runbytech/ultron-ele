@@ -1,3 +1,26 @@
+/* 
+ * add 3rd part font @2019/03/08
+ */
+@font-face {
+  font-family: 'Permanent Marker';
+  font-style: normal;
+  font-weight: 400;
+  src: url("/font/PermanentMarker-Regular.woff2") format('woff2');
+}
+@font-face {
+  font-family: 'Pinyon Script';
+  font-style: normal;
+  font-weight: 400;
+  src: url("/font/Pinyon_Script.woff2") format('woff2');
+}
+
+@font-face {
+  font-family: 'Bitter Bold';
+  font-style: normal;
+  font-weight: 700;
+  src: url("/font/Bitter_Bold.woff2") format('woff2');
+}
+
 html {
   font-family: 'Open Sans', sans-serif;
   -ms-text-size-adjust: 100%;

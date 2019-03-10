@@ -6,7 +6,8 @@
 
 const userInfoMap  = {
   // userName: '',
-  // userEmail: ''
+  // userEmail: '',
+  // fullName: '', @2019/03/08
 }
 // save the learning track by user
 const userLearnTracks  = [
@@ -30,9 +31,10 @@ const userQuizMap = [
 
 
 //  ------ user info process ------------------------------
- export const saveUser = (userName, userEmail) => {
+ export const saveUser = (userName, userEmail, fullName) => {
   userInfoMap.userName = userName
   userInfoMap.userEmail= userEmail
+  userInfoMap.fullName= fullName
   localStorage.setItem('ueUser', JSON.stringify(userInfoMap))
  }
 
@@ -46,7 +48,7 @@ const userQuizMap = [
      let ujson = JSON.parse(user)
      userInfoMap.userName = ujson.userName
      userInfoMap.userEmail= ujson.userEmail
-
+     userInfoMap.fullName= ujson.fullName
      return userInfoMap
    }
 

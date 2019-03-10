@@ -1,7 +1,9 @@
 /**
  * profile section in user center
  * 
- * @2019/02/27
+ * @2019/02/27, created
+ * @2019/03/08, add fullname for certificate use.
+ * 
  */
 import React from 'react';
 import Button from '../components/button'
@@ -15,13 +17,15 @@ export default class ProfileSection extends React.Component {
     super(props)
   
     this.state = {
-      title: 'My Profile',
-      name: '',
-      email:''
+      title:    'My Profile',
+      name:     '',
+      email:    '',
+      fullname: ''
     }
-    this.saveUser = this.saveUser.bind(this)
-    this.changeNameHandler = this.changeNameHandler.bind(this)
-    this.changeEmailHandler= this.changeEmailHandler.bind(this)
+    this.saveUser              = this.saveUser.bind(this)
+    this.changeNameHandler     = this.changeNameHandler.bind(this)
+    this.changeEmailHandler    = this.changeEmailHandler.bind(this)
+    this.changeFullNameHandler = this.changeFullNameHandler.bind(this)
   }
 
   componentDidMount() {
@@ -30,7 +34,8 @@ export default class ProfileSection extends React.Component {
       this.setState({
         title: 'Welcome',
         name : user.userName,
-        email: user.userEmail
+        email: user.userEmail,
+        fullname: user.fullName?user.fullName:''
       })
     }
   }
@@ -47,9 +52,13 @@ export default class ProfileSection extends React.Component {
     this.setState({email: e.currentTarget.value})
   }
 
+  changeFullNameHandler(e) {
+    this.setState({fullname: e.currentTarget.value})
+  }
+
   saveUser() {
-    if(this.state.name && this.state.email){
-      saveUser(this.state.name, this.state.email)
+    if(this.state.name && this.state.email && this.state.fullname){
+      saveUser(this.state.name, this.state.email, this.state.fullname)
       alert('Saved!')
     }else{
       alert('Fill in form first!')
@@ -70,6 +79,11 @@ export default class ProfileSection extends React.Component {
           <h4 className={styles.fieldTitle}>Email</h4>
           <input name="email" type="text" className={styles.formControl}
             onChange={this.changeEmailHandler} value={this.state.email}/>
+        </div>
+        <div className={styles.inputGroup}>
+          <h4 className={styles.fieldTitle}>FullName(certificate use)</h4>
+          <input name="fullname" type="text" className={styles.formControl}
+            onChange={this.changeFullNameHandler} value={this.state.fullname}/>
         </div>
         <div className={styles.btnRow}>
           <Button onClick={this.saveUser} >Save</Button>
