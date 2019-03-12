@@ -33,6 +33,7 @@ export default class Qagroups extends Component {
 
     qaset.map(qa => {
       // save each selected item index of statement option
+      // selected property is assigned in QAnwsers while anwserChooser
       qa.group.map((g,i) => {if(g.selected) ans.push(i)})
     })
     

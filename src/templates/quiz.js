@@ -31,11 +31,21 @@ export default class QuizPage extends React.Component {
     this.quizDone = this.quizDone.bind(this)
   }
 
+  // Each Appearance...
   componentWillMount() {// update state before render
     let user = getUser()
     const pageslug = this.props.pageContext.slug
     const saved = getQuiz(user.userName, pageslug)
     if(saved) this.setState({showQuiz: true, showDone: true})
+    // FIXME: clear previous answers while quiz deleted
+    // @2019/03/11
+    if(!saved) this.resetQuiz()
+  }
+
+  resetQuiz() {
+    this.setState({// close quiz
+      showQuiz: false, showDone:false, startTime: 0
+    })
   }
 
   openQuiz() {
@@ -130,17 +140,22 @@ export default class QuizPage extends React.Component {
 
   // check if quiz already done, then add sidx property to each group
   resetSelected() {
+    // FIXME: clear previous selected if closed @2019/03/11
+    if(!this.state.showQuiz){
+      this.qaset.map(qa => delete qa.sidx)
+    }
+
     let user = getUser()
     const pageslug = this.props.pageContext.slug
     const saved = getQuiz(user.userName, pageslug)
-    // console.log(saved)
     if(!saved) return // do not reset not saved
+  
     // which item was selected
     this.qaset.map((qa,n) => qa.sidx = saved.ans[n])
   }
 
-  render() {
 
+  render() {
     const { data, pageContext } = this.props
     const { frontmatter:fm } = data.quiz
     const { edges:tutorial } = data.sections

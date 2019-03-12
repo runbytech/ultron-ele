@@ -6,7 +6,7 @@
 
 import React from 'react';
 import Konva from 'konva'
-import { getUser } from '../utils/cache'
+import { getUser, getUserQuizs } from '../utils/cache'
 import styles from '../style/profile.module.css'
 
 
@@ -17,6 +17,7 @@ export default class CertificateSection extends React.Component {
   
     this.state = {
       userFullName: '',
+      certs: [1, ]
     }
     this.stage = null
     this.saveCertificate = this.saveCertificate.bind(this)
@@ -24,25 +25,29 @@ export default class CertificateSection extends React.Component {
 
   componentWillMount() {
     const { signiture } = this.props
-    // console.log(signiture)
+    // console.log('signiture:', signiture)
     let user = getUser()
     let userFullName = user.fullName?user.fullName:'User Unknown'
     this.setState({userFullName})
-
+    // console.log('userName:', userFullName)
   }
 
-  // Permanent Marker
-  // Pinyon Script
-  // Bitter Bold
+  /**
+   * TRICKY: create custom font context for canvas
+   * @param {*} fontName, Permanent Marker|Bitter Bold|Pinyon Script
+   * @2019/03/09
+   */ 
   resetCanvasTextFont(fontName) {
-    // TRICKY: create custom font context for canvas
-    // @2019/03/09
     var canvas = document.createElement('canvas');
     var ctx = canvas.getContext('2d');
     ctx.font = 'normal 20px '+fontName;
     ctx.measureText('Some test text;');
   }
 
+  /**
+   * Konva drawing start here is a must!
+   * @2019/03/11
+   */
   componentDidMount() {
     const stageW = 640
     const stageH = 450
@@ -55,7 +60,7 @@ export default class CertificateSection extends React.Component {
     const imageObj = new Image()
     // load template image file...
     const imageLayer = new Konva.Layer()
-    const textLayer = new Konva.Layer()
+    const textLayer = new Konva.Layer({clearBeforeDraw:true})
     imageObj.onload = function(e) {
       let certiImage = new Konva.Image({
         x: 0, y: 0,
@@ -68,10 +73,24 @@ export default class CertificateSection extends React.Component {
     imageObj.src = '/img/certemplateA_from_dreamstime.com_s.png'
     this.stage.add(imageLayer)
     this.stage.add(textLayer)
-    this.drawAllText(textLayer)
+
+    // start to redraw cert texts....
+    const user = getUser()
+    if(!user) return
+
+    const quizs = getUserQuizs(user.userName)
+    if(!quizs || (quizs && !quizs.length)) return
+    console.log(quizs);
+
+    // TODO: pass parameters needed...
+    // this.drawAllText(textLayer, 'Business Enssence', 'Excellent', new Date)
+    this.drawAllText(textLayer, 'Computer Programming Introduction', 'Qualified', new Date)
   }
 
-  drawAllText(textLayer) {
+
+  drawAllText(textLayer, courseName, achievement, date) {
+    textLayer.destroyChildren()// clear first
+
     const textpath = new Konva.TextPath({
       x: 0,
       y: 0,
@@ -99,7 +118,7 @@ export default class CertificateSection extends React.Component {
       text: signiture?signiture:'Unknown',
       fill: 'black',
     })
-    const dateStr = new Date().toLocaleDateString()
+    const dateStr = date?date.toLocaleDateString():'-/-/-'
     const dateTxt = new Konva.Text({
       x: 140, y: 364,
       fontFamily: 'Bitter Bold',
@@ -107,26 +126,35 @@ export default class CertificateSection extends React.Component {
       text: dateStr,
       fill: '#333',
     })
-    const courseName = 'Business Essence'
+    // const courseName = 'Business Essence'
     const courseTxt = new Konva.Text({
       x: 320, y: 264,
       fontFamily: 'Bitter Bold',
-      fontSize: 24,
-      text: courseName,
+      fontSize: courseName.length>40?16:22,
+      text: courseName?courseName:'NO COURSE COMPLETED',
       fill: 'black',
     })
     courseTxt.offsetX(courseTxt.width() / 2)
     
     const achievemTxt = new Konva.TextPath({
-      x: 10, y: 280,
-      fill: 'white',
-      fontSize: 16,
+      x: 10, y: 306,
+      fill: '#EEE',
+      fontSize: 14,
       fontStyle: 'bold',
       fontFamily: 'Arial',
-      text: 'EXCELLENT',
-      // text: 'QUALIFIED',
-      data: 'M284 72 C 280 30, 340 30, 336 72'
+      text: achievement,
+      // text: 'qualified',
+      data: 'M288 44 C 284 72, 342 72, 340 30'
     })
+
+    const qore = new Konva.Text({
+      x: 310, y: 324,
+      fontFamily: 'Bitter Bold',
+      fontSize: 30,
+      text: achievement?achievement[0]:'-',
+      fill: 'white',
+    })
+    textLayer.add(qore)
     textLayer.add(achievemTxt)
     textLayer.add(courseTxt)
     textLayer.add(dateTxt)
@@ -163,25 +191,15 @@ export default class CertificateSection extends React.Component {
         <div className={styles.certiSectRow}>
           <div className={styles.certiCtnr}>
             <div id="certiCntnr" className={styles.certCanvas}></div>
-            <button className={styles.exportBtn}
+            <button className={styles.blueBtn}
               onClick={this.saveCertificate}>Save</button>
           </div>
           <div className={styles.certiThumnails}>
-            <div>
-              <img src="/img/certhumbnail.png" alt="certhumbnail"/>
-            </div>
-            <div>
-              <img src="/img/certhumbnail.png" alt="certhumbnail"/>
-            </div>
-            <div>
-              <img src="/img/certhumbnail.png" alt="certhumbnail"/>
-            </div>
-            <div>
-              <img src="/img/certhumbnail.png" alt="certhumbnail"/>
-            </div>
-            <div>
-              <img src="/img/certhumbnail.png" alt="certhumbnail"/>
-            </div>
+            {this.state.certs.map((c,i) => 
+              <div key={i}>
+                <img src="/img/certhumbnail.png" alt="certhumbnail"/>
+              </div>
+            )}
           </div>
         </div>
       </>

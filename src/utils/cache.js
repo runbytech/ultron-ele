@@ -99,34 +99,35 @@ export const saveUserQuiz = (title, slug, user, ans, level, duration, completion
 }
 
 export const getUserQuizs = (userName) => {
+  initUserQuiz() // init first
   let searched = []
-  let saved = JSON.parse(localStorage.getItem('userQuizMap'))
-  if(!saved) return null
-  saved.map(q => {
+  if(!Object.keys(userQuizMap).length) return null
+  // FIXME: use memory to search @2019/03/11
+  userQuizMap.map(q => {
     if(q.user===userName) searched.splice(0, 0, q)
   })
   return searched
 }
 
 export const getQuiz = (userName, slug) => {
+  initUserQuiz() // init first
   let searched
-  let saved = JSON.parse(localStorage.getItem('userQuizMap'))
-  if(!saved) return null
-  saved.map(q => {
+  if(!Object.keys(userQuizMap).length) return null
+
+  userQuizMap.map(q => {
     if(q.user===userName && q.slug===slug) searched = q
   })
   return searched
 }
 
 export const deleteQuiz = (userName, slug) => {
-  let saved = JSON.parse(localStorage.getItem('userQuizMap'))
-  if(!saved) return null
   let index // which to delete
-  saved.map(
+  // FIXME: delete memory first! @2019/03/11
+  userQuizMap.map(
     (q, i) => {
       if(q.user===userName && q.slug===slug) index = i
     }
   )
-  saved.splice(index, 1)
-  localStorage.setItem('userQuizMap', JSON.stringify(saved))
+  userQuizMap.splice(index, 1)
+  localStorage.setItem('userQuizMap', JSON.stringify(userQuizMap))
 }

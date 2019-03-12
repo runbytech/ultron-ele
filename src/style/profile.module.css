@@ -147,13 +147,17 @@
   height: 450px;
 }
 
-.exportBtn {
+.blueBtn {
   position: absolute;
   top: 10px;
   right: 10px;
   border: none;
-  background: green;
+  background-color: #127CC9;
   color: #FFF;
+}
+
+.blueBtn:active {
+  background-color: #7D9EC0;
 }
 
 .certiThumnails {

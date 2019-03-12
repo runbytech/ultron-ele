@@ -25,12 +25,7 @@
   componentWillMount() {
     let user = getUser()
     const quizs = getUserQuizs(user.userName)
-    
     this.setState({quizs})
-  }
-
-  componentDidMount() {
-
   }
 
   deleteQuiz(slug) {
@@ -59,8 +54,8 @@
           </thead>
           <tbody>
             {this.state.quizs &&
-              this.state.quizs.map(q => 
-                <tr key={q.slug}>
+              this.state.quizs.map((q,i) => 
+                <tr key={i}>
                   <td>{q.title}</td>
                   <td>{Math.floor(q.duration/1000)}s</td>
                   <td>{q.level}</td>

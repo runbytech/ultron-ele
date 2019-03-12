@@ -58,10 +58,21 @@ export default class QAnwsers extends React.Component {
   };
 
   componentWillMount() {
-    const { qas, started } = this.props
+    const { qas, started, sidx } = this.props
+    
+    // blind mode use sidx
+    if(typeof(sidx) !== 'undefined'){
+      let origs = this.state.selected
+      origs[sidx] = true // reset selected status by index
+      this.setState({selected: origs})
+    }else{
+      this.setState({selected: Array(4).fill(false)}) // reset to unselected
+      qas.map(qa => delete qa.selected) // FIXME: clear previous selected
+    }
+
     // this property only used in none blind mode
     if(!started) return // if the section not unlocked
-
+    
     let index = 0 // which is right
     qas.map((q,i) => { if(q.a) index = i })
     let results = this.state.results
@@ -73,16 +84,6 @@ export default class QAnwsers extends React.Component {
     this.setState({through}) // reset text through appearance
   }
 
-  componentDidMount() {
-    // whick item is selected
-    const { sidx } = this.props
-
-    if(typeof(sidx) === 'undefined') return
-
-    let origs = this.state.selected
-    origs[sidx] = true // reset selected status by index
-    this.setState({selected: origs})
-  }
 
   anwserChooser (i) {
     const { qas, done, blind, select, started } = this.props
