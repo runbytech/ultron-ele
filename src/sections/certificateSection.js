@@ -17,10 +17,12 @@ export default class CertificateSection extends React.Component {
   
     this.state = {
       userFullName: '',
-      certs: [1, ]
+      certs: [0]
     }
     this.stage = null
-    this.saveCertificate = this.saveCertificate.bind(this)
+    this.saveCertificate   = this.saveCertificate.bind(this)
+    this.switchCertificate = this.switchCertificate.bind(this)
+    this.drawAllText       = this.drawAllText.bind(this)
   }
 
   componentWillMount() {
@@ -29,7 +31,11 @@ export default class CertificateSection extends React.Component {
     let user = getUser()
     let userFullName = user.fullName?user.fullName:'User Unknown'
     this.setState({userFullName})
-    // console.log('userName:', userFullName)
+    if(!user) return
+
+    const quizs = getUserQuizs(user.userName)
+    if(!quizs || (quizs && !quizs.length)) return
+    this.setState({certs: quizs})
   }
 
   /**
@@ -60,7 +66,7 @@ export default class CertificateSection extends React.Component {
     const imageObj = new Image()
     // load template image file...
     const imageLayer = new Konva.Layer()
-    const textLayer = new Konva.Layer({clearBeforeDraw:true})
+    const textLayer = new Konva.Layer()
     imageObj.onload = function(e) {
       let certiImage = new Konva.Image({
         x: 0, y: 0,
@@ -73,22 +79,23 @@ export default class CertificateSection extends React.Component {
     imageObj.src = '/img/certemplateA_from_dreamstime.com_s.png'
     this.stage.add(imageLayer)
     this.stage.add(textLayer)
-
     // start to redraw cert texts....
-    const user = getUser()
-    if(!user) return
-
-    const quizs = getUserQuizs(user.userName)
-    if(!quizs || (quizs && !quizs.length)) return
-    console.log(quizs);
-
-    // TODO: pass parameters needed...
-    // this.drawAllText(textLayer, 'Business Enssence', 'Excellent', new Date)
-    this.drawAllText(textLayer, 'Computer Programming Introduction', 'Qualified', new Date)
+    const firstCt = this.state.certs[0]
+    if(!firstCt) return console.log('no certificate yet...');
+    
+    // console.log(firstCt)
+    this.drawAllText(
+      textLayer, 
+      firstCt.title, 
+      firstCt.level, 
+      new Date(firstCt.completion)
+    )
+    // save the layer for later use
+    this.textLayer = textLayer
   }
 
 
-  drawAllText(textLayer, courseName, achievement, date) {
+  drawAllText(textLayer, courseName, achievement, dateObj) {
     textLayer.destroyChildren()// clear first
 
     const textpath = new Konva.TextPath({
@@ -118,7 +125,7 @@ export default class CertificateSection extends React.Component {
       text: signiture?signiture:'Unknown',
       fill: 'black',
     })
-    const dateStr = date?date.toLocaleDateString():'-/-/-'
+    const dateStr = dateObj?dateObj.toLocaleDateString():'-/-/-'
     const dateTxt = new Konva.Text({
       x: 140, y: 364,
       fontFamily: 'Bitter Bold',
@@ -183,6 +190,23 @@ export default class CertificateSection extends React.Component {
     require("downloadjs")(dataURL, "certificate.png", "image/png");
   }
 
+  switchCertificate(slug) {
+    let target = null
+    this.state.certs.map(c => {
+      if(c.slug === slug) target = c
+      return
+    })
+    // console.log('to switch certificate by:', target)
+    if(!target) return this.drawAllText(this.textLayer)
+  
+    this.drawAllText(
+      this.textLayer,
+      target.title,
+      target.level, 
+      target.completion?new Date(target.completion):undefined
+    )
+  }
+
   render() {
     return (
       <>
@@ -196,7 +220,7 @@ export default class CertificateSection extends React.Component {
           </div>
           <div className={styles.certiThumnails}>
             {this.state.certs.map((c,i) => 
-              <div key={i}>
+              <div key={i} onClick={()=>this.switchCertificate(c.slug)}>
                 <img src="/img/certhumbnail.png" alt="certhumbnail"/>
               </div>
             )}
