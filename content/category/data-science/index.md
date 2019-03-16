@@ -2,7 +2,7 @@
 category: Data Science  # required
 date: 2019-02-14T18:03:15.507Z # required
 type: category index  # required
-cover: /img/data_science.jpeg
+cover: /img/data_science_2.png
 ishead: true  # option info to assign it layout as the first in gallery
 tags:  # option info
   - Analysis

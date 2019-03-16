@@ -7,7 +7,7 @@ todo functionalities or features
 ## Functionalites
 
 ### First Phase - 1 mon
-* add certificates for each completion  -- 
+* add certificates for each completion  -- DN@2019/03/12
 * add learning track Graph in profile/Learning Path section  -- DN
 * add learning track entry in: start, unlock, quiz, complete  -- DN
 * move categories.md config to each category index.md  -- DN
@@ -17,15 +17,15 @@ todo functionalities or features
 * display content structure in hompage  -- DN
 * add gatsby-remark-images plugin to config to handle image in .md  -- DN
 
-### Second Phase - 2 wks
-* responsive layout support
+### Second Phase - 1 wk
 * Create category by cli
 * Create tutorial by select category id/sequence in console
 * Create component by cli
 
-### Third Phase
+### Third Phase - 1 wk
 * tutorial content supplement
 * other navigation menu page content
+* responsive layout support
 
 ### Fourth Phase
 * test
@@ -37,7 +37,7 @@ todo functionalities or features
 * gatsby plugin for Moodle datasource
 * more template
 
-## Features
+## Limitations
 
-* mobile screen support
-* dynamic category gallery display in homepage with no number limit
+* Category type displayed by Homepage Gallery limit to 5 currently in v1.0
+* Gallery component not writren elegantly

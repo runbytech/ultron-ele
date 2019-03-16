@@ -141,7 +141,7 @@ export default class TutorialPage extends React.Component {
               </ul>
             </div>
             {/** mini game to unlock next section */}
-            {fm.ulocknext &&
+            {fm.unlocknext &&
               (
                 <div className={styles.unlockgame}>
                   <div className={styles.topline}>
@@ -153,7 +153,7 @@ export default class TutorialPage extends React.Component {
                   </div>
                   
                   <QAnwsers 
-                    qas={fm.ulocknext} 
+                    qas={fm.unlocknext} 
                     done={this.anwserDone} 
                     started={this.state.started}/>
 
@@ -251,7 +251,7 @@ export const pageQuery = graphql`
           name
           url
         }
-        ulocknext {
+        unlocknext {
           q
           a
         }

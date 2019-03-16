@@ -19,7 +19,7 @@ othereads:  # option property, write reference materials
     url : http://www.intricity.com/customer-data-science/
   - name: Intricitys Talk With a Specialist Page
     url : http://www.intricity.com/intricity101
-ulocknext:  # option property, write mini test/bonus for this section
+unlocknext:  # option property, write mini test/bonus for this section
   - q: Organizations can win without using data science
     a: false
   - q: Data science can predict the future

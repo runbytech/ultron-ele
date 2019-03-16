@@ -1,15 +1,16 @@
 ---
-title: Business essence - the first section
-date: 2019-02-18T21:40:15.507Z
-author: Robin
-tutorial: Business essence
+title: {{title}} - the stone section
+date: {{date_1}}
+author: {{author}}
+tutorial: {{title}}
 type: tutorial section
 cover: /img/chamuditha-dilhan-1335612-unsplash-278x120.png
-emphasis: People who want to start a business must understand these
+emphasis: {{emphasis}}
 tags: 
   - questions
   - ask
   - uself
+{{#if unlocknext}}
 unlocknext:
   - q: knowing the buisness essence is a key to success
     a: false
@@ -19,6 +20,7 @@ unlocknext:
     a: false
   - q: learning this B-E is wasting my time
     a: false
+{{/if}}
 ---
 
 This is an introduction chapter/section of balabala tutorial, you may write some background info here as a topic opening. This paragraph is also abstracted by category page, and showed in the tutorial card. 

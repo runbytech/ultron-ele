@@ -165,6 +165,8 @@ export default class QuizPage extends React.Component {
 
     const quizLength= this.qaset.length
     const firstSection = tutorial[0].node.fields.slug
+    const quizFor = tutorial[0].node.frontmatter.tutorial
+
     const excellent = Math.floor(this.qaset.length*0.8)
     const qualified = Math.floor(this.qaset.length*0.6)
     const failed    = Math.floor(this.qaset.length*0.6)-1
@@ -174,7 +176,7 @@ export default class QuizPage extends React.Component {
 
     return (
       <Layout >
-        <SEO title={`Quiz for: ${fm.for}`} />
+        <SEO title={`Quiz for: ${fm.for||quizFor}`} />
 
         <h3 className={styles.qzEnter}>LETS SEE HOW MUCH YOUVE LEARNED ABOUT:</h3>
         <h1 >{fm.for}</h1>
@@ -276,6 +278,9 @@ export const pageQuery = graphql`
           node {
             fields {
               slug
+            }
+            frontmatter {
+              tutorial
             }
           }
         }

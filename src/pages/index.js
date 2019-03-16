@@ -11,14 +11,11 @@ import Layout from '../components/layout'
 import SEO from '../components/seo'
 import Gallery from '../components/gallery'
 import Tutorials from '../components/tutorials'
-// import {saveCategory} from '../utils/cache'
+
 
 const IndexPage = ({data}) => { 
 
   const { catedocs, tutorials } = data
-  
-  // console.log(catedocs);
-  // console.log(tutorials)
    
   return (
     <Layout>
@@ -40,17 +37,6 @@ export default IndexPage
 
 export const IndexQuery = graphql`
   query IndexQuery {
-
-    # this is obsolete @2019/02/20
-    # categories: file(relativePath: { regex: "/index-gallery/" }) {
-    #   childDataYaml {
-    #     categories {
-    #       name
-    #       path
-    #       cover
-    #     }
-    #   }
-    # }
 
     # query all the index.md in each category @2019/03/03
     catedocs: allMarkdownRemark(
@@ -78,22 +64,6 @@ export const IndexQuery = graphql`
       }
     }
 
-    # query content/category/categories.md @2019/02/22
-    # categories: markdownRemark(fields: { slug: { eq: "/categories/" } }) {
-    #   frontmatter {
-    #     categories {
-    #       cover {
-    #         childImageSharp {
-    #           fluid(maxWidth: 345){
-    #             ...GatsbyImageSharpFluid
-    #           }
-    #         }
-    #       }
-    #       path
-    #       name
-    #     }
-    #   }
-    # }
     # query latest tutorials files
     tutorials: allMarkdownRemark(
       filter: {frontmatter: {title: {ne: ""}, tutorial: {ne: null}}},
@@ -118,7 +88,32 @@ export const IndexQuery = graphql`
           }
         }
       }
-
+    # query content/category/categories.md @2019/02/22
+    # categories: markdownRemark(fields: { slug: { eq: "/categories/" } }) {
+    #   frontmatter {
+    #     categories {
+    #       cover {
+    #         childImageSharp {
+    #           fluid(maxWidth: 345){
+    #             ...GatsbyImageSharpFluid
+    #           }
+    #         }
+    #       }
+    #       path
+    #       name
+    #     }
+    #   }
+    # }
+    # this is obsolete @2019/02/20
+    # categories: file(relativePath: { regex: "/index-gallery/" }) {
+    #   childDataYaml {
+    #     categories {
+    #       name
+    #       path
+    #       cover
+    #     }
+    #   }
+    # }
 
   }
 `

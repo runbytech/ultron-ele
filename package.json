@@ -20,7 +20,6 @@
     "gatsby-source-filesystem": "^2.0.8",
     "gatsby-transformer-remark": "^2.1.6",
     "gatsby-transformer-sharp": "^2.1.8",
-    "gatsby-transformer-yaml": "^2.1.8",
     "konva": "^2.0.0",
     "prop-types": "^15.6.2",
     "react": "^16.6.3",
@@ -36,11 +35,17 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
+    "generate": "plop --plopfile ./generators/plopfile.js",
+    "hierachical": "node ./generators/hierarchical.js",
+    "indirectory": "node ./generators/indirectory.js",
     "start": "npm run develop",
     "format": "prettier --write \"src/**/*.js\"",
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
   },
   "devDependencies": {
+    "inquirer": "^6.2.2",
+    "inquirer-directory": "^2.1.0",
+    "plop": "^2.3.0",
     "prettier": "^1.15.2"
   },
   "repository": {

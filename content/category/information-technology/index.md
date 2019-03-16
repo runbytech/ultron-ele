@@ -2,6 +2,6 @@
 category: Information technology
 date: 2019-02-16T22:06:13.900Z
 type: category index
-cover: /img/information_technology.jpeg
+cover: /img/Information-Technology6.jpg
 ishead: false
 ---

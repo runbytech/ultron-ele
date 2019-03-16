@@ -21,13 +21,22 @@ coming soon...
 
 ## Features
 
-* Easy setup
-* Fast running
-* Gamification
-* Learning path
-* Assessment report
-* Certificate generation
-* Progress tracking
+* extremely fluent visit experience
+* fast setup and easy depolyment procedure
+* gamefication learning experience
+* category/tutorial/quiz generation by cli easily
+* learning process tracking and visualization
+* quiz report and certificate generation
+* user locally login/cache support
+* mobile screen support
+
+## Prerequisite Installation
+
+```
+$ node
+$ npm
+$ gatsby
+```
 
 ## 🚀 Quick start
 
