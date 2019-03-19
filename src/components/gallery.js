@@ -11,6 +11,19 @@ import Image from 'gatsby-image'
 import styles from '../style/gallery.module.css'
 
 
+// FIXME: process image style enable it to be responsive to the mouse over
+// @2019/03/20
+const lazyQueryGallery = () => {
+  setTimeout(()=>{
+    const icg = document.querySelector(".interact-cate-gallery")
+    if(!icg) return
+    
+    const pictures = icg.querySelectorAll("picture img")
+    pictures.forEach(img => img.style.removeProperty("opacity"))
+
+  }, 600)// remove opacity style after initial css transition
+}
+
 const CategoryCard = ({cover, url, isMain, title, type}) => (
   <Link to={url} className={styles.darkenLink} 
     style={{height: isMain?"328px":"150px", overflow: "hidden"}}
@@ -22,10 +35,12 @@ const CategoryCard = ({cover, url, isMain, title, type}) => (
 
 const Gallery = ({data}) => {
 
+  lazyQueryGallery()
+  
   let ctgs = [] // for gallery use
   let tempCates = data.edges
   tempCates.map((cat,i) => {// find the head
-    if(cat.node.frontmatter.ishead) ctgs.push(cat)
+    if(cat.node.frontmatter.ishead && !ctgs.length) ctgs.push(cat)
   })
   tempCates.map((cat,i) => {// find the other
     if(!cat.node.frontmatter.ishead) ctgs.push(cat)
@@ -35,7 +50,7 @@ const Gallery = ({data}) => {
   // 1. USE loop to declare ui; 
   // 2. extend to none fixed size category card;
   return (
-      <div className={styles.gallery}>
+      <div className={styles.gallery+' interact-cate-gallery'}>
         {/** 1st column is main card */}
         <div className={styles.cateColumn}>
           {ctgs[0] && 

@@ -4,9 +4,6 @@ const path = require('path');
 module.exports = function (plop) {
   
   plop.setPrompt('directory', promptDirectory);
-  plop.addHelper('absPath', function (p) {
-		return path.resolve(plop.getPlopfilePath(), p);
-	});
 
   // Create category here, prefix with 'c-'
   plop.setGenerator('C-ategory-generate', {
@@ -19,7 +16,13 @@ module.exports = function (plop) {
 					if ((/.+/).test(value)) { return true; }
 					return 'Categrory Name is REQUIRED!!';
 				}
-      }],
+      }, {
+        type: 'confirm',
+        name: 'ishead',
+        message: 'Want to show first in category gallery? (Press Enter to ignore, press y to show)',
+        default: false,
+      }
+    ],
       actions: data => {
         // Get current date
         data.createdDate = new Date().toISOString();
@@ -27,7 +30,7 @@ module.exports = function (plop) {
         return [
           {
             type: 'add',
-            path: '../data/category/c-{{dashCase name}}/index.md',
+            path: '../content/category/c-{{dashCase name}}/index.md',
             templateFile: 'plop-templates/category.md.tpl'
           },
           ()=>`Categrory: ${data.name} Successfully Generated!`
@@ -60,7 +63,7 @@ module.exports = function (plop) {
 				type: 'directory',
 				name: 'path',
 				message: 'Step 4/5, Which category would you like to put this tutorial under?',
-				basePath: './data/category'
+				basePath: './content/category'
       },{
         type: 'confirm',
         name: 'unlocknext',
@@ -85,15 +88,15 @@ module.exports = function (plop) {
       return [
         {
           type: 'add',
-          path: '../data/category/{{path}}/t-{{dashCase title}}/1-stone.md',
+          path: '../content/category/{{path}}/t-{{dashCase title}}/1-stone.md',
           templateFile: 'plop-templates/1-stone.md.tpl'
         },{
           type: 'add',
-          path: '../data/category/{{path}}/t-{{dashCase title}}/2-paper.md',
+          path: '../content/category/{{path}}/t-{{dashCase title}}/2-paper.md',
           templateFile: 'plop-templates/2-paper.md.tpl'
         },{
           type: 'add',
-          path: '../data/category/{{path}}/t-{{dashCase title}}/3-scissor.md',
+          path: '../content/category/{{path}}/t-{{dashCase title}}/3-scissor.md',
           templateFile: 'plop-templates/3-scissor.md.tpl'
         },
         ()=>`Tutorial: ${data.title} Successfully Generated!`
@@ -114,7 +117,7 @@ module.exports = function (plop) {
         type: 'directory',
         name: 'path',
         message: 'Selet T-utorial in which you would like to put this quiz?',
-        basePath: './data/category'
+        basePath: './content/category'
       },
     ],
     actions: data => {
@@ -122,7 +125,7 @@ module.exports = function (plop) {
       return [
         {
           type: 'add',
-          path: '../data/category/{{path}}/test.md',
+          path: '../content/category/{{path}}/test.md',
           templateFile: 'plop-templates/test.md.tpl'
         },
         ()=>`Quiz: ${data.title} Successfully Generated!`
