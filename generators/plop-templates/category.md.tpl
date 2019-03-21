@@ -2,7 +2,7 @@
 category: {{name}} # required
 date: {{createdDate}} # required
 type: category index # required
-cover: /img/data_science_2.png # required
+cover: /img/corporate.png # required
 ishead: {{ishead}} # option info to assign it layout as the first in gallery
 prerequisites:  # required
   - Mathematics

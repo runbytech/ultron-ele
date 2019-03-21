@@ -99,14 +99,15 @@ exports.createPages = ({ graphql, actions }) => {
         return
       }
 
-      if(slug.includes('/categories/')) return // no need to generate categories page
+      // if(slug.includes('/categories/')) return // no need to generate categories page
 
       // Last: to generate page of navi bar menu!
       createPage({
         path: slug,
         component: path.resolve(
           // one on one mapping!
-          `src/templates${String(slug).slice(0, -1)}.js`
+          // `src/templates${String(slug).slice(0, -1)}.js`
+          'src/templates/post.js'
         ),
         // Data passed to context is available
         // in page queries as GraphQL variables.

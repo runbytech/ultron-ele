@@ -18,19 +18,20 @@ todo functionalities or features
 * add gatsby-remark-images plugin to config to handle image in .md  -- DN
 
 ### Second Phase - 1 wk
-* Create category by cli
-* Create tutorial by select category id/sequence in console
-* Create component by cli
+* Create category by cli  -- DN
+* Create tutorial by select category id/sequence in console  -- DN
+* Create quiz by cli  -- DN
 
 ### Third Phase - 1 wk
 * tutorial content supplement
+* user guide page replenishment  -- 
 * other navigation menu page content
 * responsive layout support
 
 ### Fourth Phase
 * test
 
-### Fiveth Phase
+### Fifth Phase
 * release 1st version
 
 ### X Phase

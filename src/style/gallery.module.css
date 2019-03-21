@@ -54,13 +54,13 @@
 
 .darkenLink:hover h4 {
   color: #FFF;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .darkenLink h4 {
   position: absolute;
   margin: 0;
-  font-weight: 300;
+  font-weight: 400;
   color: #EEE;
   font-size: 1.2rem;
   line-height: 36px;
@@ -69,11 +69,13 @@
 .mainCategoryTitle {
   top: 50px;
   bottom: auto;
-  left: 40px; 
+  left: 40px;
+  text-shadow: 0px 1px #999;
 }
 
 .subCategoryTitle {
   top: auto;
   bottom: 20px;
   left: 20px;
+  text-shadow: 0px 1px #999;
 }

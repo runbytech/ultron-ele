@@ -51,3 +51,7 @@
   flex-direction: column;
 }
 
+code { 
+  background-color: #DDD;
+  color: #000;
+}

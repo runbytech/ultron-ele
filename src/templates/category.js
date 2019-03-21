@@ -70,6 +70,14 @@ const CategoryPage = ({location, data, pageContxt}) => {
                   />
               )
             }
+            {!grouptuts &&
+              <p>
+                No tutorials in this category yet, use generator to create one by running: <br/>
+                <code>$ npm run generate</code><br/>
+                And move down arrow key to select `T-utorial-generate`, press Enter to start tutorial generating dialog.<br/><br/>
+                More instructions about this in <Link to="/userguide">User Guide</Link>
+              </p>
+            }
           </div>
         </div>
         {/** right column */}
