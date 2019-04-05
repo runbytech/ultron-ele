@@ -1,9 +1,9 @@
 --- 
 # list all the questions for Business essence
-for : {{title}}
+for : {{title}} # required but will use tutorial title if not input in cli
 date: {{date}}
-qaset: 
-  - group:
+qaset: # questions
+  - group:  # one question
     - q: Organizations can win without using data science
       a: false
     - q: Data science can predict the future
@@ -12,7 +12,7 @@ qaset:
       a: false
     - q: Data Science is the discipline of extracting knowledge from the data landscape
       a: true
-  - group:
+  - group:  # one question
     - q: Earth is round
       a: false
     - q: Moon is hollow
@@ -21,7 +21,7 @@ qaset:
       a: false
     - q: Jupiter is the largest planet in solar system
       a: true
-  - group:
+  - group:  # one question
     - q: Doing business requires excellent talent
       a: false
     - q: Men are smart in making decision than women
@@ -30,7 +30,7 @@ qaset:
       a: false
     - q: The essence of business is creating or adding the real value for your client
       a: true
-  - group:
+  - group:  # one question
     - q: 
         Sometimes there might be a longer question which can not be shortly and precisely
         described in question, simple, just press Enter key to start a new line 

@@ -5,3 +5,5 @@ type: category index
 cover: /img/Information-Technology6.jpg
 ishead: false
 ---
+
+Information technology intro is missing...

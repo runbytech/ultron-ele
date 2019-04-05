@@ -63,10 +63,10 @@ export default class Header extends React.Component {
           {/** right menu */}
           <div className={styles.rightMenu} >
             <ul style={{ listStyle: `none`, display: `block`, marginBottom: 0, }}>
+              <ListLink to="/product/">Product</ListLink>
               <ListLink to="/userguide/">User Guide</ListLink>
               <ListLink to="/roadmap/">Roadmap</ListLink>
               <ListLink to="/users/">Team</ListLink>
-              <ListLink to="/about/">About</ListLink>
             </ul>
             <div className={styles.avatarImg}>
               <NLink to="/profile">

@@ -19,7 +19,7 @@ module.exports = function (plop) {
       }, {
         type: 'confirm',
         name: 'ishead',
-        message: 'Want to show first in category gallery? (Press Enter to ignore, press y to show)',
+        message: 'Want to show first in category gallery? (Press Enter to ignore, press y to be first)',
         default: false,
       }
     ],

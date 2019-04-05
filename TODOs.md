@@ -27,6 +27,7 @@ todo functionalities or features
 * user guide page replenishment  -- 
 * other navigation menu page content
 * responsive layout support
+* themelization refactoring  -- 
 
 ### Fourth Phase
 * test

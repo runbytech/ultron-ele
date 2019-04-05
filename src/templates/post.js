@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
-
+import Image from 'gatsby-image'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import '../style/post.page.css'
@@ -9,15 +9,20 @@ import '../style/post.page.css'
 const PandasPage = ({data, pageContext}) => (
   <Layout>
     <SEO title={data.markdownRemark.frontmatter.title} />
-    
-    <h1 style={{paddingTop: `1.45rem`}}>{data.markdownRemark.frontmatter.title}</h1>
-    <p>Create at: {data.markdownRemark.frontmatter.date}</p>
-    
-    <div 
-      dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} 
-      className="post"
-      />
-
+    <article>
+      <Image 
+        fluid={data.markdownRemark.frontmatter.cover.childImageSharp.fluid} 
+        />
+      <h1 style={{paddingTop: `1.45rem`}} className="title">
+       {data.markdownRemark.frontmatter.title}
+      </h1>
+      <p className="date">
+        Created at: {data.markdownRemark.frontmatter.date}
+      </p>
+      <div
+        dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} 
+        className="content"/>
+    </article>
   </Layout>
 )
 
@@ -33,6 +38,13 @@ export const pageQuery = graphql`
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
+        cover {
+          childImageSharp {
+            fluid(maxWidth: 1200, maxHeight: 200) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
     }
   }

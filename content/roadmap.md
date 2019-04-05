@@ -1,6 +1,7 @@
 ---
 title: Product Evolution Plan
 date: 2019-03-20
+cover: /img/postbg2.png
 ---
 
 ### V1.0
@@ -28,7 +29,7 @@ Limits in this release includes:
 * No way to assign cover image in CLI
 
 
-Hard parts for user lies in:
+Hard parts for new ultronele user lies in:
 
 * Search and match an appropriate cover image for each content
 * Quiz questions setup from content
@@ -37,6 +38,7 @@ Hard parts for user lies in:
 
 ### V2.0
 
+* seperate a theme from ultronele as a reuseful npm package
 * solve the inconvenience left in the last release...
 * netlify account introduction
 * 3rd part graphql service introduction

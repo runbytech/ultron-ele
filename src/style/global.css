@@ -427,7 +427,7 @@ pre {
   line-height: 1.42;
   background: hsla(0, 0%, 0%, 0.04);
   border-radius: 3px;
-  overflow: auto;
+  /* overflow: auto; */
   word-wrap: normal;
   padding: 1.45rem;
 }
@@ -616,21 +616,23 @@ code {
   border-radius: 3px;
   font-family: 'SFMono-Regular', Consolas, 'Roboto Mono', 'Droid Sans Mono',
     'Liberation Mono', Menlo, Courier, monospace;
-  padding: 0;
-  padding-top: 0.2em;
+  padding-left: 0.4em;
+  padding-right: 0.4em;
+  padding-top: 0.1em;
   padding-bottom: 0.2em;
 }
 pre code {
   background: none;
   line-height: 1.42;
+  white-space: pre-wrap;
 }
-code:before,
+/* code:before,
 code:after,
 tt:before,
 tt:after {
   letter-spacing: -0.2em;
   content: ' ';
-}
+} */
 pre code:before,
 pre code:after,
 pre tt:before,

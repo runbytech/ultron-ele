@@ -1,12 +1,65 @@
-.post h3 {
+article h3 {
   margin-top: 3rem;
 }
 
-.post h2 {
+article h2 {
   margin-top: 3rem;
 }
 
-.post h4 {
-  margin-top: 2rem;
+article h4 {
+  margin-top: 3rem;
 }
 
+/* center the image */
+article p > img {
+  max-width: 480px;
+  display: block;
+  margin: 0 auto;
+}
+
+/* center the image */
+article p > a > img {
+  max-width: 200px;
+  display: block;
+  margin: 0 auto;
+}
+
+article p > a {
+  cursor: default;
+}
+
+article ul {
+  margin-top: 40px;
+}
+
+article li > ul {
+  margin-top: 0;
+}
+
+article .title {
+  color: #FFF;
+  position: absolute;
+  top: 80px;
+  left: 100px;
+  /* font-weight: 300; */
+  padding: 20px;
+}
+
+article .date {
+  color: #FFF;
+  position: absolute;
+  top: 200px;
+  left: 122px;
+}
+
+article .content {
+  margin-top: 40px;
+}
+
+/* fix anchor navigation hidden by header bar */
+article :target::before {
+  content: "";
+  display: block;
+  height: 80px; /* fixed header height*/
+  margin: -80px 0 0; /* negative fixed header height */
+}

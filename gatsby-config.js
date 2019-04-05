@@ -61,12 +61,7 @@ module.exports = {
       options: {
         "excerpt_separator": `<!-- end -->`,
         plugins: [
-          {
-            resolve: 'gatsby-remark-relative-images',
-            options: {
-              name: 'uploads',
-            },
-          },
+          `gatsby-remark-autolink-headers`,
           {
             resolve: 'gatsby-remark-images',
             options: {

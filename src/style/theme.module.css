@@ -13,3 +13,12 @@ a h2:hover,
 a h1:hover {
   color: #47BA47;
 }
+
+blockquote {
+  color: #000;
+  border-left: 4px solid #47BA47;
+  /* border-left: 4px solid #BBB; */
+  padding-left: 16px;
+  margin: 20px 0 20px;
+  font-size: 18px;
+}
