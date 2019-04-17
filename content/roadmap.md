@@ -4,7 +4,7 @@ date: 2019-03-20
 cover: /img/postbg2.png
 ---
 
-### V1.0
+### V1.0 ~ @2019/04
 
 Core functionalities shipped with the first big release includes:
 
@@ -36,7 +36,7 @@ Hard parts for new ultronele user lies in:
 * Category/Tutorial generate with CLI
 
 
-### V2.0
+### V2.0 ~ second half of 2019
 
 * seperate a theme from ultronele as a reuseful npm package
 * solve the inconvenience left in the last release...
@@ -45,7 +45,7 @@ Hard parts for new ultronele user lies in:
 * payment method introduction
 * ...
 
-### V3.0
+### V3.0 ~ first half of 2020
 
 * online content edit and one click deployment
 * absolutely easy version without any local installation

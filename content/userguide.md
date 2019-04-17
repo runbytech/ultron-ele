@@ -2,6 +2,19 @@
 title: UltronEle User Guide
 date: 2019-03-20
 cover: /img/postbg2.png
+anchors:
+  - name: Prerequisites
+    goto: '#prerequisites'
+  - name: Installation
+    goto: '#installation'
+  - name: Usage Procedures - for Content Builder Role
+    goto: '#usage-procedures'
+  - name: Learning Precedures - for Content Learner Role
+    goto: '#learning-precedures'
+  - name: FAQs
+    goto: '#faqs'
+  - name: Tech Support
+    goto: '#tech-support'
 ---
 
 > UltronEle's mission is to build the world's fastest e-learning system with the fewest cost and in the most simple way, here's a complete user manual to describe how to do this from the ground.
@@ -270,17 +283,71 @@ A `test.md` file created at the tutorial directory, when you open the file you'l
 
 ### Step 4 Deploy website to netlify
 
+In deployment phase, we divide this process into two big steps, in one step we upload our ultronele code and content to github, in another step we make netlify pull our ultronele repository hosted github, then netflify would deploy and start it as a new website.
+
+#### Upload project to github
+
+Our custom ultronele may by precious so we need keep it for a long time. Github is a good place to save your code/docs/files, as well as a cloud service for you to host and syncronize code with other service like [netlify](https://www.netlify.com/).
+
+```
+Note: if you dont want the project name hello-world, you can name it my-ultronele or other cool name.
+```
+
+First, follow the official github help to [Create a repo](https://help.github.com/en/articles/create-a-repo) in 6 step. But, we DONT need the 5th step to __Initialize this repository with a README.__ for we already had one in our ultronele.
+
+
+Then, in your console window which just created tutorial/quiz, using the following commands to upload our ultronele to github:
+
+
+> $ git init
+
+> $ git add .
+
+> $ git commit -m "first commit"
+
+> $ git remote add origin https://github.com/RobinLi/hello-world.git
+
+> $ git push -u origin master
+
+```
+Note: in the 4th command we add origin ...RobinLi..., here we need to replace RobinLi with your github account name! Besides, if you name your new github repository as `my-ultronele` rather than `hello-world`, then you need to match the name with the one in this command before `.git`.
+```
+
+#### Synchronize the repository to netlify
+
+Now that our website is ready to launch, then we use netlify to build and bring it to alive online. Let's have a look at how to do it.
+
+In prerequisites phase, you created a netlify account. Now, login your netlify apps: https://app.netlify.com/
+
 ...
 
 ### Step 5 Custom website config and navigation menu
+
+#### Custom navigation menu page
+
+...
+
+#### Custom website logo
+
+...
+
+#### Custom website metadata
+
+...
+
+#### Custom website footer
+
+...
+
+#### Custom website theme color
 
 ...
 
 ### Step 6 Update content and new version of Ultronele
 
-use theme?
+Use theme?
 
-...
+coming soon...
 
 ## Learning Precedures
 

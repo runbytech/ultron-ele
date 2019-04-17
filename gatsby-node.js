@@ -44,6 +44,9 @@ exports.createPages = ({ graphql, actions }) => {
               fields {
                 slug
               }
+              frontmatter {
+                template
+              }
             }
           }
         }
@@ -54,12 +57,14 @@ exports.createPages = ({ graphql, actions }) => {
       throw result.errors
     }
 
-    // Create site pages by .md/tplt.
+    // Create site pages by .md file
     const pages = result.data.pages.edges;
 
     pages.forEach((page, index) => {
 
-      const {slug} = page.node.fields
+      const { slug } = page.node.fields
+      // add template reference in main page @2019/04/17
+      const { template } = page.node.frontmatter
 
       // console.log(slug)
 
@@ -99,15 +104,13 @@ exports.createPages = ({ graphql, actions }) => {
         return
       }
 
-      // if(slug.includes('/categories/')) return // no need to generate categories page
-
       // Last: to generate page of navi bar menu!
       createPage({
         path: slug,
         component: path.resolve(
           // one on one mapping!
           // `src/templates${String(slug).slice(0, -1)}.js`
-          'src/templates/post.js'
+          template ? template : 'src/templates/post.js'
         ),
         // Data passed to context is available
         // in page queries as GraphQL variables.

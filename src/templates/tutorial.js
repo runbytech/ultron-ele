@@ -146,7 +146,7 @@ export default class TutorialPage extends React.Component {
                 <div className={styles.unlockgame}>
                   <div className={styles.topline}>
                     <div className={styles.line}><span></span></div>
-                    <div className={styles.unlockTitle+` ${theme.greenColor}`}>
+                    <div className={styles.unlockTitle+` ${theme.defaultColor}`}>
                       UNLOCK THE NEW KNOWLEDGE
                     </div>
                     <div className={styles.line}><span></span></div>

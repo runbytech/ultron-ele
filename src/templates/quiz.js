@@ -249,10 +249,9 @@ export default class QuizPage extends React.Component {
 }
 
 
-
 // accept parameter from pageContext
 export const pageQuery = graphql`
-  query QuizBySlug($slug: String!, $tutpath: String!, $catpath: String!) {
+  query PageByQuiz($slug: String!, $tutpath: String!, $catpath: String!) {
     # query test.md
     quiz: markdownRemark(fields: { slug: { eq: $slug } }) {
       frontmatter {

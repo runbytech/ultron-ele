@@ -14,7 +14,7 @@ import TestReptSection from '../sections/testReptSection'
 import CertificateSection from '../sections/certificateSection'
 
 import styles from '../style/profile.module.css'
-
+import theme from '../style/theme.module.css'
 
 
 const FavoritesSection = () => (
@@ -72,22 +72,28 @@ class ProfilePageRC extends React.Component {
       
             <div className={styles.leftPanel}>
               <div className={styles.pcntr} >Personal Center</div>
-              <div className={section==='profile'?styles.pcntrHilt:styles.pcntrNml}
+              <div className={section==='profile'?
+                `${styles.pcntrHilt} ${theme.hiliteLeftBorder}`:styles.pcntrNml}
                 onClick={()=>this.changeSection('profile')}>Profile
               </div>
-              <div className={section==='learningPath'?styles.pcntrHilt:styles.pcntrNml}
+              <div className={section==='learningPath'?
+                `${styles.pcntrHilt} ${theme.hiliteLeftBorder}`:styles.pcntrNml}
                 onClick={()=>this.changeSection('learningPath')}>Learning Path
               </div>
-              <div className={section==='testrept'?styles.pcntrHilt:styles.pcntrNml}
+              <div className={section==='testrept'?
+                `${styles.pcntrHilt} ${theme.hiliteLeftBorder}`:styles.pcntrNml}
                 onClick={()=>this.changeSection('testrept')}>Test Reports
               </div>
-              <div className={section==='certificates'?styles.pcntrHilt:styles.pcntrNml}
+              <div className={section==='certificates'?
+                `${styles.pcntrHilt} ${theme.hiliteLeftBorder}`:styles.pcntrNml}
                 onClick={()=>this.changeSection('certificates')}>Certificates
               </div>
-              <div className={section==='favorites'?styles.pcntrHilt:styles.pcntrNml}
+              <div className={section==='favorites'?
+                `${styles.pcntrHilt} ${theme.hiliteLeftBorder}`:styles.pcntrNml}
                 onClick={()=>this.changeSection('favorites')}>Favorites
               </div>
-              <div className={section==='settings'?styles.pcntrHilt:styles.pcntrNml}
+              <div className={section==='settings'?
+                `${styles.pcntrHilt} ${theme.hiliteLeftBorder}`:styles.pcntrNml}
                 onClick={()=>this.changeSection('settings')}>Settings
               </div>
             </div>

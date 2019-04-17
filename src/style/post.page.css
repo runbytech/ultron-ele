@@ -1,42 +1,65 @@
-article h3 {
+.post {
+  display: flex;
+  padding-top: 62px;
+}
+
+.post .side-panel {
+  width: 20rem;
+  background-color: #FFF;
+  border-left: 1px solid #CCC;
+}
+
+.post .side-panel .fixed {
+  position: fixed;
+  top: 80px;
+  margin-left: 40px;
+}
+
+.post article {
+  margin: 0 auto;
+  max-width: 1100px;
+  width: 100%;
+}
+
+.post article h3 {
   margin-top: 3rem;
 }
 
-article h2 {
+.post article h2 {
   margin-top: 3rem;
 }
 
-article h4 {
+.post article h4 {
   margin-top: 3rem;
 }
 
 /* center the image */
-article p > img {
+.post article p > img {
   max-width: 480px;
   display: block;
   margin: 0 auto;
 }
 
 /* center the image */
-article p > a > img {
+.post article p > a > img {
   max-width: 200px;
   display: block;
   margin: 0 auto;
 }
 
-article p > a {
-  cursor: default;
+.post article p > a {
+  /* cursor: default; */
 }
 
-article ul {
+.post article ul {
   margin-top: 40px;
 }
 
-article li > ul {
+.post article li > ul {
   margin-top: 0;
 }
 
-article .title {
+.post article .title {
   color: #FFF;
   position: absolute;
   top: 80px;
@@ -45,19 +68,23 @@ article .title {
   padding: 20px;
 }
 
-article .date {
+.post article .date {
   color: #FFF;
   position: absolute;
   top: 200px;
   left: 122px;
 }
 
-article .content {
+.post article .content {
   margin-top: 40px;
 }
 
+.post article .content.with-panel {
+  padding: 0 40px;
+}
+
 /* fix anchor navigation hidden by header bar */
-article :target::before {
+.post article :target::before {
   content: "";
   display: block;
   height: 80px; /* fixed header height*/

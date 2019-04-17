@@ -1,5 +1,9 @@
-.greenColor {
+.defaultColor {
   color: #47BA47;
+}
+
+.hiliteLeftBorder {
+  border-left: 2px solid #47BA47;
 }
 
 /* interactive section @2019/01/28*/
@@ -17,7 +21,6 @@ a h1:hover {
 blockquote {
   color: #000;
   border-left: 4px solid #47BA47;
-  /* border-left: 4px solid #BBB; */
   padding-left: 16px;
   margin: 20px 0 20px;
   font-size: 18px;
