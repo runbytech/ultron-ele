@@ -146,7 +146,7 @@ export default class TutorialPage extends React.Component {
                 <div className={styles.unlockgame}>
                   <div className={styles.topline}>
                     <div className={styles.line}><span></span></div>
-                    <div className={styles.unlockTitle+` ${theme.defaultColor}`}>
+                    <div className={styles.unlockTitle+` ${theme.ultronTxtColor}`}>
                       UNLOCK THE NEW KNOWLEDGE
                     </div>
                     <div className={styles.line}><span></span></div>
@@ -162,7 +162,9 @@ export default class TutorialPage extends React.Component {
                     (<div className={styles.confetti}>
                       <Confetti numberOfPieces={200} width='860' height='120' 
                         confettiSource={{x: 0, y: 0, w: 1200, h:0}}/>
-                      <span className={styles.welldone}>Well done, you unlocked the next step!</span>
+                      <span className={styles.welldone+` ${theme.ultronTxtColor}`}>
+                        Well done, you unlocked the next step!
+                      </span>
                     </div>)
                   }
                 </div>

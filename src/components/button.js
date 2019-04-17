@@ -11,13 +11,15 @@ import React from 'react'
 import { Link } from 'gatsby'
 // default style
 import look from '../style/button.module.css'
+import theme from '../style/theme.module.css'
+
 
 export default ({to, styles, children, onClick}) => {
   if(to){
     return   (<Link to={to} className={look.link}>
               {children && 
                 <span 
-                  className={look.bigBtn} 
+                  className={look.bigBtn+` ${theme.ultronBGColor}`} 
                   style={styles}>
                   {children}
                 </span>
@@ -25,7 +27,7 @@ export default ({to, styles, children, onClick}) => {
              </Link>)
   }else{
     return (<button type="button" onClick={onClick} 
-              className={look.btn} style={styles}>
+              className={look.btn+` ${theme.ultronBGColor}`} style={styles}>
               {children}
             </button>)
   }

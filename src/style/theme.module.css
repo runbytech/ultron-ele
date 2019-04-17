@@ -1,8 +1,16 @@
-.defaultColor {
+.ultronTxtColor {
   color: #47BA47;
 }
 
-.hiliteLeftBorder {
+.ultronBorder {
+  border: 2px solid #47BA47;
+}
+
+.ultronBGColor {
+  background-color: #47BA47;
+}
+
+.ultronLeftBorder {
   border-left: 2px solid #47BA47;
 }
 

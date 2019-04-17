@@ -8,6 +8,7 @@
 import React from 'react';
 
 import styles from '../style/qanwsers.module.css'
+import theme from '../style/theme.module.css'
 import yesimg from '../images/yes_green.png'
 
 /**
@@ -23,12 +24,18 @@ const Answer = ({s, q, a, t, b, h}) => {
   return (<>
     {!b &&
       (a?
-        <img className={styles.checkedImg} src={yesimg} alt="checkbox"/>:
+        <img 
+          className={styles.checkedImg+` ${theme.ultronBorder}`} 
+          src={yesimg} alt="checkbox"
+          />:
         <span className={styles.greyCircle}></span>)
     } 
     {b &&
       (h?
-        <img className={styles.checkedImg} src={yesimg} alt="checkbox"/>:
+        <img 
+          className={styles.checkedImg+` ${theme.ultronBorder}`} 
+          src={yesimg} alt="checkbox"
+          />:
         <span className={styles.greyCircle}></span>)
     }
     
