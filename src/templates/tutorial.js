@@ -19,7 +19,6 @@ import { scrollTo, } from '../utils/helper'
 import { saveLearningTrack, getLearningTrackBy, getLearningTracks} from '../utils/cache'
 
 import styles from '../style/tutorial.module.css'
-import theme from '../style/theme.module.css'
 
 
 export default class TutorialPage extends React.Component {
@@ -146,7 +145,7 @@ export default class TutorialPage extends React.Component {
                 <div className={styles.unlockgame}>
                   <div className={styles.topline}>
                     <div className={styles.line}><span></span></div>
-                    <div className={styles.unlockTitle+` ${theme.ultronTxtColor}`}>
+                    <div className={styles.unlockTitle+` ultron-txt-color`}>
                       UNLOCK THE NEW KNOWLEDGE
                     </div>
                     <div className={styles.line}><span></span></div>
@@ -162,7 +161,7 @@ export default class TutorialPage extends React.Component {
                     (<div className={styles.confetti}>
                       <Confetti numberOfPieces={200} width='860' height='120' 
                         confettiSource={{x: 0, y: 0, w: 1200, h:0}}/>
-                      <span className={styles.welldone+` ${theme.ultronTxtColor}`}>
+                      <span className={styles.welldone+` ultron-txt-color`}>
                         Well done, you unlocked the next step!
                       </span>
                     </div>)

@@ -6,4 +6,5 @@
 
 // @2019/02/14
 import './src/style/global.css'
-import './src/style/theme.module.css'
+// theme.module.css -> theme.css @2019/04/18
+import './src/style/theme.css'

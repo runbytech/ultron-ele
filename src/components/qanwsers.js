@@ -8,7 +8,6 @@
 import React from 'react';
 
 import styles from '../style/qanwsers.module.css'
-import theme from '../style/theme.module.css'
 import yesimg from '../images/yes_green.png'
 
 /**
@@ -25,7 +24,7 @@ const Answer = ({s, q, a, t, b, h}) => {
     {!b &&
       (a?
         <img 
-          className={styles.checkedImg+` ${theme.ultronBorder}`} 
+          className={styles.checkedImg+` ultron-border`} 
           src={yesimg} alt="checkbox"
           />:
         <span className={styles.greyCircle}></span>)
@@ -33,7 +32,7 @@ const Answer = ({s, q, a, t, b, h}) => {
     {b &&
       (h?
         <img 
-          className={styles.checkedImg+` ${theme.ultronBorder}`} 
+          className={styles.checkedImg+` ultron-border`} 
           src={yesimg} alt="checkbox"
           />:
         <span className={styles.greyCircle}></span>)

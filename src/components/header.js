@@ -4,9 +4,9 @@ import PropTypes from 'prop-types'
 
 import avatar from '../images/avatar.png'
 import styles from '../style/header.module.css'
-import theme from '../style/theme.module.css'
 
 import { getUser } from '../utils/cache'
+
 
 const ListLink = props => (
   <li className={styles.menuItem}>
@@ -56,7 +56,7 @@ export default class Header extends React.Component {
               <img src={siteLogo} alt="Logo" className={styles.siteLogo}/>
             </NLink>):
             (<h1 style={{ margin: 0, display: `block` }}>
-              <Link to="/" className={styles.siteTitle+` ${theme.ultronTxtColor}`}>
+              <Link to="/" className={styles.siteTitle+` ultron-txt-color`}>
                 {siteTitle}
               </Link>
             </h1>)
