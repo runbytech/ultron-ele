@@ -1,3 +1,7 @@
+/**
+ * generator configuration
+ * @2019/03/??
+ */
 const promptDirectory = require('inquirer-directory');
 const path = require('path');
 
@@ -129,6 +133,33 @@ module.exports = function (plop) {
           templateFile: 'plop-templates/test.md.tpl'
         },
         ()=>`Quiz: ${data.title} Successfully Generated!`
+      ]
+    }
+  });
+
+  // Create page template for main menu of navigation bar @2019/04/19
+  plop.setGenerator('Page-generate', {
+    description: 'create page content file for the navigation bar',
+    prompts: [
+      {
+        type: 'input',
+        name: 'name',
+        message: 'Menu Name: ',
+        validate: function (value) {
+					if ((/.+/).test(value)) { return true; }
+					return 'Menu Name is REQUIRED!!';
+				}
+      }
+    ],
+    actions: data => {
+      data.date = new Date().toISOString();
+      return [
+        {
+          type: 'add',
+          path: '../content/{{dashCase name}}.md',
+          templateFile: 'plop-templates/page.md.tpl'
+        },
+        ()=>`Page: ${data.name} Successfully Generated!`
       ]
     }
   });

@@ -178,7 +178,7 @@ Back to the console which created the category and rerun the generate command:
 
 > $ npm run generate
 
-This time we select the second generator `T-utorial-generate` by Down Arrow Key:
+This time we select the second generator `T-utorial-generate` by pressing `Down Arrow Key` in your keyboard:
 
 ![generate tutorial](/img/generate-tutorial.png)
 
@@ -317,6 +317,10 @@ Note: in the 4th command we add origin ...RobinLi..., here we need to replace Ro
 
 Now that our website is ready to launch, then we use netlify to build and bring it to alive online. Let's have a look at how to do it.
 
+```
+For users in China, netlify service is inaccessable, so, Github Pages is an alternative to netlify, follow the steps after the netlify deployment procedure to publish your ultronele.
+```
+
 In prerequisites phase, you created a netlify account. Now, login your netlify apps: https://app.netlify.com/
 
 ...
@@ -325,7 +329,40 @@ In prerequisites phase, you created a netlify account. Now, login your netlify a
 
 #### Custom navigation menu page
 
-...
+The configuration of menus displayed in navigation bar lies in the `gatsby-config.js` file which is the main entrance of the whole site:
+
+![menu config](/img/menu-config.png)
+
+The `name` property is displayed in navigation bar, the `url` property is corresponding to the `.md` file name directly under the `content` directory:
+
+[![menu page file](/img/menu-page.png)](javascript:void(0))
+
+
+To add or modify your own menu item, just edit the file, and create a new page file using page generator:
+
+> $ npm run generate
+
+Move Down Arrow Key to select `Page-generate` option:
+
+![page generate](/img/generate-page.png)
+
+Press `Enter` key to input page name like this:
+
+![page name input](/img/test-page-input.png)
+
+Then press `Enter` to finish the page completion, you'll get a new template page under the content directory:
+
+[![test page file](/img/test-page-source.png)](javascript:void(0))
+
+
+Now, let's add this new page to navigation bar:
+
+![test page in config](/img/test-in-config.png)
+
+Switch to browser, you'll see the newly added menu item `TEST` at the right side of navbar, click on it, test page content will present to you like this:
+
+![test page content](/img/test-page-show.png)
+
 
 #### Custom website logo
 

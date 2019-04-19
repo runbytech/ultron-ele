@@ -19,6 +19,10 @@ const Layout = ({ children, nofoot, fullwidth }) => (
           siteMetadata {
             title
             logoImg
+            menus {
+              name
+              url
+            }
           }
         }
       }
@@ -27,7 +31,9 @@ const Layout = ({ children, nofoot, fullwidth }) => (
       <div className={styles.background}>
         <Header 
           siteTitle={data.site.siteMetadata.title} 
-          siteLogo={data.site.siteMetadata.logoImg} />
+          siteLogo={data.site.siteMetadata.logoImg} 
+          menus={data.site.siteMetadata.menus}
+          />
         <div className={!!fullwidth? styles.fullWidth:styles.layout}>
           {children}
           {!nofoot && <Footer />}

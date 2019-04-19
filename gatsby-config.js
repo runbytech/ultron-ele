@@ -4,7 +4,14 @@ module.exports = {
     description: `the world's fastest LMS based on Gatsby.`,
     author: `@lwz7512`,
     signiture: `Robin w li`,
-    logoImg:`/img/logo_ultronele.png`
+    logoImg:`/img/logo_ultronele.png`,
+    menus: [
+      {name: 'HOME', url: '/'},
+      {name: 'PRODUCT', url: '/product'},
+      {name: 'USER GUIDE', url: '/userguide'},
+      {name: 'ROADMAP', url: '/roadmap'},
+      {name: 'TEAM', url: '/team'},
+    ]
   },
   plugins: [
     {

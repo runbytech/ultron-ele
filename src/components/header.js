@@ -45,7 +45,7 @@ export default class Header extends React.Component {
 
   render() {
 
-    const { siteTitle, siteLogo } = this.props
+    const { siteTitle, siteLogo, menus } = this.props
 
     return (
       <div className={styles.headerFixed}>
@@ -64,11 +64,10 @@ export default class Header extends React.Component {
           {/** right menu */}
           <div className={styles.rightMenu} >
             <ul style={{ listStyle: `none`, display: `block`, marginBottom: 0, }}>
-              <ListLink to="/">Home</ListLink>
-              <ListLink to="/product/">Product</ListLink>
-              <ListLink to="/userguide/">User Guide</ListLink>
-              <ListLink to="/roadmap/">Roadmap</ListLink>
-              <ListLink to="/team/">Team</ListLink>
+              {
+                menus &&
+                menus.map((m, i) => <ListLink to={m.url} key={i}>{m.name}</ListLink>)
+              }
             </ul>
             <div className={styles.avatarImg}>
               <NLink to="/profile">
