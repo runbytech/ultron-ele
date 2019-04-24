@@ -34,6 +34,8 @@ export default class QuizPage extends React.Component {
   // Each Appearance...
   componentWillMount() {// update state before render
     let user = getUser()
+    if(!user) return //FIXME: null check in build mode @2019/04/24
+
     const pageslug = this.props.pageContext.slug
     const saved = getQuiz(user.userName, pageslug)
     if(saved) this.setState({showQuiz: true, showDone: true})
@@ -146,6 +148,8 @@ export default class QuizPage extends React.Component {
     }
 
     let user = getUser()
+    if(!user) return //FIXME: null check in build mode @2019/04/24
+    
     const pageslug = this.props.pageContext.slug
     const saved = getQuiz(user.userName, pageslug)
     if(!saved) return // do not reset not saved

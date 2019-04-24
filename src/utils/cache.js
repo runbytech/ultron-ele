@@ -42,6 +42,9 @@ const userQuizMap = [
   // retrieve cache first...
   if(Object.keys(userInfoMap).length) return userInfoMap
 
+  // FIXME: check localStorage existence in build mode @2019/04/24
+  if(typeof localStorage === 'undefined') return null
+
    // retrive local storage
    let user = localStorage.getItem('ueUser')
    if(user) {
@@ -71,6 +74,9 @@ export const saveLearningTrack = (slug, title, category, date, status) => {
 }
 
 export const getLearningTracks = () => {
+  // FIXME: check localStorage existence in build mode @2019/04/24
+  if(typeof localStorage === 'undefined') return null
+  
   let saved = JSON.parse(localStorage.getItem('userLearnTracks'))
   if(saved) return saved.reverse()
   return null

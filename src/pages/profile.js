@@ -51,7 +51,7 @@ class ProfilePageRC extends React.Component {
     componentWillMount() {
       const { location, data } = this.props
       // console.log(data)
-      const section = location.state.section
+      const section = location.state?location.state.section:null
       if(section) this.changeSection(section)
     }
 

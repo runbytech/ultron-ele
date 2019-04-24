@@ -34,8 +34,8 @@ const CategoryCard = ({cover, url, isMain, title, type}) => (
 )
 
 const Gallery = ({data}) => {
-
-  lazyQueryGallery()
+  // FIXME: check existence in build mode @2019/04/24
+  if(typeof document !== 'undefined') lazyQueryGallery()
   
   let ctgs = [] // for gallery use
   let tempCates = data.edges
