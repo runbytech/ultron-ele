@@ -12,7 +12,9 @@ UltronEle is a light, fast, simple yet interesting serverless e-learning CMS bas
 
 ## Why do this
 
-...
+* We need a new generation of elearning system
+* We believe that serverless web software is the future and a bright future
+* We choose reactjs tech stack to develop our products
 
 ## Features
 
