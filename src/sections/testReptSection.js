@@ -24,12 +24,16 @@
 
   componentWillMount() {
     let user = getUser()
+    if(!user) return //FIXME: null check in build mode @2019/04/24
+
     const quizs = getUserQuizs(user.userName)
     this.setState({quizs})
   }
 
   deleteQuiz(slug) {
     let user = getUser()
+    if(!user) return //FIXME: null check in build mode @2019/04/24
+
     deleteQuiz(user.userName, slug)
     const quizs = getUserQuizs(user.userName)
     this.setState({quizs})

@@ -29,9 +29,10 @@ export default class CertificateSection extends React.Component {
     const { signiture } = this.props
     // console.log('signiture:', signiture)
     let user = getUser()
+    if(!user) return //FIXME: null check in build mode @2019/04/24
+
     let userFullName = user.fullName?user.fullName:'User Unknown'
     this.setState({userFullName})
-    if(!user) return
 
     const quizs = getUserQuizs(user.userName)
     if(!quizs || (quizs && !quizs.length)) return

@@ -30,14 +30,14 @@ export default class ProfileSection extends React.Component {
 
   componentDidMount() {
     let user = getUser()
-    if(user){
-      this.setState({
-        title: 'Welcome',
-        name : user.userName,
-        email: user.userEmail,
-        fullname: user.fullName?user.fullName:''
-      })
-    }
+    if(!user) return //FIXME: null check in build mode @2019/04/24
+
+    this.setState({
+      title: 'Welcome',
+      name : user.userName,
+      email: user.userEmail,
+      fullname: user.fullName?user.fullName:''
+    })
   }
 
   componentDidUpdate() {
