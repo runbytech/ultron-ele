@@ -69,10 +69,12 @@ Just for a couple of commands, you will have your own LMS, here we go:
 
     Open the `my-default-starter` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
 
-## 🧐 3rd part library included
+## 🧐 important 3rd part library used
 
-* [konva](https://konvajs.org/)
-* [react-confetti](https://github.com/alampros/react-confetti)
+* [konva](https://konvajs.org/) to draw certificate 
+* [react-confetti](https://github.com/alampros/react-confetti) to open bonus
+* [downloadjs](http://danml.com/download.html) to convert dataURL to image file
+* [plop](https://github.com/amwmedia/plop) to generate content by cli
 
 
 ## 🎓 Learning Gatsby
@@ -83,7 +85,11 @@ Looking for more guidance? Full documentation for Gatsby lives [on the website](
 
 - **To dive straight into code samples, head [to our documentation](https://www.gatsbyjs.org/docs/).** In particular, check out the _Guides_, _API Reference_, and _Advanced Tutorials_ sections in the sidebar.
 
-## 💫 Deploy
+## 💫 Quick Deploy
+
+```
+Prerequisites: github account and netlify account required
+```
 
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/runbytech/ultron-ele)
 

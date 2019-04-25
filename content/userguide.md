@@ -323,7 +323,7 @@ For users in China, netlify service is inaccessable, so, Github Pages is an alte
 
 In prerequisites phase, you created a netlify account. Now, login your netlify apps: https://app.netlify.com/
 
-...
+__TO COMPLETE...__
 
 ### Step 5 Custom website config and navigation menu
 
