@@ -143,8 +143,12 @@ export default class LearningPathSection extends Component {
     var lEndY = 0
     var offsetX = 80
     var offsetY = 80
+    
+    if(tracks && !tracks.length) return
+
     tracks.map((t, i) => {
-      // console.log(t)
+      if(!t) return
+
       var color    = this.colorDict[t.status]
       var distance = 120
       var cStartX  = (i===0)?lEndX+offsetX:lEndX

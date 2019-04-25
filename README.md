@@ -5,7 +5,7 @@
   </a>
 </p>
 <h1 align="center">
-  the world’s fastest LMS engine
+  The world’s fastest LMS engine
 </h1>
 
 This is a gatsby starter project used to generate a LMS(learning management system) skeleton site.
