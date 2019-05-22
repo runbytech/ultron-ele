@@ -157,6 +157,7 @@ select {
 button,
 html [type='button'] {
   -webkit-appearance: button;
+  cursor: pointer;
 }
 [type='button']::-moz-focus-inner,
 [type='reset']::-moz-focus-inner,

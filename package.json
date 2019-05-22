@@ -2,10 +2,11 @@
   "name": "ultronele-starter",
   "private": true,
   "description": "A ultron-ele starter to get up and developing the fastest elearning system in the world",
-  "version": "0.1.0",
+  "version": "1.0",
   "author": "lwz7512 <lwz7512@gmail.com>",
   "dependencies": {
     "downloadjs": "^1.4.7",
+    "fs-extra": "^7.0.1",
     "gatsby": "^2.3.27",
     "gatsby-image": "^2.0.40",
     "gatsby-plugin-manifest": "^2.0.29",

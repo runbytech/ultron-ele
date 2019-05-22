@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Ultron-ELE`,
-    description: `the world's fastest LMS based on Gatsby.`,
+    description: `The world's fastest LMS based on Gatsby.`,
     author: `@lwz7512`,
     signiture: `Robin w li`,
     logoImg:`/img/logo_ultronele.png`,
@@ -46,7 +46,7 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/favicon-230.png`, // This path is relative to the root of the site.
       },
     },
     {

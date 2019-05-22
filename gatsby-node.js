@@ -4,9 +4,20 @@
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
+const fs = require('fs-extra')
 const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
 const { fmImagesToRelative } = require('gatsby-remark-relative-images')
+
+
+
+// 0. add public directory clean @2019/01/18, 05/20
+exports.onPreInit = () => {
+  console.log('>>>> pre build...');
+  let folder = './public';
+  // REPLACEMENT: $ gatsby clean
+  // fs.emptyDirSync(folder);
+}
 
 
 // 1. create node first

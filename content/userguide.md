@@ -9,8 +9,8 @@ anchors:
     goto: '#installation'
   - name: Usage Procedures - for Content Builder Role
     goto: '#usage-procedures'
-  - name: Learning Precedures - for Content Learner Role
-    goto: '#learning-precedures'
+  - name: Learning Procedures - for Content Learner Role
+    goto: '#learning-procedures'
   - name: FAQs
     goto: '#faqs'
   - name: Tech Support
@@ -30,7 +30,7 @@ anchors:
   - [Step 4 Deploy website to netlify](#step-4-deploy-website-to-netlify)
   - [Step 5 Custom website config and navigation menu](#step-5-custom-website-config-and-navigation-menu)
   - [Step 6 Update content and new version of Ultronele](#step-6-update-content-and-new-version-of-ultronele)
-- [Learning Precedures - for Content Learner Role](#learning-precedures)
+- [Learning Procedures - for Content Learner Role](#learning-procedures)
 - [FAQs](#faqs)
 - [Tech Support](#tech-support)
 
@@ -96,10 +96,12 @@ Visit [Netlify](https://www.netlify.com/) to sign up a new accout. Netlify is an
 
 ## Usage Procedures
 
+
+As an innovation to the traditional elearning CMS software, we're striving to simplify the process of software deployment and content creation/publication by getting rid of Database, using content generator, automated deployment. Belowing are steps with which how we software works.
+
 ```
 Note: commands used below are in MacOS as default.
 ```
-
 
 ### Step 1 Ultronele starter project download
 
@@ -279,7 +281,7 @@ Let's have a look at what's added in the source file tree?
 
 [![quiz source file](/img/test-in-tutorial.png)](javascript:void(0))
 
-A `test.md` file created at the tutorial directory, when you open the file you'll find it including 4 dummy single choice questions as a start point for your own quiz. In the [Learning Precedures](#learning-precedures) we'll explain where to use this quiz.
+A `test.md` file created at the tutorial directory, when you open the file you'll find it including 4 dummy single choice questions as a start point for your own quiz. In the [Learning Procedures](#learning-procedures) we'll explain where to use this quiz.
 
 ### Step 4 Deploy website to netlify
 
@@ -366,56 +368,126 @@ Switch to browser, you'll see the newly added menu item `TEST` at the right side
 
 #### Custom website logo
 
-...
+Website logo image is an important part for site owner to setup a visual identification and brand. We recommend our user to provide a custom logo image to replace the default one, no more than 2 colors in image, with a dimension of 400x120 pixels, like this:
+
+![logo image](/img/logo_ultronele.png)
+
+To assign a custom website logo:
+
+* put a new well-designed png image into `static/img` folder
+* modify the `logoImg` value in gatsby-config.js file to correspond to your file name
+
+[![logo img def](/img/logoimg_def.png)](javascript:void(0))
+
+
+### Custom website favico
+
+Favico is the shortcut icon for website, so, a concise and eye-catching icon is a must to have. By means of gatsby manifest plugin, what we need to do only is to put a 512x512 pixels image into `src/images`, then, modify the `icon` value in `gatsby-plugin-manifest` section of `gatsby-config.js` file:
+
+[![favico def](/img/favicon_def.png)](javascript:void(0))
+
 
 #### Custom website metadata
 
-...
+Often a website need some static text info to identify itself, here's how the website metadata come. Ultronele use configuration file `gatsby-config.js` to store the `siteMetadata`, which includes website `title`, site owner `author`, cirtificate `signiture`, logo image `logoImg`, as well as navigation menu `logoImg`.
+
+You can feel free to modify the six fields to your intent, once you made a modification to the `siteMetadata` section, switch back to the browser in `develop` mode, you'll see the change immediately, for gatsby reflects the config change in realtime.
+
+```
+IF NO change occurs
+
+First, check if your ultronele project is running from: gatsby develop
+Then, ctrl+c to close the server, and restart by: gatsby develop
+```
+
 
 #### Custom website footer
 
-...
+Footer in HOME page can also by changed from the source. It's lies in `src/components/footer.js`, you can modify the company name/url address in the file, redesign your footer style as you wish.
+
 
 #### Custom website theme color
 
-...
+The theme of ultronele use green color by default, this does not mean you cannot change it. If you want to change to another color you need to do the following 3 steps:
+
+* First, make a copy of `src/style/theme.css`, like `src/style/my-theme.css`;
+* Then, replace all the `#47BA47` in my-theme.css to your desired color value;
+* Last, comment the `import './src/style/theme.css'` line in `gatsby-browser.js` and import your my-theme.css;
+
+Final gatsby-browser.js may like this:
+
+![import my theme](/img/import-my-theme.png)
+
 
 ### Step 6 Update content and new version of Ultronele
 
-Use theme?
+For ultronele v1.x, the upcoming new features and bugs fix would update through github. So, if you start use ultronele from v1.0, you'd better do NOT touch anything under `src` directory. Or your local version would conflict with the remote version while execute code merge.
 
-coming soon...
+From v2.x, ultronele will be packaged as an independant theme of Gatsby, since then, you'd focus on your content, and would have a good experience in product upgrade.
 
-## Learning Precedures
+Stay tunned!
 
-...
+## Learning Procedures
 
-### Step 1
+Compared with ultronele setup procedures, usage procedures from a learner's view might be much easier and interesting. Except for the great simplification of ultronele, enjoyment is also the big feature of this product. In each section you're encouraged to answer a question to unlock next section, if you succeed, you'll be rewarded a confetti bonus. Once you completed a quiz, you'll get a certificate of that course.
 
-...
+Let's see how we learn knowledge by fun.
 
-### Step 2
+### Step 1: login
 
-...
+Click on the avatar icon in the right of navigation bar, switch to the `http://localhost:8000/profile`. It's the client side login module to save your username, email and fullname locally.
 
-### Step 3
+### Step 2: select category
 
-...
+Switch back to `HOME` module, select a category from top `Topics and Skills` gallery. For example, you click on the first category `Data Science`, enter the category page, like this:
 
+![category page](/img/category_page.png)
+
+The bottom card list is the courses under this category `Data Science`. Each card can be drilled down to the detail page through `Learn More...`. Right column is the features item which outlines current category.
+
+### Step 3: complete one section
+
+While you complete one section of each course/tutorial, you'd be asked to answer a 4 options question to unlock the new knowledge. When you selected the right option, you'll unlock a confetti bonus, and the new section content.
+
+![unlock new step](/img/unlock_new_step.png)
+
+```
+NOTE:
+
+This unlock/bonus idea is borrowed from https://www.howtographql.com/
+```
+
+### Step 4: complete one course/tutorial
+
+Reading through the content of a course is relatively easy to do, how do you convince yourself understood the concepts and principles or best practices in the content? Ultronele offers a configurable quiz after the course content to help reader better understand those of knowledge points.
+
+Take [Business](/category/business/) category for example, both `Business essence` and `Entrepreneurship` have `TAKE QUIZ` entrance.
+
+[![take quiz entrance](/img/take_quiz_entrance.png)](javascript:void(0))
+
+In [Quiz for Business Essence](/category/business/business-essence/test/) page, click on `Yes, Start` button to begin your quiz, while finished, click on `Done, to check results` button, if you successfully answered > 60% questions, you'll win a downloadable certicficate which may like this:
+
+![certificate file](/img/certificate.png)
+
+That marks you scuccessfully completed the course! For more your learning report/path, please visit [profile](/profile) module.
 
 ## FAQs
 
-Q: ...?
+Q: What purpose is this software used for?
 
-A: ...
+A: This software is designed for tutors, educational institutes, small enterprises which have little technical resources or limited budget, wish to own a easy-use training platform.
 
-Q: ...?
+Q: Can I use it for free?
 
-A: ...
+A: Absolutely, if you're teacher/students/NGO members, you'd get full tech support totally with no fee. Ultronele's mission is to help as manay people as possible to access knowledge in the easiest way and the lowest cost.
 
-Q: ...?
+Q: What if I made some custom development and want to sell to my client?
 
-A: ...
+A: It's OK, this product use MIT license, so you should include [LICENSE](https://github.com/runbytech/ultron-ele/blob/master/LICENSE) file of this product.
+
+Q: Our company need commercial support, can you provide?
+
+A: Sure, we recommend you purchase our Premium membership, and if you have more requirements we can talk in depth.
 
 
 ## Tech Support

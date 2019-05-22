@@ -42,17 +42,17 @@
 
 /* center the image */
 .post article p > a > img {
-  max-width: 200px;
+  max-width: 240px;
   display: block;
   margin: 0 auto;
 }
 
 .post article p > a {
-  /* cursor: default; */
+  cursor: default;
 }
 
 .post article ul {
-  margin-top: 40px;
+  margin-top: 30px;
 }
 
 .post article li > ul {
