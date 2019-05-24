@@ -7,9 +7,11 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
 import Image from 'gatsby-image'
+
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import '../style/post.page.css'
+import * as minibus from '../utils/minibus'
 
 
 export default class PostPage extends React.Component {
@@ -19,13 +21,13 @@ export default class PostPage extends React.Component {
   
     this.state = {
        sidePanelDisplay: false,
-       hasAnchors: false
+       hasAnchors: false  // no anchors naviation in post page
     };
     this.scrollListener = this.scrollListener.bind(this)
   };
 
   componentWillMount() {
-    const {data, pageContext} = this.props
+    const { data,} = this.props
     const anchors = data.markdownRemark.frontmatter.anchors
     if(anchors) this.setState({hasAnchors:true})
   }
@@ -42,6 +44,14 @@ export default class PostPage extends React.Component {
   }
   
   componentDidMount() {
+    const {data, pageContext, location} = this.props
+    
+    // lazy notfiy the header to update active menu @2019/05/23
+    setTimeout(()=>{
+      // console.log('dispatch event..', new Date().getTime())
+      minibus.dispatch(minibus.EVT_LOCATION_CHANGE, {path: location.pathname})
+    }, 0)
+
     if(!this.state.hasAnchors) return
     // add window scroll event listening
     window.addEventListener('scroll', this.scrollListener);
@@ -49,16 +59,15 @@ export default class PostPage extends React.Component {
   }
 
   componentWillUnmount() {
+    // console.log('post will unmount...')
     // remove window scroll event listening
     if(this.scrollEvtRegistered)
       window.removeEventListener('scroll', this.scrollListener);
   }
 
-
   render() {
 
-    const {data, pageContext} = this.props
-
+    const {data, pageContext, location} = this.props
     const anchors = data.markdownRemark.frontmatter.anchors
 
     return (

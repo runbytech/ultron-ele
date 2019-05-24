@@ -8,6 +8,7 @@ module.exports = {
     menus: [
       {name: 'HOME', url: '/'},
       {name: 'PRODUCT', url: '/product'},
+      {name: 'SERVICE', url: '/service'},
       {name: 'USER GUIDE', url: '/userguide'},
       {name: 'ROADMAP', url: '/roadmap'},
       {name: 'TEAM', url: '/team'},

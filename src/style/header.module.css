@@ -26,14 +26,12 @@
   margin-bottom: 0;
 }
 
-
-.menuItem {
-  /* display: `inline-block`, margin: `1em 1em`, fontWeight: 500 */
-  display: inline-block;
-  margin: 1em 1em;
-  font-weight: 500;
-  /* font-family: 'Pinyon Script'; */
-  /* font-family: 'Bitter Bold'; */
+.menuLink {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+  text-align: center;
+  line-height: 1.85; /* important set text hight */
 }
 
 .rightMenu {

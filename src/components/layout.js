@@ -7,7 +7,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'
 
-import Header from './header'
+// import Header from './header'
+import Header from './headerFC'
 import Footer from './footer'
 import styles from '../style/layout.module.css'
 

@@ -1,6 +1,7 @@
 .post {
   display: flex;
   padding-top: 62px;
+  min-height: 74vh;
 }
 
 .post .side-panel {
@@ -90,3 +91,42 @@
   height: 80px; /* fixed header height*/
   margin: -80px 0 0; /* negative fixed header height */
 }
+
+.post table {
+  border-collapse: collapse;
+}
+
+.post table td,
+.post table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.post table tr:nth-child(even){
+  background-color: #ffffff;
+}
+
+.post table tr:hover {
+  background-color: #ddd;
+}
+
+.post table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  /* background-color: #4CAF50; */
+  background-color: #47BA47;
+  color: white;
+}
+
+.post table td:first-child {
+  background-color: #C7C7C7;
+  width: 200px;
+  border-right: 1px solid #999;
+  color: #333;
+}
+
+.post table th:first-child {
+  width: 150px;
+}
+

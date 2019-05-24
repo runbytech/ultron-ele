@@ -3,7 +3,7 @@
  * 
  * @2019/04/17
  */
-import React from "react"
+import React, { useState, useEffect }  from "react"
 
 import { Link, graphql } from 'gatsby'
 import Image from 'gatsby-image'
@@ -13,6 +13,8 @@ import Container from '../components/container'
 import SEO from '../components/seo'
 
 import styles from '../style/user-css-modules.module.css'
+import * as minibus from '../utils/minibus'
+
 
 const User = props => (
   <div className={styles.user}>
@@ -30,6 +32,10 @@ const User = props => (
 const UsersPage = ({location, data, pageContxt}) => {
   
   const {html, frontmatter:fm } = data.markdownRemark
+
+  useEffect(() => {
+    minibus.dispatch(minibus.EVT_LOCATION_CHANGE, {path: location.pathname})
+  })
 
   return (
     <Layout>

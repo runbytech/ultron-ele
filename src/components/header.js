@@ -6,11 +6,12 @@ import avatar from '../images/avatar.png'
 import styles from '../style/header.module.css'
 
 import { getUser } from '../utils/cache'
+import * as minibus from '../utils/minibus'
 
 
 const ListLink = props => (
-  <li className={styles.menuItem}>
-    <Link to={props.to} style={{textDecoration: `none`, lineHeight: .9 }} >
+  <li className={`nav-menu-item ${props.active?'active':''}`}>
+    <Link to={props.to} className={styles.menuLink} >
       {props.children}
     </Link>
   </li>
@@ -29,19 +30,26 @@ export default class Header extends React.Component {
     super(props)
   
     this.state = {
-       name: ''
+       name: '', // username
+       path: '/', // current page path
     };
   };
 
-  componentDidMount() {
-    let user = getUser()
-    if(user){
-      this.setState({
-        name : user.userName
-      })
-    }
+  // got the current page, active the menu style
+  locationChangeHandler = pathObj => {
+    this.setState({path: pathObj.path})
   }
 
+  componentDidMount() {
+    minibus.addEventListener(minibus.EVT_LOCATION_CHANGE, this.locationChangeHandler)
+
+    let user = getUser()
+    if(user) this.setState({name : user.userName})
+  }
+
+  componentWillUnmount() {
+    minibus.removeEventListener(minibus.EVT_LOCATION_CHANGE, this.locationChangeHandler)
+  }
 
   render() {
 
@@ -63,10 +71,18 @@ export default class Header extends React.Component {
           }
           {/** right menu */}
           <div className={styles.rightMenu} >
-            <ul style={{ listStyle: `none`, display: `block`, marginBottom: 0, }}>
+            <ul style={{ listStyle: `none`, display: `flex`, marginBottom: 0, }}>
               {
                 menus &&
-                menus.map((m, i) => <ListLink to={m.url} key={i}>{m.name}</ListLink>)
+                menus.map(
+                  (m, i) => <ListLink 
+                              to={m.url} 
+                              key={i} 
+                              active={m.url==this.state.path}
+                              >
+                              {m.name}
+                            </ListLink>
+                )
               }
             </ul>
             <div className={styles.avatarImg}>
@@ -86,13 +102,4 @@ export default class Header extends React.Component {
     )
   }
   
-
-}
-
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
-
-Header.defaultProps = {
-  siteTitle: ``,
 }
