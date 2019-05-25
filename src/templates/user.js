@@ -13,7 +13,6 @@ import Container from '../components/container'
 import SEO from '../components/seo'
 
 import styles from '../style/user-css-modules.module.css'
-import * as minibus from '../utils/minibus'
 
 
 const User = props => (
@@ -32,10 +31,6 @@ const User = props => (
 const UsersPage = ({location, data, pageContxt}) => {
   
   const {html, frontmatter:fm } = data.markdownRemark
-
-  useEffect(() => {
-    minibus.dispatch(minibus.EVT_LOCATION_CHANGE, {path: location.pathname})
-  })
 
   return (
     <Layout>

@@ -5,37 +5,53 @@
  * @2019/04/18
 */
 
+/* add color reference @2019/05/24 */
+:root {
+
+  --primary: #47BA47;
+  /* other options */
+  --cool: #009AD6;
+  --warm: #FF4040;
+  --pink: #FB2193;
+  --orange: #F85E20;
+  --purple: #9B30FF;
+  /* its a customer theme referenced in user guide */
+  --mytheme: #7A67EE;
+
+  --currentTheme: var(--primary);
+}
+
 .ultron-txt-color {
-  color: #47BA47;
+  color: var(--currentTheme);
 }
 
 .ultron-border {
-  border: 2px solid #47BA47;
+  border: 2px solid var(--currentTheme);
 }
 
 .ultron-bg-color {
-  background-color: #47BA47;
+  background-color: var(--currentTheme);
 }
 
 .ultron-left-border {
-  border-left: 2px solid #47BA47;
+  border-left: 2px solid var(--currentTheme);
 }
 
 /* interactive section @2019/01/28*/
 a:hover {
-  color: #47BA47;
+  color: var(--currentTheme);
 }
 
 a strong:hover,
 a h3:hover, 
 a h2:hover, 
 a h1:hover {
-  color: #47BA47;
+  color: var(--currentTheme);
 }
 
 blockquote {
   color: #000;
-  border-left: 4px solid #47BA47;
+  border-left: 4px solid var(--currentTheme);
   padding-left: 16px;
   margin: 20px 0 20px;
   font-size: 18px;
@@ -51,7 +67,7 @@ blockquote {
 }
 
 .nav-menu-item.active::before {
-  background: #47BA47;
+  background: var(--currentTheme);
   content: '';
   height: 2px;
   top: 0px;

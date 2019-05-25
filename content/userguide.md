@@ -1,7 +1,7 @@
 ---
 title: UltronEle User Guide
 date: 2019-03-20
-cover: /img/postbg2.png
+cover: /img/postbg7.png
 anchors:
   - name: Prerequisites
     goto: '#prerequisites'
@@ -408,16 +408,11 @@ Footer in HOME page can also by changed from the source. It's lies in `src/compo
 
 #### Custom website theme color
 
-The theme of ultronele use green color by default, this does not mean you cannot change it. If you want to change to another color you need to do the following 3 steps:
+Ultronele use green color as primary theme by default, this does not mean you cannot change it. If you want to change to another color you need to do the following 3 steps:
 
-* First, make a copy of `src/style/theme.css`, like `src/style/my-theme.css`;
-* Then, replace all the `#47BA47` in my-theme.css to your desired color value;
-* Last, comment the `import './src/style/theme.css'` line in `gatsby-browser.js` and import your my-theme.css;
-
-Final gatsby-browser.js may like this:
-
-![import my theme](/img/import-my-theme.png)
-
+* First, open `src/style/theme.css`, find `--currentTheme`, as you see it use `--primary` color;
+* Then, if you want to try other theme, like `--cool` theme, just replace the `var(--primary)` to `var(--cool)`;
+* Last, if the built-in themes still cannot meet your desire, add your theme for example `--mytheme: #7A67EE`, then fill into the var() like: `var(--mytheme)`;
 
 ### Step 6 Update content and new version of Ultronele
 
@@ -497,5 +492,11 @@ Email: lwz7512@gmail.com, response in 24hrs
 
 Twitter: https://twitter.com/runbytech, response in 6hrs
 
-Premium member: response immediately
+WhatsApp: +1 (902) 237-7065
 
+Mobile Phone: +1 (902) 237-7065
+
+
+## Credits
+
+Photo by Daria Nepriakhina on Unsplash

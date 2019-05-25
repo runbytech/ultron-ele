@@ -11,15 +11,10 @@ import Layout from '../components/layout'
 import SEO from '../components/seo'
 import Gallery from '../components/gallery'
 import Tutorials from '../components/tutorials'
-import * as minibus from '../utils/minibus'
 
 const IndexPage = ({data, location}) => { 
 
   const { catedocs, tutorials } = data
-
-  useEffect(() => {
-    minibus.dispatch(minibus.EVT_LOCATION_CHANGE, {path: location.pathname})
-  })
 
   return (
     <Layout>

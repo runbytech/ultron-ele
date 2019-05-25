@@ -1,3 +1,7 @@
+/**
+ * Not in use for the replacement of headerFC
+ * @2019/05/24 
+ */
 import React from 'react'
 import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
