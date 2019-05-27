@@ -3,8 +3,8 @@ title: About Us
 date: 2019-04-16
 template: src/templates/user.js
 users:
-  - username: Jian Qi
-    avatar: /img/team-jian.png
+  - username: Thomas Zhang
+    avatar: /img/thomas_zhang.png
     excerpt: Product Manager, love taking adventure, extrem sports.
   - username: Ring Hao
     avatar: /img/team-hao.png
