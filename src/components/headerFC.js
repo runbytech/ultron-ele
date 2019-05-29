@@ -1,5 +1,8 @@
 /**
- * header component function use hook
+ * header component FunCtion use hook
+ * NO responsive layout support, and
+ * NOT in use for useEffect not convenient to listen event
+ * 
  * @2019/05/23
  */
 

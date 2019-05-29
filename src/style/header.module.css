@@ -31,7 +31,7 @@
   width: 100%;
   text-decoration: none;
   text-align: center;
-  line-height: 1.85; /* important set text hight */
+  line-height: 1.85;
 }
 
 .rightMenu {
@@ -41,8 +41,8 @@
 .avatarImg {
   display: flex;
   align-items: center;
-  margin-left: 2em;
-  margin-right: 2em;
+  /* margin-left: 2em;
+  margin-right: 2em; */
 }
 
 .avatarImg img {

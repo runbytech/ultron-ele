@@ -69,7 +69,7 @@ const Gallery = ({data}) => {
                   isMain={false} 
                   url={ctgs[1].node.fields.slug}
                   cover={ctgs[1].node.frontmatter.cover}
-                  title={ctgs[1].node.frontmatter.category} type="ds"/>
+                  title={ctgs[1].node.frontmatter.category} />
             }
           </div>
           <div className={styles.cateColumnRow}>
@@ -78,7 +78,7 @@ const Gallery = ({data}) => {
                   isMain={false} 
                   url={ctgs[2].node.fields.slug}
                   cover={ctgs[2].node.frontmatter.cover}
-                  title={ctgs[2].node.frontmatter.category} type="ds"/>
+                  title={ctgs[2].node.frontmatter.category} />
             }
           </div>
         </div>
@@ -90,7 +90,7 @@ const Gallery = ({data}) => {
                   isMain={false} 
                   url={ctgs[3].node.fields.slug}
                   cover={ctgs[3].node.frontmatter.cover}
-                  title={ctgs[3].node.frontmatter.category} type="ds"/>
+                  title={ctgs[3].node.frontmatter.category} />
             }
           </div>
           <div className={styles.cateColumnRow}>
@@ -99,7 +99,7 @@ const Gallery = ({data}) => {
                   isMain={false} 
                   url={ctgs[4].node.fields.slug}
                   cover={ctgs[4].node.frontmatter.cover}
-                  title={ctgs[4].node.frontmatter.category} type="ds"/>
+                  title={ctgs[4].node.frontmatter.category} />
             }
           </div>
         </div>

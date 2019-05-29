@@ -10,22 +10,39 @@ import { graphql } from 'gatsby'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import Gallery from '../components/gallery'
-import Tutorials from '../components/tutorials'
+import Tutorials, { TutorialList } from '../components/tutorials'
+import Swiper from '../components/swiper'
+
 
 const IndexPage = ({data, location}) => { 
 
   const { catedocs, tutorials } = data
-
+  // responsive layout by media query @2019/05/28
+  const con = "(max-width: 480px)"
+  const mq = (typeof window != 'undefined')?window.matchMedia(con):null
+  if(mq) mq.addListener(x => setMobile(x.matches))
+  // console.log(mq)
+  const [mobile, setMobile] = useState(mq?mq.matches:false)
+  console.log(tutorials)
+  
   return (
     <Layout>
       <SEO title="Home" keywords={[`gatsby`, `elms`, `elearning`]} />
       
-      <h3 style={{paddingTop: `1.45rem`}}>Topics and Skills</h3>
-      {/** category galery */}
-      <Gallery data={catedocs} />
-      {/** latest tutorials */}
-      <h3>Start your journey</h3>
-      <Tutorials data={tutorials} />
+      {!mobile &&
+        <>
+          <h3 style={{paddingTop: `1.45rem`}}>Topics and Skills</h3>
+          <Gallery data={catedocs} />
+          <h3>Start your journey</h3>
+          <Tutorials data={tutorials} />
+        </>
+      }
+      {mobile &&
+        <>
+          <Swiper data={catedocs} />
+          <TutorialList data={tutorials} />
+        </>
+      }
 
     </Layout>
   )
@@ -65,8 +82,10 @@ export const IndexQuery = graphql`
 
     # query latest tutorials files
     tutorials: allMarkdownRemark(
+      limit: 20
       filter: {frontmatter: {title: {ne: ""}, tutorial: {ne: null}}},
-      sort: { fields: [frontmatter___date], order: DESC }) {
+      sort: { fields: [frontmatter___date], order: DESC }
+    ) {
         edges {
           node {
             fields {

@@ -8,6 +8,8 @@
 import './src/style/global.css'
 // theme.module.css -> theme.css @2019/04/18
 import './src/style/theme.css'
+// add mobile screen support @2019/05/27
+import './src/style/responsive.css'
 
 import { lazyMiniBusForComp, lazyMiniBusForBrwsr } from './src/hooks/useMiniBus'
 

@@ -35,3 +35,9 @@ button:active, .btn:active {
   color: #888;
   background-color: #1d953f;
 }
+
+.transParentBtn {
+  color: #FFF;
+  background: transparent;
+  border: none;
+}

@@ -29,6 +29,8 @@
     "react-confetti": "^2.3.0",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.0",
+    "react-swipe": "^6.0.4",
+    "swipe-js-iso": "^2.1.5",
     "video-react": "^0.13.1"
   },
   "keywords": [

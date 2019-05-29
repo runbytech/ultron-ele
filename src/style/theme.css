@@ -57,20 +57,7 @@ blockquote {
   font-size: 18px;
 }
 
-.nav-menu-item {
-  /* display: inline-block; */
-  display: list-item;
-  margin: 1em 10px 1em;
-  font-weight: 500;
-  width: 100px;
-  text-align: -webkit-match-parent;
-}
-
-.nav-menu-item.active::before {
-  background: var(--currentTheme);
-  content: '';
-  height: 2px;
-  top: 0px;
-  position: absolute;
-  width: 100px;
+.carousel {
+  width: 100%;
+  min-height: 150px;
 }

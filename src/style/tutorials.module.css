@@ -15,12 +15,12 @@
 .tutHeadCard {
   display: flex;
   flex-direction: column;
-  border: 1px solid #BBBBBB;
+  border-bottom: 1px solid #EEE;
   width: 100%;
-  height: 160px;
-  max-height: 180px;
+  max-height: 220px;
   min-height: 160px;
   overflow: hidden;
+  margin-top: 6px;
 }
 
 .tutHeadImg {
@@ -29,7 +29,7 @@
 }
 
 .tutHeadFooter {
-  height: 60px;
+  height: 70px;
   background-color: #FFF;
   padding: 4px;
 }
@@ -38,8 +38,14 @@
   padding: 2px 6px 2px 6px;
   color: #333;
   font-weight: 500;
-  margin-bottom: 0;
-  font-size: 16px;
+  margin-bottom: 2px;
+  font-size: 1.1em;
   line-height: 1.5;
-  height: 50px;
+}
+
+.tutHeadDate {
+  margin-bottom: 0;
+  font-size: '.8em';
+  color: #888;
+  padding-left: 6px;
 }

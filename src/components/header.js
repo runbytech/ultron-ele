@@ -15,14 +15,18 @@ import * as minibus from '../utils/minibus'
 
 const ListLink = props => (
   <li className={`nav-menu-item ${props.active?'active':''}`}>
-    <Link to={props.to} className={styles.menuLink} >
+    <Link to={props.to} className={'menu-link-close'} >
       {props.children}
     </Link>
   </li>
 )
 // fixed version of link for N-ormal height @2019/01/29
 const NLink = props => (
-  <Link to={props.to} style={{textDecoration: `none`, lineHeight: .9}} >
+  <Link 
+    to={props.to} 
+    className={props.className}
+    style={{textDecoration: `none`, lineHeight: .9}}
+    >
     {props.children}
   </Link>
 )
@@ -36,12 +40,17 @@ export default class Header extends React.Component {
     this.state = {
        name: '', // username
        path: '/', // current page path
+       menuclose: true,
     };
   };
 
   // got the current page, active the menu style
   locationChangeHandler = pathObj => {
     this.setState({path: pathObj.path})
+  }
+
+  menulistCloseHandler = () => {
+    this.setState({menuclose: !this.state.menuclose})
   }
 
   componentDidMount() {
@@ -60,7 +69,7 @@ export default class Header extends React.Component {
     const { siteTitle, siteLogo, menus } = this.props
 
     return (
-      <div className={styles.headerFixed}>
+      <header className={styles.headerFixed}>
         <div className={styles.headerBar}>
           {/** left logo */}
           {siteTitle && siteLogo ?
@@ -75,34 +84,40 @@ export default class Header extends React.Component {
           }
           {/** right menu */}
           <div className={styles.rightMenu} >
-            <ul style={{ listStyle: `none`, display: `flex`, marginBottom: 0, }}>
+            <ul className={`main-menus ${this.state.menuclose?'close':'open'}`}>
               {
                 menus &&
                 menus.map(
                   (m, i) => <ListLink 
                               to={m.url} 
                               key={i} 
-                              active={m.url==this.state.path}
+                              active={m.url==this.state.path}                              
                               >
                               {m.name}
                             </ListLink>
                 )
               }
+              <ListLink to='/profile'>PROFILE</ListLink>
             </ul>
-            <div className={styles.avatarImg}>
-              <NLink to="/profile">
+            <div className={`${styles.avatarImg} main-avatar-margin`}>
+              <NLink to="/profile" className={`main-menu-avatar`}>
                 {this.state.name?
-                  <span>
+                  <span className="circle">
                     {this.state.name.substr(0,1).toUpperCase()}
                   </span>:
                   <img src={avatar} alt="avatar"/>
                 }
               </NLink>
+              <button className={`main-menu-expander`} onClick={this.menulistCloseHandler}>
+                <span className={`icon-bar`}></span>
+                <span className={`icon-bar`}></span>
+                <span className={`icon-bar`}></span>
+              </button>
             </div>
           </div>
-          
+
         </div>
-      </div>
+      </header>
     )
   }
   

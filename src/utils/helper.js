@@ -25,7 +25,6 @@ export const groupTutorials = edges => {
       slug    : tutorialDict[title][0].node.fields.slug,
       date    : tutorialDict[title][0].node.frontmatter.date,
       cover   : tutorialDict[title][0].node.frontmatter.cover,
-      tags    : tutorialDict[title][0].node.frontmatter.tags,
       tutori  : title, 
       sections: tutorialDict[title]
     }))

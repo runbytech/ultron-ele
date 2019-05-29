@@ -12,17 +12,18 @@ import tstyle from '../style/timeline.module.css'
 import { groupTutorials, } from '../utils/helper'
 
 
-// TODO, default to point to the first section of the tutorial
-const TutHeadCard = ({cover, tutorial, path}) => (
+// Default to point to the first section of the tutorial
+const TutHeadCard = ({cover, tutorial, path, date}) => (
   <div className={styles.tutHeadCard}>
-    <Image fluid={cover.childImageSharp.fluid}/>
-    <div className={styles.tutHeadFooter}>
-      <Link to={path} style={{textDecoration: `none`, display: `block`}}>
+    <Link to={path} style={{textDecoration: `none`, display: `block`}}>
+      <Image fluid={cover.childImageSharp.fluid}/>
+      <div className={styles.tutHeadFooter}>
         <h3 className={styles.tutHeadTitle}>
           {tutorial}
         </h3>
-      </Link>
-    </div>
+        <p className={styles.tutHeadDate}>{date}</p>
+      </div>
+    </Link>
   </div>
 )
 
@@ -33,13 +34,12 @@ const Step = ({title, subtitle}) => (
       <br/>
       {subtitle}
     </p>
-  </li> 
+  </li>
 )
 
 const TutStepLine = ({sections}) => {
-  // console.log(sections);
 
-  return <ul className={tstyle.timeline}>
+  return (<ul className={tstyle.timeline}>
           {sections && 
             sections.map(
               node => 
@@ -47,9 +47,30 @@ const TutStepLine = ({sections}) => {
                   key={node.node.fields.slug}
                   title={node.node.frontmatter.title}
                   subtitle={node.node.frontmatter.date}
-                  />
+                />
             )}
-         </ul>
+         </ul>)
+}
+
+// latest ten tutorials @2019/05/29
+export const TutorialList = ({data}) => {
+  const groups = groupTutorials(data.edges)
+  
+  return (
+    <div style={{display:'flex', minHeight:'400px', flexDirection:'column', marginTop: '10px'}}>
+      {
+        groups.map(
+          (o, i) => 
+            <TutHeadCard key={i} 
+              cover={o.cover}
+              tutorial={o.tutori}
+              path={o.slug}
+              date={o.date}
+            />
+        )
+      }  
+    </div>
+  )
 }
 
 
@@ -58,9 +79,9 @@ const Tutorials = ({data}) => {
   
   const fourBlank = Array(4).fill(false)
   const groups = groupTutorials(data.edges)
-  const fourLatest = groups.slice(0, 3)
-  fourLatest.map((e,i) => fourBlank[i] = e)  
-  // console.log(fourBlank)
+
+  const fourLatest = groups.slice(0, 4)
+  fourLatest.map((e,i) => fourBlank[i] = e)
 
   return (
     <div className={styles.tutorialsColumn}>
@@ -73,6 +94,7 @@ const Tutorials = ({data}) => {
                 cover={o.cover}
                 tutorial={o.tutori}
                 path={o.slug}
+                date={o.date}
               />
               <TutStepLine sections={o.sections} />
             </>)
