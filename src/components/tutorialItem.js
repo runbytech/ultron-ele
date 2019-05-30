@@ -8,15 +8,13 @@ import Image from 'gatsby-image'
 import look from '../style/tutitem.module.css'
 
 const TutorialItem = ({coverImg, title, excerpt, date, slug, tags, category}) => (
-  <div className={look.tutoitem}>
-    <div className={look.leftImage}>
-      <Image 
-        fluid={coverImg.childImageSharp.fluid} 
-        />
+  <div className={`${look.tutoitem} tuto-item-resp`}>
+    <div className={`${look.leftImage} left-image-resp`}>
+      <Image fluid={coverImg.childImageSharp.fluid} />
       <div className={look.coverOnBotm}></div>
       <div className={look.coverText}>{date}</div>
     </div>
-    <div className={look.rightIntro}>
+    <div className={`${look.rightIntro} right-intro-resp`}>
       <h4 className={look.tutoTitle}>{title}</h4>
       <p className={look.excerpt}>
         {excerpt}
@@ -32,7 +30,7 @@ const TutorialItem = ({coverImg, title, excerpt, date, slug, tags, category}) =>
             )
           }
         </div>
-        <div className={look.tutoFooterMore}>
+        <div className={`${look.tutoFooterMore} visible`}>
           <Link to={slug} state={{category}}>Learn More...</Link>
         </div>
       </div>

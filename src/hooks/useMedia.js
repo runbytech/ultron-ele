@@ -10,10 +10,11 @@
     // Default column count
     2
   );
- * currently not used @2019/05/28
+ * currently NOT used @2019/05/28
  */
+import { useState, useEffect } from 'react'
 
- export default function useMedia(queries, values, defaultValue) {
+export default function useMedia(queries, values, defaultValue) {
   // Array containing a media query list for each query
   const mediaQueryLists = queries.map(q => window.matchMedia(q));
 

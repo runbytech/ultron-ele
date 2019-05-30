@@ -1,6 +1,12 @@
 /**
- * Not in use for the replacement of headerFC
+ * First Created 
+ * @2019/01/27
+ * 
+ * add event listener to the page path change
  * @2019/05/24 
+ * 
+ * add responsive support for mobile screen
+ * @2019/05/27
  */
 import React from 'react'
 import { Link } from 'gatsby'

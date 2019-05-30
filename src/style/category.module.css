@@ -35,11 +35,14 @@
 
 .rightColumn {
   width: 300px;
+  margin-left: 20px;
 }
 
 .sectionHead {
-  /* font-weight: 400; */
-  margin: 30px auto;
+  font-weight: 500;
+  /* margin: 30px auto; */
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .sectionIntro {
@@ -54,4 +57,11 @@
 code { 
   background-color: #DDD;
   color: #000;
+}
+
+.backBtn {
+  display: block;
+  text-decoration: none;
+  margin: 20px auto 0 20px;
+  color: var(--currentTheme);
 }

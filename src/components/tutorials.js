@@ -1,7 +1,9 @@
 /**
  * the latest tutorials in homepage
- * 
  * @2019/02/01
+ * 
+ * add responsive layout support
+ * @2019/05/30
  */
 import React from 'react'
 import { Link } from 'gatsby'

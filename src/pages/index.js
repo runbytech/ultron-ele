@@ -12,18 +12,13 @@ import SEO from '../components/seo'
 import Gallery from '../components/gallery'
 import Tutorials, { TutorialList } from '../components/tutorials'
 import Swiper from '../components/swiper'
-
+import useMedia480 from '../hooks/useMedia480'
 
 const IndexPage = ({data, location}) => { 
 
   const { catedocs, tutorials } = data
   // responsive layout by media query @2019/05/28
-  const con = "(max-width: 480px)"
-  const mq = (typeof window != 'undefined')?window.matchMedia(con):null
-  if(mq) mq.addListener(x => setMobile(x.matches))
-  // console.log(mq)
-  const [mobile, setMobile] = useState(mq?mq.matches:false)
-  console.log(tutorials)
+  const mobile = useMedia480()
   
   return (
     <Layout>

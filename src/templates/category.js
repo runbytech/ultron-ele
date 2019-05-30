@@ -3,6 +3,9 @@
  * and the tutorials in this category
  * 
  * @2019/02/21
+ * 
+ * add responsive layout support
+ * @2019/05/30
  */
 import React from 'react'
 import { Link, graphql } from 'gatsby'
@@ -12,65 +15,98 @@ import SEO from '../components/seo'
 import BlurBannerImage from '../components/blurBanner'
 import TutorialItem from '../components/tutorialItem'
 import FeaturesPanel from '../components/featuresPanel'
-// import { getCategory, } from '../utils/cache'
 import { groupTutorials, } from '../utils/helper'
 
 import styles from '../style/category.module.css'
+import useMedia480 from '../hooks/useMedia480'
 
+
+const TI = ({t, i, fm}) => {
+  return (
+    <TutorialItem key={i}
+      slug={t.slug}
+      coverImg={t.cover}
+      date={t.date}
+      title={t.tutori}
+      tags={t.tags}
+      excerpt={t.sections[0].node.excerpt}
+      category={fm.category}
+    />
+  )
+}
+
+const LinkableTI = ({mobile, t, i, fm}) => {
+
+  if(!mobile) return <TI t={t} i={i} fm={fm}/>
+  if(mobile) return (
+    <Link to={t.slug} style={{textDecoration: 'none'}}>
+      <TI t={t} i={i} fm={fm}/>
+    </Link>
+  )
+
+}
 
 const CategoryPage = ({location, data, pageContxt}) => {
 
   const {frontmatter:fm, html:intro} = data.catdef
   const tutorials = data.tutorials?data.tutorials.edges:null
   const grouptuts = tutorials?groupTutorials(tutorials):null
-  const pathname = location.pathname
-  
+  const mobile = useMedia480()
 
   return (
     <Layout>
       <SEO title={fm.category} />
-      
-      <BlurBannerImage src={fm.cover.childImageSharp.fluid.src}>
-        <h2 className={styles.category}>
-          {fm.category}
-        </h2>
-        <div className={styles.tags}>
-          {fm.tags && 
-            fm.tags.map((t,i) => 
-              <span className={styles.tag} key={i}>{t}</span>
-            )
-          }
-        </div>
-      </BlurBannerImage>
+      {mobile &&
+        <Link to="/" className={styles.backBtn}>
+          &lt;&nbsp;HOME
+        </Link>
+      }
+      {!mobile &&
+        <BlurBannerImage src={fm.cover.childImageSharp.fluid.src}>
+          <h2 className={styles.category}>
+            {fm.category}
+          </h2>
+          <div className={styles.tags}>
+            {fm.tags && 
+              fm.tags.map((t,i) => 
+                <span className={styles.tag} key={i}>{t}</span>
+              )
+            }
+          </div>
+        </BlurBannerImage>
+      }
 
       <div className={styles.twoColumn}>
         {/** left column */}
         <div className={styles.leftColumn}>
           {/** intro text */}
-          <h3 className={styles.sectionHead}>Brief Intro</h3>
+          <h3 className={`${styles.sectionHead} sec-hd-pad`}>
+            {mobile?fm.category:'Brief Intro'}
+          </h3>
           <div 
             className={styles.sectionIntro} 
             dangerouslySetInnerHTML={{ __html: intro }} 
             />
 
           {/** course list */}
-          <h3 className={styles.sectionHead}>Courses in this category</h3>
+          <h3 className={`${styles.sectionHead} sec-hd-pad`}>
+            {`Courses in ${fm.category}`}
+          </h3>
           <div className={styles.tutolist}>
             {grouptuts &&
               grouptuts.map(
                 (t,i) => 
-                  <TutorialItem key={i}
-                    slug={t.slug}
-                    coverImg={t.cover}
-                    date={t.date}
-                    title={t.tutori}
-                    tags={t.tags}
-                    excerpt={t.sections[0].node.excerpt}
-                    category={fm.category}
+                  <LinkableTI 
+                    mobile={mobile}
+                    t={t}
+                    i={i}
+                    fm={fm}
                   />
               )
             }
-            {!grouptuts &&
+          </div>
+          <div className={styles.sectionIntro} >
+            {(!grouptuts || !grouptuts.length) &&
               <p>
                 No tutorials in this category yet, use generator to create one by running: <br/>
                 <code>$ npm run generate</code><br/>
@@ -81,7 +117,7 @@ const CategoryPage = ({location, data, pageContxt}) => {
           </div>
         </div>
         {/** right column */}
-        <div className={styles.rightColumn}>
+        <div className={`${styles.rightColumn} visible`}>
           <FeaturesPanel features={fm}/>
         </div>
       </div>

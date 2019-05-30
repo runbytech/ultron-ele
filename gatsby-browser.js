@@ -11,10 +11,9 @@ import './src/style/theme.css'
 // add mobile screen support @2019/05/27
 import './src/style/responsive.css'
 
-import { lazyMiniBusForComp, lazyMiniBusForBrwsr } from './src/hooks/useMiniBus'
+import { lazyMiniBusForComp,  } from './src/hooks/useMiniBus'
 
 
 export const onRouteUpdate = ({ location, prevLocation }) => {
-  // lazyMiniBusForBrwsr(location)
   lazyMiniBusForComp(location)
 }
