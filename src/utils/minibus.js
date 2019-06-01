@@ -1,4 +1,5 @@
 /**
+ * Mini Bus
  * minimal event dispatcher used in components communication
  * alternative for redux in Gatsby
  * 
@@ -10,6 +11,7 @@
  };
 
  export const EVT_LOCATION_CHANGE = 'LOCATION_CHANGE'
+ export const EVT_POST_CLICK      = 'POST_CLICK'
 
  export const addEventListener = (event, listener) => {
    if(callbacks[event] && !callbacks[event].includes(listener)) 

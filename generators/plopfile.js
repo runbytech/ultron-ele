@@ -1,6 +1,6 @@
 /**
  * generator configuration
- * @2019/03/??
+ * @2019/03/16
  */
 const promptDirectory = require('inquirer-directory');
 const path = require('path');

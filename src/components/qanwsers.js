@@ -2,13 +2,19 @@
  * QAnwsers component
  * @2019/02/12,24
  * 
- * 02/26: add blind answering mode
+ * add blind answering mode
+ * @02/26
+ * 
+ * add responsive layout support
+ * @05/31
  * 
  */
 import React from 'react';
 
 import styles from '../style/qanwsers.module.css'
 import yesimg from '../images/yes_green.png'
+
+import { useMedia4804Comp } from '../hooks/useMedia480'
 
 /**
  * 
@@ -56,9 +62,9 @@ export default class QAnwsers extends React.Component {
     super(props)
   
     this.state = {
-      results: [false, false, false, false],
-      through: [false, false, false, false],
-      selected: [false, false, false, false]
+      results : Array(4).fill(false),
+      through : Array(4).fill(false),
+      selected: Array(4).fill(false)
     };
     this.anwserChooser = this.anwserChooser.bind(this)
   };
@@ -123,50 +129,29 @@ export default class QAnwsers extends React.Component {
 
   render() {
     const { seq, qas, done, blind } = this.props
+    const mobile = useMedia4804Comp()
 
     return (
       <>
         <h2 className={styles.whichTrue}>{seq && `${seq}.`} Which of these statements is true?</h2>
-        <div className={styles.answers}>
+        <div>
           <div className={styles.answerRow}>
-            <div className={styles.answer} onClick={()=>this.anwserChooser(0)}>
-              <Answer 
-                s="A" q={qas[0].q} 
-                a={this.state.results[0]}
-                t={this.state.through[0]}
-                h={this.state.selected[0]}
-                b={!!blind}
-              />
-            </div>
-            <div className={styles.answer} onClick={()=>this.anwserChooser(1)}>
-              <Answer 
-                s="B" q={qas[1].q} 
-                a={this.state.results[1]}
-                t={this.state.through[1]}
-                h={this.state.selected[1]}
-                b={!!blind}
-              />
-            </div>
-          </div>
-          <div className={styles.answerRow}>
-            <div className={styles.answer} onClick={()=>this.anwserChooser(2)}>
-              <Answer 
-                s="C" q={qas[2].q} 
-                a={this.state.results[2]}
-                t={this.state.through[2]}
-                h={this.state.selected[2]}
-                b={!!blind}
-              />
-            </div>
-            <div className={styles.answer} onClick={()=>this.anwserChooser(3)}>
-              <Answer 
-                s="D" q={qas[3].q} 
-                a={this.state.results[3]}
-                t={this.state.through[3]}
-                h={this.state.selected[3]}
-                b={!!blind}
-              />
-            </div>
+            {
+              ['A','B','C','D'].map(
+                (s,i)=> 
+                    <div className={styles.answer} 
+                          onClick={()=>this.anwserChooser(i)}
+                          key={i}>
+                      <Answer 
+                        s={s} q={qas[i].q} 
+                        a={this.state.results[i]}
+                        t={this.state.through[i]}
+                        h={this.state.selected[i]}
+                        b={!!blind}
+                      />
+                    </div>
+              )
+            }
           </div>
         </div>
       </>

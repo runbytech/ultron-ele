@@ -20,3 +20,11 @@ import { useState, useEffect } from 'react'
   return mobile
 
  }
+
+ export const useMedia4804Comp = () => {
+
+  const con = "(max-width: 480px)"
+  const mq = (typeof window != 'undefined')?window.matchMedia(con):null
+  return mq?mq.matches:false
+
+ }

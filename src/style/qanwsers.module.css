@@ -5,18 +5,22 @@
 }
 
 .answers {
-  width: 100%;
-  padding: 20px 40px;
+  /* width: 100%;
+  padding: 0px 0px; */
 }
 
 .answerRow {
   display: flex;
   margin-bottom: 40px;
+  flex-wrap: wrap;
 }
 
 .answer {
   flex: 1;
   display: flex;
+  min-width: 300px;
+  min-height: 30px;
+  margin: 20px;
 }
 
 .answer + .answer {

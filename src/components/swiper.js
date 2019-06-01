@@ -13,6 +13,9 @@ import btnStyles from '../style/button.module.css'
 import styles from '../style/gallery.module.css'
 
 
+const navBtnStyle = {
+  position:'absolute', top:'80px', padding:'10px', fontSize:'18px'
+}
 
 const Swiper = ({data}) => {
 
@@ -48,13 +51,13 @@ const Swiper = ({data}) => {
       </ReactSwipe>
       <button 
         onClick={() => reactSwipeEl.prev()}
-        style={{position:'absolute', left:'10px', top:'80px'}}
+        style={{left:'10px', ...navBtnStyle}}
         className={btnStyles.transParentBtn}>
         &lt;&lt;
       </button>
       <button 
         onClick={() => reactSwipeEl.next()} 
-        style={{position:'absolute', right:'10px', top:'80px'}}
+        style={{right:'10px', ...navBtnStyle}}
         className={btnStyles.transParentBtn}>
         &gt;&gt;
       </button>

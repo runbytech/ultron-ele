@@ -3,8 +3,8 @@
  * @2019/02/12
  * 
  * Usage:
- * styles = {background="#127CC9", borderRadius="18px", padding="8px 24px"}
- * 
+ * style = {background="#127CC9", borderRadius="18px", padding="8px 24px"}
+ * Do not accept className !!
  */
 import React from 'react'
 
@@ -13,20 +13,20 @@ import { Link } from 'gatsby'
 import look from '../style/button.module.css'
 
 
-export default ({to, styles, children, onClick}) => {
+export default ({to, style, children, onClick}) => {
   if(to){
     return   (<Link to={to} className={look.link}>
               {children && 
                 <span 
                   className={look.bigBtn+` ultron-bg-color`} 
-                  style={styles}>
+                  style={style}>
                   {children}
                 </span>
               }
              </Link>)
   }else{
     return (<button type="button" onClick={onClick} 
-              className={look.btn+` ultron-bg-color`} style={styles}>
+              className={look.btn+` ultron-bg-color`} style={style}>
               {children}
             </button>)
   }

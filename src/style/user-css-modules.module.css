@@ -18,7 +18,7 @@
 .description {
   flex: 1;
   margin-left: 18px;
-  padding: 12px;
+  padding: 0px;
 }
 
 .username {
@@ -28,4 +28,7 @@
 
 .excerpt {
   margin: 0;
+  height: 60px;
+  max-height: 70px;
+  overflow: hidden;
 }

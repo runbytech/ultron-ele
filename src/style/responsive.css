@@ -1,3 +1,10 @@
+/* multiple resolution query:
+ * small first, then large
+ */
+/* @media screen and (min-width: 601px) and (max-width: 1199px){
+
+} */
+
 /* desktop screen */
 @media only screen and (min-width: 480px) {
 
@@ -73,6 +80,9 @@
     border: 1px solid #DEDEDE;
   }
 
+  .left-tuto-resp {
+    padding: 40px 60px;
+  }
 
 }
 
@@ -88,10 +98,8 @@
   }
 
   .nav-menu-item {
-    /* display: inline-block; */
     display: list-item;
     margin: 1em 20px 1em;
-    /* font-weight: 500; */
     width: 100px;
   }
 
@@ -166,5 +174,8 @@
     border-bottom: 1px solid #DEDEDE;
   }
 
+  .left-tuto-resp {
+    padding: 20px 10px;
+  }
 
 }

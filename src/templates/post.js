@@ -11,6 +11,8 @@ import Image from 'gatsby-image'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import '../style/post.page.css'
+import * as minibus from '../utils/minibus'
+import { useMedia4804Comp } from '../hooks/useMedia480'
 
 
 export default class PostPage extends React.Component {
@@ -19,8 +21,9 @@ export default class PostPage extends React.Component {
     super(props)
   
     this.state = {
-       sidePanelDisplay: false,
-       hasAnchors: false  // no anchors naviation in post page
+      sidePanelDisplay: false,
+      hasAnchors: false,  // no anchors naviation in post page
+      mobile: false, // add mobile screen check @2019/05/31
     };
     this.scrollListener = this.scrollListener.bind(this)
   };
@@ -29,6 +32,9 @@ export default class PostPage extends React.Component {
     const { data,} = this.props
     const anchors = data.markdownRemark.frontmatter.anchors
     if(anchors) this.setState({hasAnchors:true})
+
+    const mobile = useMedia4804Comp()
+    if(mobile) this.setState({mobile:true})
   }
 
   scrollListener(evt) {
@@ -58,34 +64,47 @@ export default class PostPage extends React.Component {
       window.removeEventListener('scroll', this.scrollListener);
   }
 
+  removePopupMenu = () => {
+    if(this.state.mobile)
+      return minibus.dispatch(minibus.EVT_POST_CLICK)
+  }
+
+
   render() {
 
     const {data, pageContext, location} = this.props
-    const anchors = data.markdownRemark.frontmatter.anchors
+    const fm = data.markdownRemark.frontmatter
+    
+    let anchors = data.markdownRemark.frontmatter.anchors
+    // force to remove side panel in mobile screen @2019/05/31
+    if(this.state.mobile) anchors = null
 
     return (
       <Layout fullwidth={true} nofoot={anchors}>
-        <SEO title={data.markdownRemark.frontmatter.title} />
-        <div className="post" >
+        <SEO title={fm.title} />
+        <div className="post" onClick={this.removePopupMenu}>
           <article>
             <Image 
-              fluid={data.markdownRemark.frontmatter.cover.childImageSharp.fluid} 
+              style={{height:'200px'}}
+              fluid={fm.cover.childImageSharp.fluid} 
               />
-            <h1 style={{paddingTop: `1.45rem`}} className="title">
-            {data.markdownRemark.frontmatter.title}
+            <h1 style={{paddingTop: `1.45rem`}} className="title resp">
+              {fm.title}
             </h1>
-            <p className="date">
-              Created at: {data.markdownRemark.frontmatter.date}
+            <p className="date resp">
+              Created at: {fm.date}
             </p>
             <div
               dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} 
-              className={`content ${this.state.sidePanelDisplay?'with-panel':''}`}/>
+              className={`content resp ${this.state.sidePanelDisplay?'with-panel':''}`}
+            />
           </article>
 
           {this.state.sidePanelDisplay && anchors &&
             <div className="side-panel" >
               <ul className="fixed">
-                { anchors.map((a,i) => 
+                { 
+                  anchors.map((a,i) => 
                     <li key={i}><a href={a.goto} >{a.name}</a></li>
                   )
                 }
@@ -93,7 +112,7 @@ export default class PostPage extends React.Component {
             </div>
           }
         </div>        
-    </Layout>
+      </Layout>
     )
   };
 

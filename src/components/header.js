@@ -7,6 +7,10 @@
  * 
  * add responsive support for mobile screen
  * @2019/05/27
+ * 
+ * add post click listener to close open menu
+ * @2019/05/31
+ * 
  */
 import React from 'react'
 import { Link } from 'gatsby'
@@ -55,19 +59,25 @@ export default class Header extends React.Component {
     this.setState({path: pathObj.path})
   }
 
+  postClickHandler = () => {
+    this.setState({menuclose: true})
+  }
+
   menulistCloseHandler = () => {
     this.setState({menuclose: !this.state.menuclose})
   }
 
   componentDidMount() {
-    minibus.addEventListener(minibus.EVT_LOCATION_CHANGE, this.locationChangeHandler)
-
     let user = getUser()
     if(user) this.setState({name : user.userName})
+
+    minibus.addEventListener(minibus.EVT_LOCATION_CHANGE, this.locationChangeHandler)
+    minibus.addEventListener(minibus.EVT_POST_CLICK, this.postClickHandler)
   }
 
   componentWillUnmount() {
     minibus.removeEventListener(minibus.EVT_LOCATION_CHANGE, this.locationChangeHandler)
+    minibus.removeEventListener(minibus.EVT_POST_CLICK, this.postClickHandler)
   }
 
   render() {

@@ -23,7 +23,7 @@ import useMedia480 from '../hooks/useMedia480'
 
 const TI = ({t, i, fm}) => {
   return (
-    <TutorialItem key={i}
+    <TutorialItem
       slug={t.slug}
       coverImg={t.cover}
       date={t.date}
@@ -97,6 +97,7 @@ const CategoryPage = ({location, data, pageContxt}) => {
               grouptuts.map(
                 (t,i) => 
                   <LinkableTI 
+                    key={t.slug}
                     mobile={mobile}
                     t={t}
                     i={i}

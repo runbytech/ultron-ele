@@ -26,9 +26,9 @@ export default class QuizPage extends React.Component {
        showDone:false,
        startTime: 0
     }
-    this.openQuiz = this.openQuiz.bind(this)
-    this.checkQuizRpt = this.checkQuizRpt.bind(this)
-    this.quizDone = this.quizDone.bind(this)
+    // this.openQuiz = this.openQuiz.bind(this)
+    // this.checkQuizRpt = this.checkQuizRpt.bind(this)
+    // this.quizDone = this.quizDone.bind(this)
   }
 
   // Each Appearance...
@@ -50,7 +50,7 @@ export default class QuizPage extends React.Component {
     })
   }
 
-  openQuiz() {
+  openQuiz = () => {
     const { data, pageContext} = this.props
     const pageslug = pageContext.slug
     let user = getUser()
@@ -76,11 +76,11 @@ export default class QuizPage extends React.Component {
     saveLearningTrack(pageslug, fm.for, category, date, status)
   }
 
-  checkQuizRpt() {
+  checkQuizRpt = () => {
     navigate('/profile', {state: {section: 'testrept'}})
   }
 
-  quizDone() {
+  quizDone = () => {
     this.setState({showDone:true})
 
     const ans = []
@@ -183,41 +183,39 @@ export default class QuizPage extends React.Component {
         <SEO title={`Quiz for: ${fm.for||quizFor}`} />
 
         <h3 className={styles.qzEnter}>LETS SEE HOW MUCH YOUVE LEARNED ABOUT:</h3>
-        <h1 >{fm.for}</h1>
+        <h1 style={{padding:'0 10px', margin:'20px 10px'}}>{fm.for || quizFor}</h1>
         <p className={styles.qzGuide}>
-           Here will present <strong>{quizLength}</strong> questions which cover the necessary concepts and principles for the tutorial.
-           <br/>
-           Once you earned a `Qualified` or `Excellent` grade, you will reward a downloadable certificate with `YOUR` name. 
+           Here will present <strong>{quizLength}</strong> questions which cover the necessary concepts and principles for the tutorial. Once you earned a `Qualified` or `Excellent` grade, you will reward a downloadable certificate with `YOUR` name. 
            <br/>
            See test rules described in belowing table. 
         </p>
         <table className={styles.table}>
           <thead>
             <tr>
-              <th>Right</th><th>Level</th><th>Badge</th>
+              <th>Right</th><th>Level</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>{excellent}+</td>
               <td>Excellent</td>
-              <td></td>
+              
             </tr>
             <tr>
               <td>{qualified}~</td>
               <td>Qualified</td>
-              <td></td>
+              
             </tr>
             <tr>
               <td>~{failed}</td>
               <td>Failed</td>
-              <td></td>
+              
             </tr>
           </tbody>
         </table>
-        <p>Are you ready? -- open dialog input username</p>
+        <p style={{paddingLeft:'12px'}}>Are you ready? -- open dialog input username</p>
         <div className={styles.qzBtnRow}>
-          <Button to={firstSection} styles={{background: '#127CC9', marginRight: '100px',}}>
+          <Button to={firstSection} style={{background: '#127CC9', marginRight: '100px',}}>
             Hmm...not now
           </Button>
           <Button onClick={this.openQuiz} >Yes, Start</Button>
@@ -236,7 +234,7 @@ export default class QuizPage extends React.Component {
             </div>
             {this.state.showDone &&
               <div className={styles.endQzRow}>
-                <Button styles={{borderRadius: '20px', padding: '9px 24px'}}
+                <Button style={{borderRadius: '20px', padding: '9px 24px'}}
                   onClick={this.checkQuizRpt}>
                   Done, to check results
                 </Button>

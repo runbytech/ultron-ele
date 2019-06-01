@@ -1,9 +1,17 @@
 /**
  * tutorial section template to show each tutorial section .md data,
  * multipal sections in one directory consists of a tutorial
+ * @2019/02/21 
  * 
- * 03/03, add unlocked section hightlights and restore unlock mini game;
- * @2019/02/21 ~ 03/03
+ * add unlocked section hightlights and restore unlock mini game;
+ * @03/03
+ * 
+ * add responsive layout support
+ * @05/31
+ * 
+ * check if this is the last section then add QUIZ btn in mobile screen
+ * @06/01
+ * 
  */
 import React from 'react'
 import { Link, graphql } from 'gatsby'
@@ -17,6 +25,7 @@ import QAnwsers from '../components/qanwsers'
 import TutStepLine from '../components/tutStepLine'
 import { scrollTo, } from '../utils/helper'
 import { saveLearningTrack, getLearningTrackBy, getLearningTracks} from '../utils/cache'
+import { useMedia4804Comp } from '../hooks/useMedia480'
 
 import styles from '../style/tutorial.module.css'
 
@@ -29,6 +38,7 @@ export default class TutorialPage extends React.Component {
     this.state = {
       showBonus: false,
       started  : false,
+      mobile: false, // add mobile screen check @2019/05/31
     }
     this.anwserDone = this.anwserDone.bind(this)
   }
@@ -41,6 +51,8 @@ export default class TutorialPage extends React.Component {
         this.setState({showBonus: true, started: true})
       }
     })
+    const mobile = useMedia4804Comp()
+    if(mobile) this.setState({mobile:true})
   }
 
   componentDidMount() {
@@ -85,8 +97,8 @@ export default class TutorialPage extends React.Component {
     const pageslug = pageContext.slug
     const quizPath = pageContext.quizpath
     const pathname = location.pathname // the same as pageContext.slug
-    const catepath = pathname.split('/').slice(0,3).join('/')
-
+    const catepath = pathname.split('/').slice(0,3).join('/')    
+    
     let n = 0
     let next = null
     // calculate next section to unlock
@@ -94,6 +106,7 @@ export default class TutorialPage extends React.Component {
       if(s.node.fields.slug === pageslug) n = i
     })
     if(n+1<sections.length) next = sections[n+1]
+    let isLastSection = !next // is the last section of current tutorial
     
     // check each section status by `unlock`
     if(this.tracks) this.tracks.map(t => sections.map(s => {
@@ -104,10 +117,10 @@ export default class TutorialPage extends React.Component {
       <Layout nofoot={true} fullwidth={true}>
         <SEO title={fm.title} />
       
-        {/** <h1 style={{paddingTop: `1.45rem`}}>_this is tutorial page...</h1> */}
         <div className={styles.lrcolumn}>
           {/** left content */}
-          <div className={styles.leftContent} ref={el => { this.leftel = el; }}>
+          <div className={`${styles.leftContent} left-tuto-resp`} 
+               ref={el => { this.leftel = el; }}>
 
             <h3 className={styles.breadcrumb}>
               <Link to={catepath} >{category}</Link> / 
@@ -162,7 +175,10 @@ export default class TutorialPage extends React.Component {
                       <Confetti numberOfPieces={200} width='860' height='120' 
                         confettiSource={{x: 0, y: 0, w: 1200, h:0}}/>
                       <span className={styles.welldone+` ultron-txt-color`}>
-                        Well done, you unlocked the next step!
+                        {!isLastSection?
+                          'Well done, you unlocked the next step!':
+                          'Well done, you Completed this tutorial!'
+                        }
                       </span>
                     </div>)
                   }
@@ -187,7 +203,15 @@ export default class TutorialPage extends React.Component {
                     </div>
                   </div>
                   <div className={styles.rightBtn}>
-                    <Button to={next.node.fields.slug} >GO NEXT</Button>
+                    {!isLastSection && 
+                      <Button to={next.node.fields.slug} >GO NEXT</Button>
+                    }
+                    {/** PLACE TAKE QUIZ HERE FOR THE LAST SECTION @2019/05/31 */}
+                    {isLastSection && data.quiz && 
+                      <Button to={quizPath} style={{fontWeight: 500, borderRadius: 0,}}>
+                        TAKE QUIZ
+                      </Button> 
+                    }
                   </div>
                 </div>
               )
@@ -195,7 +219,7 @@ export default class TutorialPage extends React.Component {
             {/** end of left content */}
           </div>
           {/** right side panel */}
-          <div className={styles.rightContent}>
+          <div className={`${styles.rightContent} visible`}>
             <div className={styles.headerImg}>
               <Image 
                 fluid={fm.cover.childImageSharp.fluid} 
@@ -209,8 +233,8 @@ export default class TutorialPage extends React.Component {
               <div className={styles.gradientBox}></div>
             </div>
             <div className={styles.endTutBtnSection}>
-              {data.quiz &&
-                <Button to={quizPath} styles={{borderRadius: '18px', padding: '8px 24px'}}>
+              {data.quiz && !isLastSection &&
+                <Button to={quizPath} style={{fontWeight: 500, borderRadius: 0,}}>
                   TAKE QUIZ
                 </Button> 
               }

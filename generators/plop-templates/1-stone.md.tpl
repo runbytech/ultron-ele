@@ -33,7 +33,7 @@ This is the second paragraph of the first section of tutorial. You may need to i
 <!-- end -->
 ```
 
-Here we use 6 grave accent symbols to wrap the markup in order to render a highlight effect in your browser. Actualy, we just write it in `1-start.md` like line 26 does. In ***[User Guide](/pandas/)*** page I will explain why we use .md file to organize content, and what's advantages it have.
+Here we use 6 grave accent symbols to wrap the markup in order to render a highlight effect in your browser. Actualy, we just write it in `1-stone.md` like line 26 does. In ***[User Guide](/userguide/)*** page I will explain why we use .md file to organize content, and what's advantages it have.
 
 Here, we come to the end of sample to the tutorial section, starting from this, you can write your own meaningfull content in this .md file.
 

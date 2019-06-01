@@ -129,3 +129,44 @@
   width: 150px;
 }
 
+
+
+@media only screen and (max-width: 480px) {
+
+  .post article .title.resp {
+    left: 20px;
+    text-shadow: 0px 1px #999;
+  }
+
+  .post article .date.resp {
+    left: 42px;
+    text-shadow: 0px 1px #999;
+  }
+
+  .post article .content.resp {
+    margin-top: 20px;
+    padding: 10px;
+  }
+  
+  .post article h2 {
+    margin-top: 0;
+  }
+
+  .post article p > img {
+    max-width: 360px;
+  }  
+  
+  .post table{
+    table-layout: fixed;
+  }
+  .post table td:first-child,
+  .post table th:first-child {
+    width: 85px;
+  }
+  .post table td,
+  .post table th {
+    width: 85px;
+  }
+
+
+} 

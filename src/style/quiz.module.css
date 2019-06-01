@@ -2,12 +2,13 @@
   margin-top: 2.45rem;
   font-size: 15px;
   font-weight: 400;
-  color: #999;
+  color: #666;
+  padding: 0 10px;
 }
 
 .qzGuide {
-  /* width: 480px; */
-  /* max-width: 720px; */
+  padding: 10px;
+  padding-left: 12px;
   color: #666;
 }
 
@@ -35,6 +36,8 @@
 }
 
 .table {
-  width: 400px;
+  width: 350px;
   margin-bottom: 40px;
+  margin-left: 12px;
+  margin-right: 10px;
 }

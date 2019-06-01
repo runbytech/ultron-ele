@@ -320,7 +320,7 @@ Note: in the 4th command we add origin ...RobinLi..., here we need to replace Ro
 Now that our website is ready to launch, then we use netlify to build and bring it to alive online. Let's have a look at how to do it.
 
 ```
-For users in China, netlify service is inaccessable, so, Github Pages is an alternative to netlify, follow the steps after the netlify deployment procedure to publish your ultronele.
+For users in China, netlify service is inaccessible, so, Github Pages is an alternative to netlify, follow the steps after the netlify deployment procedure to publish your ultronele.
 ```
 
 In prerequisites phase, you created a netlify account. Now, login your netlify apps: https://app.netlify.com/
