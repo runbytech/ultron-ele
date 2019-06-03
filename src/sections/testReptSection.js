@@ -2,6 +2,9 @@
  * quiz result table to list:
  * tutorial, time consume, level, complete time, action(delete)
  * @2019/03/02
+ * 
+ * add not quiz notice
+ * @2019/06/03
  */
 
  import React from 'react';
@@ -41,15 +44,14 @@
   
   render() {
     
-
     return (
       <>
         <h3 className={styles.secTitle}>Test Reports</h3>
         <hr/>
-        <table >
+        <table style={{background:'#FFF'}}>
           <thead >
             <tr>
-              <th>Tutorial</th>
+              <th style={{paddingLeft:'10px'}}>Tutorial</th>
               <th>Consumption</th>
               <th>Level</th>
               <th>Completion</th>
@@ -60,7 +62,7 @@
             {this.state.quizs &&
               this.state.quizs.map((q,i) => 
                 <tr key={i}>
-                  <td>{q.title}</td>
+                  <td style={{paddingLeft:'10px'}}>{q.title}</td>
                   <td>{Math.floor(q.duration/1000)}s</td>
                   <td>{q.level}</td>
                   <td>{(q.completion).split('T')[0]}</td>
@@ -73,6 +75,7 @@
                 </tr>
               )
             }
+            {!this.state.quizs && <tr><td colspan="2">No quiz you took! </td></tr>}
           </tbody>
         </table>
       </>

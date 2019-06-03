@@ -219,7 +219,7 @@ export default class CertificateSection extends React.Component {
             <button className={styles.blueBtn}
               onClick={this.saveCertificate}>Save</button>
           </div>
-          <div className={styles.certiThumnails}>
+          <div className={`${styles.certiThumnails} visible`}>
             {this.state.certs.map((c,i) => 
               <div key={i} onClick={()=>this.switchCertificate(c.slug)}>
                 <img src="/img/certhumbnail.png" alt="certhumbnail"/>

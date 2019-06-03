@@ -78,7 +78,8 @@ export const getLearningTracks = () => {
   if(typeof localStorage === 'undefined') return null
   
   let saved = JSON.parse(localStorage.getItem('userLearnTracks'))
-  if(saved) return saved.reverse()
+  if(saved) return saved // use DESC order better @2019/06/03
+  // if(saved) return saved.reverse()
   return null
 }
 

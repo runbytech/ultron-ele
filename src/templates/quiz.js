@@ -170,7 +170,9 @@ export default class QuizPage extends React.Component {
     const quizLength= this.qaset.length
     const firstSection = tutorial[0].node.fields.slug
     const quizFor = tutorial[0].node.frontmatter.tutorial
-
+    // FIXME: cache quiz for value later track save @2019/06/03
+    if(!fm.for) fm.for = quizFor
+    
     const excellent = Math.floor(this.qaset.length*0.8)
     const qualified = Math.floor(this.qaset.length*0.6)
     const failed    = Math.floor(this.qaset.length*0.6)-1

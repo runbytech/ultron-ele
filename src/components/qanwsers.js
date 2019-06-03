@@ -139,7 +139,7 @@ export default class QAnwsers extends React.Component {
             {
               ['A','B','C','D'].map(
                 (s,i)=> 
-                    <div className={styles.answer} 
+                    <div className={`${styles.answer} anwser-resp`} 
                           onClick={()=>this.anwserChooser(i)}
                           key={i}>
                       <Answer 

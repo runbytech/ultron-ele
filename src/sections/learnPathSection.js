@@ -93,7 +93,7 @@ export default class LearningPathSection extends Component {
       var mpos = this.stage.getPointerPosition()
       var hitResult = this.checkHitResult()
       if(hitResult){
-        this.writeMessage(hitResult.title, {x:(mpos.x+10),y:(mpos.y+10)})
+        this.writeMessage(hitResult.title?hitResult.title:' ? ', {x:(mpos.x+10),y:(mpos.y+10)})
       }else{
         this.writeMessage('move me', {x:(mpos.x+10),y:(mpos.y+10)})
       }

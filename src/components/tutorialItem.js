@@ -1,5 +1,9 @@
 /**
+ * Create
  * @2019/02/21
+ * 
+ * add onClick prop
+ * @2019/06/01
  */
 import React from 'react'
 import {Link} from 'gatsby'
@@ -7,8 +11,8 @@ import Image from 'gatsby-image'
 
 import look from '../style/tutitem.module.css'
 
-const TutorialItem = ({coverImg, title, excerpt, date, slug, tags, category}) => (
-  <div className={`${look.tutoitem} tuto-item-resp`}>
+const TutorialItem = ({coverImg, title, excerpt, date, slug, tags, category, onClick}) => (
+  <div className={`${look.tutoitem} tuto-item-resp`} onClick={onClick}>
     <div className={`${look.leftImage} left-image-resp`}>
       <Image fluid={coverImg.childImageSharp.fluid} />
       <div className={look.coverOnBotm}></div>

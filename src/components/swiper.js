@@ -11,6 +11,7 @@ import ReactSwipe from 'react-swipe'
 import Container from "./container"
 import btnStyles from '../style/button.module.css'
 import styles from '../style/gallery.module.css'
+import { reorderforCateHead } from '../utils/helper'
 
 
 const navBtnStyle = {
@@ -19,10 +20,10 @@ const navBtnStyle = {
 
 const Swiper = ({data}) => {
 
-  const categories = data.edges
   // dynamic assign
   let reactSwipeEl = null
-
+  const categories = reorderforCateHead(data.edges)
+  
   return (
     <div style={{position:'relative'}}>
       <ReactSwipe

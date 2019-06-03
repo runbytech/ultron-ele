@@ -8,7 +8,7 @@
  * @2019/05/30
  */
 import React from 'react'
-import { Link, graphql } from 'gatsby'
+import { Link, graphql, navigate } from 'gatsby'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
@@ -21,8 +21,18 @@ import styles from '../style/category.module.css'
 import useMedia480 from '../hooks/useMedia480'
 
 
-const TI = ({t, i, fm}) => {
-  return (
+
+const LinkableTI = ({mobile, t, i, fm}) => {
+
+  // BAD STRUCTURE IN LOOP CAUSE ERROR IN BROWSER 
+  // @2019/06/01 
+  // return (
+  //   <Link to={t.slug} style={{textDecoration: 'none'}}>
+  //     <TI t={t} i={i} fm={fm}/>
+  //   </Link>
+  // )
+
+  if(!mobile) return (
     <TutorialItem
       slug={t.slug}
       coverImg={t.cover}
@@ -33,15 +43,18 @@ const TI = ({t, i, fm}) => {
       category={fm.category}
     />
   )
-}
 
-const LinkableTI = ({mobile, t, i, fm}) => {
-
-  if(!mobile) return <TI t={t} i={i} fm={fm}/>
-  if(mobile) return (
-    <Link to={t.slug} style={{textDecoration: 'none'}}>
-      <TI t={t} i={i} fm={fm}/>
-    </Link>
+  return (
+    <TutorialItem
+      onClick={()=>navigate(t.slug)}
+      slug={t.slug}
+      coverImg={t.cover}
+      date={t.date}
+      title={t.tutori}
+      tags={t.tags}
+      excerpt={t.sections[0].node.excerpt}
+      category={fm.category}
+    />
   )
 
 }

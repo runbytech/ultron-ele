@@ -12,6 +12,8 @@ import ProfileSection from '../sections/profileSection'
 import LearningPathSection from '../sections/learnPathSection'
 import TestReptSection from '../sections/testReptSection'
 import CertificateSection from '../sections/certificateSection'
+import { useMedia4804Comp } from '../hooks/useMedia480'
+import * as minibus from '../utils/minibus'
 
 import styles from '../style/profile.module.css'
 
@@ -37,6 +39,22 @@ const SettingsSection = () => (
   </>
 )
 
+const SectionItemMenu = ({name, label, section, callback}) => (
+  <div className={section===name?
+    `${styles.pcntrHilt} ultron-left-border`:styles.pcntrNml}
+    onClick={()=>callback(name)}>{label}
+  </div>
+)
+
+const sections = [
+  {name:'profile', label:'Profile'},
+  {name:'learningPath', label:'Learning Path'},
+  {name:'testrept', label:'Test Reports'},
+  {name:'certificates', label:'Certificates'},
+  {name:'favorites', label:'Favorites'},
+  {name:'settings', label:'Settings'},
+]
+
 
 class ProfilePageRC extends React.Component {
 
@@ -44,67 +62,66 @@ class ProfilePageRC extends React.Component {
       super(props)
     
       // this.state = {section: 'certificates'}; // initial state
-      this.state = {section: 'profile'}; // initial state
+      this.state = {
+        section: 'profile',
+        mobile: false, // add mobile screen check @2019/06/03
+      }; // initial state
       this.changeSection = this.changeSection.bind(this)
     }
 
     componentWillMount() {
       const { location, data } = this.props
-      // console.log(data)
       const section = location.state?location.state.section:null
       if(section) this.changeSection(section)
+      
+      const mobile = useMedia4804Comp()
+      if(mobile) this.setState({mobile:true})
     }
 
     changeSection(type) {
       this.setState({section: type})
     }
 
+
     render() {
       const { location, data } = this.props
       const { section } = this.state
+      const pageClickHandler = () => {
+        if(this.state.mobile) 
+          minibus.dispatch(minibus.EVT_POST_CLICK)
+      }
 
       return (
-        <Layout>
+        <Layout onClick={pageClickHandler}>
           <SEO title="Profile" />
           
-          <div className={styles.leftRightSection} >
+          <div className={`${styles.leftRightSection} left-right-resp`} >
       
-            <div className={styles.leftPanel}>
+            <div className={`${styles.leftPanel} visible`}>
               <div className={styles.pcntr} >Personal Center</div>
-              <div className={section==='profile'?
-                `${styles.pcntrHilt} ultron-left-border`:styles.pcntrNml}
-                onClick={()=>this.changeSection('profile')}>Profile
-              </div>
-              <div className={section==='learningPath'?
-                `${styles.pcntrHilt} ultron-left-border`:styles.pcntrNml}
-                onClick={()=>this.changeSection('learningPath')}>Learning Path
-              </div>
-              <div className={section==='testrept'?
-                `${styles.pcntrHilt} ultron-left-border`:styles.pcntrNml}
-                onClick={()=>this.changeSection('testrept')}>Test Reports
-              </div>
-              <div className={section==='certificates'?
-                `${styles.pcntrHilt} ultron-left-border`:styles.pcntrNml}
-                onClick={()=>this.changeSection('certificates')}>Certificates
-              </div>
-              <div className={section==='favorites'?
-                `${styles.pcntrHilt} ultron-left-border`:styles.pcntrNml}
-                onClick={()=>this.changeSection('favorites')}>Favorites
-              </div>
-              <div className={section==='settings'?
-                `${styles.pcntrHilt} ultron-left-border`:styles.pcntrNml}
-                onClick={()=>this.changeSection('settings')}>Settings
-              </div>
+              {sections.map((s, i) => 
+                    <SectionItemMenu key={i} 
+                      name={s.name} label={s.label} section={section}
+                      callback={this.changeSection}/>
+              )}
+            </div>
+
+            <div className={`${styles.subModuleMenu} mob-flex`}>
+              {sections.map((s, i) => 
+                    <SectionItemMenu key={i} 
+                      name={s.name} label={s.label} section={section}
+                      callback={this.changeSection}/>
+              )}            
             </div>
             
-            <div className={styles.rightPanel}>
-              {section==='profile' && <ProfileSection/> }
-              {section==='learningPath' && <LearningPathSection/> }
-              {section==='testrept' && <TestReptSection/> }
-              {section==='certificates' && 
+            <div className={`${styles.rightPanel} right-pnl-resp`}>
+              {section===sections[0].name && <ProfileSection/> }
+              {section===sections[1].name && <LearningPathSection/> }
+              {section===sections[2].name && <TestReptSection/> }
+              {section===sections[3].name && 
                 <CertificateSection signiture={data.site.siteMetadata.signiture}/> }
-              {section==='favorites' && <FavoritesSection/> }
-              {section==='settings' && <SettingsSection/> }
+              {section===sections[4].name && <FavoritesSection/> }
+              {section===sections[5].name && <SettingsSection/> }
             </div>
       
           </div>

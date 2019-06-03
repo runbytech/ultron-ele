@@ -4,6 +4,18 @@
  * @2019/02/23
  */
 
+export const reorderforCateHead = edges => {
+  let ctgs = [] // for gallery use
+  let tempCates = edges
+  tempCates.map((cat,i) => {// find the head
+    if(cat.node.frontmatter.ishead && !ctgs.length) ctgs.push(cat)
+  })
+  tempCates.map((cat,i) => {// find the other
+    if(!cat.node.frontmatter.ishead) ctgs.push(cat)
+  })
+  return ctgs
+}
+
 export const groupTutorials = edges => {
   // console.log(edges)
   let tutorialTitles = []

@@ -1,5 +1,6 @@
 /**
  * Never try to transform this into a react component !!!
+ * Keep it simple
  * 
  * @2019/02/27
  */
@@ -12,7 +13,7 @@ import Header from './header'
 import Footer from './footer'
 import styles from '../style/layout.module.css'
 
-const Layout = ({ children, nofoot, fullwidth }) => (
+const Layout = ({ children, nofoot, fullwidth, onClick }) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -35,7 +36,9 @@ const Layout = ({ children, nofoot, fullwidth }) => (
           siteLogo={data.site.siteMetadata.logoImg} 
           menus={data.site.siteMetadata.menus}
           />
-        <div className={!!fullwidth? styles.fullWidth:styles.layout}>
+        <div 
+          className={!!fullwidth? styles.fullWidth:styles.layout}
+          onClick={onClick}>
           {children}
           {!nofoot && <Footer />}
         </div>

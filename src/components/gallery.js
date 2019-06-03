@@ -4,14 +4,15 @@
  * @2019/01/31, first create
  * @2019/03/04, use new index.md data from each category
  */
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'gatsby'
 import Image from 'gatsby-image'
+import { reorderforCateHead } from '../utils/helper'
 
 import styles from '../style/gallery.module.css'
 
 
-// FIXME: process image style enable it to be responsive to the mouse over
+// process image style enable it to be responsive to the mouse over
 // @2019/03/20
 const lazyQueryGallery = () => {
   setTimeout(()=>{
@@ -34,19 +35,11 @@ const CategoryCard = ({cover, url, isMain, title, type}) => (
 )
 
 const Gallery = ({data}) => {
-  // FIXME: check existence in build mode @2019/04/24
+  // check existence in build mode @2019/04/24
   if(typeof document !== 'undefined') lazyQueryGallery()
   
-  let ctgs = [] // for gallery use
-  let tempCates = data.edges
-  tempCates.map((cat,i) => {// find the head
-    if(cat.node.frontmatter.ishead && !ctgs.length) ctgs.push(cat)
-  })
-  tempCates.map((cat,i) => {// find the other
-    if(!cat.node.frontmatter.ishead) ctgs.push(cat)
-  })
- 
-  // TODO: @2019/03/04
+  const ctgs = reorderforCateHead(data.edges)
+  // FIXME: @2019/03/04
   // 1. USE loop to declare ui; 
   // 2. extend to none fixed size category card;
   return (

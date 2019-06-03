@@ -1,15 +1,21 @@
-/* multiple resolution query:
- * small first, then large
+/**
+ * Start to responsive layout refactoring to the whole system
+ * @2019/05/27
  */
-/* @media screen and (min-width: 601px) and (max-width: 1199px){
-
-} */
 
 /* desktop screen */
 @media only screen and (min-width: 480px) {
 
   .visible {
     display: block;
+  }
+
+  .mobile {
+    display: none;
+  }
+
+  .mob-flex {
+    display: none;
   }
 
   .main-menus {
@@ -84,6 +90,20 @@
     padding: 40px 60px;
   }
 
+  .left-right-resp {
+    margin: 40px 0;
+    flex-direction: row;
+  }
+
+  .right-pnl-resp {
+    margin-right: 40px;
+  }
+
+  .anwser-resp {
+    min-width: 400px;
+  }
+
+
 }
 
 /* mobile screen */
@@ -91,6 +111,16 @@
  
   .visible {
     display: none;
+  }
+  
+  .mobile {
+    display: block;
+  }
+
+  .mob-flex {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
  
   footer {
@@ -176,6 +206,19 @@
 
   .left-tuto-resp {
     padding: 20px 10px;
+  }
+
+  .left-right-resp {
+    margin: 10px 0;
+    flex-direction: column;
+  }
+
+  .right-pnl-resp {
+    margin: 10px;
+  }
+
+  .anwser-resp {
+    min-width: 300px;
   }
 
 }
