@@ -1,6 +1,6 @@
 --- 
 # list all the questions for Business essence
-for : Business Essence
+for : Nature of Business
 date: 2019-02-25T23:04:10.614Z
 qaset: 
   - group:

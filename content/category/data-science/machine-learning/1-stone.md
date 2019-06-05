@@ -7,7 +7,7 @@ date: 2019-02-18T21:42:15.507Z
 author: Intricity101
 tutorial: Machine Learning  # tutorial name
 type: tutorial section
-cover: /img/arts_pink_200.png
+cover: /img/luca-bravo-217276-unsplash-sm.jpg
 emphasis:  Machine learning doesn't have to be such a mystical practice. Watch our latest video that pieces apart the aspects of Data Science, including Intricity's Customer Scoring as a Service offering.
 tags:  # option property, write key words/points here
   - stone

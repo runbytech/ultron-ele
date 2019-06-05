@@ -3,7 +3,7 @@ title: Data Modeling basics
 date: 2019-02-18T21:42:16.507Z
 tutorial: Machine Learning
 type: tutorial section
-cover: /img/arts_pink_200.png
+cover: /img/luca-bravo-217276-unsplash-sm.jpg
 emphasis: In this step you will be familiar with some data models and learn how to use them... 
 unlocknext:  # option property, write mini test/bonus for this section
   - q: Organizations can win without using data science

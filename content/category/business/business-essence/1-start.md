@@ -1,15 +1,22 @@
 ---
-title: Business essence - the first section
+title: Nature of Business - the first section
 date: 2019-02-18T21:40:15.507Z
 author: Robin
-tutorial: Business essence
+tutorial: Nature of Business
 type: tutorial section
-cover: /img/chamuditha-dilhan-1335612-unsplash-278x120.png
+cover: /img/absolutvision-365898-unsplash-sm.jpg
 emphasis: People who want to start a business must understand these
 tags: 
   - questions
   - ask
   - uself
+othereads:  # option property, write reference materials
+  - name: What is the nature of a business? - Quora
+    url : https://www.quora.com/What-is-the-nature-of-a-business
+  - name: Nature and Purpose of Business
+    url : https://www.toppr.com/guides/business-studies/nature-and-purpose-of-business/
+  - name: How to Make Wealth? - Paul Graham
+    url : http://paulgraham.com/wealth.html
 unlocknext:
   - q: knowing the buisness essence is a key to success
     a: false
@@ -21,18 +28,16 @@ unlocknext:
     a: false
 ---
 
-This is an introduction chapter/section of balabala tutorial, you may write some background info here as a topic opening. This paragraph is also abstracted by category page, and showed in the tutorial card. 
+What is the nature of a business?
 
-<!-- end -->
+Anyone who want start his/her business should anwser this question first. No standard answers for it, but you should think about it, before you seriously make up your mind to do it.
 
-This is the second paragraph of the first section of tutorial. You may need to intentionally seperate the excerpt content with the rest of part, to achieve this, you can add a notation markup in one line alone like this:
+I personally love this summary from Quara:
 
 ```
-<!-- end -->
+The nature of business is transforming some resources into another resources of help, need of a larger population.
 ```
 
-Here we use 6 grave accent symbols to wrap the markup in order to render a highlight effect in your browser. Actualy, we just write it in `1-start.md` like line 26 does. In ***[User Guide](/pandas/)*** page I will explain why we use .md file to organize content, and what's advantages it have.
+In a nutshell, nature of business is the process of resources to cash, Ask youself, Do you have any resources to sell?
 
-Here, we come to the end of sample to the tutorial section, starting from this, you can write your own meaningfull content in this .md file.
 
-Enjoy writing, and enjoy your own e-learning system!
