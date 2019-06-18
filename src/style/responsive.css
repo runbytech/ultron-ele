@@ -165,6 +165,8 @@
 
   .main-menu-expander {
     height: 40px;
+    background: transparent;
+    border: none;
   }
 
   .main-menu-expander span.icon-bar {

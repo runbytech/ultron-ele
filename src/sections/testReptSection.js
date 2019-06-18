@@ -77,7 +77,7 @@
             }
             {!this.state.quizs && 
               <tr>
-                <td colspan="2" style={{paddingLeft:'10px'}}>
+                <td colSpan="2" style={{paddingLeft:'10px'}}>
                   No quiz you took! 
                 </td>
               </tr>

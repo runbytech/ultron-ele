@@ -172,7 +172,7 @@ export default class TutorialPage extends React.Component {
                   {/** success bonus */}
                   {this.state.showBonus &&
                     (<div className={styles.confetti}>
-                      <Confetti numberOfPieces={200} width='860' height='120' 
+                      <Confetti numberOfPieces={200} width='860' height='150' 
                         confettiSource={{x: 0, y: 0, w: 1200, h:0}}/>
                       <span className={styles.welldone+` ultron-txt-color`}>
                         {!isLastSection?

@@ -96,17 +96,18 @@
 
 .confetti {
   width: 100%;
-  height: 120px;
+  height: 150px;
   position: relative;
   border-top: 1px solid #CCC;
   border-bottom: 1px solid #CCC;
+  /* background-color: #333; */
 }
 
 .welldone {
   position: relative;
   display: block;
   width: 100%;
-  margin-top: 40px;
+  margin-top: 60px;
   text-align: center;
   font-weight: bold;
   font-size: 18px;

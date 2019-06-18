@@ -17,7 +17,7 @@ anchors:
     goto: '#tech-support'
 ---
 
-> UltronEle's mission is to build the world's fastest e-learning system with the fewest cost and in the most simple way, here's a complete user manual to describe how to do this from the ground.
+> UltronEle's mission is to build the world's fastest e-learning system with the lowest cost and in the most simple way, here's a complete user manual to describe how to do this from the ground.
 
 ## Content Index
 

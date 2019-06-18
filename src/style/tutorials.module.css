@@ -29,7 +29,7 @@
 }
 
 .tutHeadFooter {
-  height: 70px;
+  height: 86px;
   background-color: #FFF;
   padding: 4px;
 }
@@ -39,13 +39,16 @@
   color: #333;
   font-weight: 500;
   margin-bottom: 2px;
-  font-size: 1.1em;
+  font-size: 1em;
   line-height: 1.5;
+  max-height: 52px;
+  overflow-y: hidden;
+  height: 52px;
 }
 
 .tutHeadDate {
   margin-bottom: 0;
-  font-size: '.8em';
+  font-size: .9em;
   color: #888;
   padding-left: 6px;
 }
