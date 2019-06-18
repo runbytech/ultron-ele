@@ -10,13 +10,16 @@
 
 This is a gatsby starter project used to generate a LMS(learning management system) skeleton site.
 
-
 Logo image is designed in [designevo](https://www.designevo.com/)@2019/01/27
 
 
+## Screen Shots
+
+![mobile screen shots](static/poster/ue-mobile-screens-github.png)
+
 ## Demo
 
-[HERE](https://ultronele.netlify.com/)
+is [HERE!](https://ultronele.netlify.com/)
 
 
 ## Features
