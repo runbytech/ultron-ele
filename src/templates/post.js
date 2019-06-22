@@ -13,6 +13,9 @@ import SEO from '../components/seo'
 import '../style/post.page.css'
 import * as minibus from '../utils/minibus'
 import { useMedia4804Comp } from '../hooks/useMedia480'
+// import OnscrollBar from'../components/onscrollBar'
+import OnscrollBar from'../components/onscrollBarFC'
+
 
 
 export default class PostPage extends React.Component {
@@ -58,7 +61,6 @@ export default class PostPage extends React.Component {
   }
 
   componentWillUnmount() {
-    // console.log('post will unmount...')
     // remove window scroll event listening
     if(this.scrollEvtRegistered)
       window.removeEventListener('scroll', this.scrollListener);
@@ -82,6 +84,7 @@ export default class PostPage extends React.Component {
     return (
       <Layout fullwidth={true} nofoot={anchors}>
         <SEO title={fm.title} />
+        <OnscrollBar top="63px" className="hori-progressbar"/>
         <div className="post" onClick={this.removePopupMenu}>
           <article>
             <Image 
