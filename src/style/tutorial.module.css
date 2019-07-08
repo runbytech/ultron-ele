@@ -3,6 +3,13 @@
   display: flex;
 }
 
+.lrcolumn :target::before {
+  content: "";
+  display: block;
+  height: 80px; /* fixed header height*/
+  margin: -80px 0 0; /* negative fixed header height */
+}
+
 .leftContent {
   flex: 1;
   background-color: #FFF;
@@ -55,6 +62,30 @@
 
 .tutContent {
   margin: 2rem 0 4rem;
+  line-height: 1.8;
+}
+
+.tutContent h3 {
+  margin-top: 3rem;
+}
+
+.tutContent p > img {
+  max-width: 300px;
+  margin: 0 auto;
+  display: block;
+}
+
+.tutContent p > a[href*="javascript"] {
+  cursor: default;
+}
+
+.tutContent p > a > img {
+  max-width: 65%;
+}
+
+.tutContent strong > code {
+  padding-left: 4px;
+  padding-right: 4px;
 }
 
 .othereads h3 {

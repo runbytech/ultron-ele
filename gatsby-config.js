@@ -18,6 +18,13 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
+        path: `${__dirname}/static/poster`,
+        name: 'gbimg',
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
         path: `${__dirname}/static/img`,
         name: 'gbimg',
       },

@@ -192,6 +192,16 @@
     margin-bottom: 10px;
   }
 
+  .tuto-item-resp p {
+    max-width: 180px;
+    max-height: 100px;
+  }
+
+  .tuto-item-resp h4 {
+    max-height: 70px;
+    overflow: hidden;
+  }
+
   .left-image-resp {
     margin-right: 0px;
     height: 180px;

@@ -61,7 +61,7 @@ export default class TutorialPage extends React.Component {
 
   // rerender completed
   componentDidUpdate() {
-    this.scrollToBottom()
+    
   }
 
   scrollToBottom() {
@@ -71,6 +71,7 @@ export default class TutorialPage extends React.Component {
   anwserDone() {
     this.setState({showBonus:true})
     this.saveTrack('unlock')
+    this.scrollToBottom()
   }
 
   saveTrack(status) {
@@ -139,7 +140,7 @@ export default class TutorialPage extends React.Component {
             />
             {/** other reads */}
             <div className={styles.othereads}>
-              {fm.othereads && <h3>Extends Reads</h3>}
+              {fm.othereads && <h3 id="extread">Extending Reads</h3>}
               <ul>
                 {fm.othereads &&
                   fm.othereads.map(

@@ -23,4 +23,4 @@ uwillearn:  # required
   - Data processing
 ---
 
-Information technology intro is missing...
+Information technology (IT) is the use of computers to store, retrieve, transmit, and manipulate data, or information, often in the context of a business or other enterprise. -- [Wikipedia](https://en.wikipedia.org/wiki/Information_technology)
