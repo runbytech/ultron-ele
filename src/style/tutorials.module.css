@@ -38,12 +38,12 @@
   padding: 2px 6px 2px 6px;
   color: #333;
   font-weight: 500;
-  margin-bottom: 2px;
+  margin-bottom: 10px;
   font-size: 1em;
   line-height: 1.5;
-  max-height: 52px;
+  max-height: 48px;
   overflow-y: hidden;
-  height: 42px;
+  height: 48px;
 }
 
 .tutHeadDate {

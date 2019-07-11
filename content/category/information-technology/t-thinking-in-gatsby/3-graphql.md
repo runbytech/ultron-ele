@@ -1,5 +1,5 @@
 ---
-title: Thinking in Gatsby - the scissor section
+title: Thinking in Gatsbys way series - writing GraphQL in Gatsby
 date: 2019-06-29T02:09:47.285Z
 author: Robin
 tutorial: Thinking in Gatsby

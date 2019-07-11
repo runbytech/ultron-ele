@@ -1,5 +1,5 @@
 ---
-title: Thinking in Gatsby - the paper section
+title: Thinking in Gatsbys way series - from template to pages
 date: 2019-06-29T02:09:46.285Z
 author: Robin
 tutorial: Thinking in Gatsby
