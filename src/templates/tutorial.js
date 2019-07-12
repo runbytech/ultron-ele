@@ -229,17 +229,19 @@ export default class TutorialPage extends React.Component {
                 {fm.tutorial}
               </h3>
             </div>
-            <div className={styles.stepLineCntr}>
+            <div className={sections.length>4?styles.stepLineCntrFull:styles.stepLineCntr}>
               <TutStepLine sections={sections}/>
               <div className={styles.gradientBox}></div>
             </div>
-            <div className={styles.endTutBtnSection}>
-              {data.quiz && !isLastSection &&
+            
+            {data.quiz && !isLastSection &&
+              <div className={styles.endTutBtnSection}>
                 <Button to={quizPath} style={{fontWeight: 500, borderRadius: 0,}}>
                   TAKE QUIZ
                 </Button> 
-              }
-            </div>
+              </div>
+            }
+            
             {/** end of right panel */}
           </div>
         </div>
