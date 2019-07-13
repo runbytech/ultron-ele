@@ -26,7 +26,7 @@ unlocknext:
     a: false
 ---
 
-[![Photo by Ovidiu Gruescu on Unsplash](/poster/ovidiu-gruescu-boJRk86YW5k-unsplash-2000.jpg)](javascript:void(0))
+[![Photo by Ovidiu Gruescu on Unsplash](./assets/ovidiu-gruescu-boJRk86YW5k-unsplash-2000.jpg)](javascript:void(0))
 
 As the one of the top static site generators, Gatsby have gained much momentum since last year. According to a recent  statistics [charts](#extread) show that the average downloads per week reach 200k around. Many web developers are attracted by its slogan: **`build blazing fast websites and apps`**, I am among them luckily. At the first impression, it may seems easy to start, but when you delve into it, things not like that.
 
@@ -54,7 +54,7 @@ We all know that how to create a reactjs application skeleton using **`create-re
 
 A typical [gatsby site structure](https://www.gatsbyjs.org/docs/gatsby-project-structure/) created by **`$ gatsby new my-gatsby-site`** may like this:
 
-![gatsby-default-struc](/img/gatsby_default_20190706_7.png)
+![gatsby-default-struc](./assets/gatsby_default_20190706_7.png)
 
 When you just treat it as a SSR(server side render) framework using reactjs, it's very similar to Next.js. But the truth is that the both are totally different. Actually, Gatsby doesn't render page while request received, it use **`render at build time`** approach to output static html content already transformed in build phase. Another difference between the two framework is that:
 
@@ -73,7 +73,7 @@ $ gatsby new my-blog-starter https://github.com/gatsbyjs/gatsby-starter-blog
 
 The newly created my-blog-starter project ends up a directory structure like this:
 
-![my-blog-starter](/img/gatsby_blog_20190706_10.png)
+![my-blog-starter](./assets/gatsby_blog_20190706_10.png)
 
 The top red rectangle outlines the **`content`** directory which contains blog post content in markdown format(.md) and images referenced in post. This is an additional directory not included in the previous my-gatsby-site structure. Besides, **`templates`** directory is also a new directory which contains the post template component in charge of fetching markdown file content through GraphQL to reactjs components.
 
@@ -104,7 +104,7 @@ Official document about the Gatsby build lifecycle is [here](https://www.gatsbyj
 
 Here, I would like to summarize the process into a simple graph:
 
-![gatsby-node.js](/img/gatsy_node_cb_20190707_11.png)
+![gatsby-node.js](./assets/gatsy_node_cb_20190707_11.png)
 
 While developing Gatsby applications, we must understand 2 important config files first: **`gatsby-config.js`** and **`gatsby-node.js`**. One is for website metadata definition and plugins reference, another is for build process callback functions implementation.
 
@@ -112,7 +112,7 @@ That are the major difference from the traditional web development. In tradition
 
 Simply put, Gatsby workflow can be outlined in such a diagram:
 
-[![gatsby workflow](/img/gatsby_workflow_20190707_13.png)](javascript:void(0))
+![gatsby workflow](./assets/gatsby_workflow_20190707_13.png)
 
 Then, our routine iteration development work may start with preparation work which may include writing config file and page templates, as well as content source, then implement callback functions in gatsby-node.js, last run **`$ gasby develop`** to see the result.
 
@@ -146,7 +146,7 @@ Gatsby's popularity may predict a better internet, the next generation of intern
 
 By the time of this post written, unfortunately, there still exist one annoying bug in Gatsby v2.3.27. That's the historic error  statement: **`TypeError: Cannot read property 'childImageSharp' of null`**.
 
-[![gatsby error](/img/gatsby_error_20190706_8.png)](javascript:void(0))
+![gatsby error](./assets/gatsby_error_20190706_8.png)]
 
 This confused me for a long time, occasionally it popped up and gave you an accidental surprise. It was reported early in issue [#2567](https://github.com/gatsbyjs/gatsby/issues/2567) on Oct 21, 2017. The solution for that issue ended up with  removing **`.cache`** folder. So, each time the error jumped out, I would first stop server by **`ctrl+c`** then execute the following command and refresh page to get it back:
 
@@ -174,4 +174,4 @@ Apart from those How tos, I summarized the following viewpoints to improve the G
 * aim to clients who want to use cloud service and to cut cost in IT infrastructure
 
 
-This is a short idea list I can think of currently about traditional web system migration to Gatsby. With more and more the projects I involved, I believe this list will continue grow.  Web technology is evolving constantly with fun and efficiency, that's how Gatsby comes, let's make it clear and lead a better life in partnership with Gatsby.
+This is a short idea list I can think of currently about traditional web system migration to Gatsby. With more and more projects I involved, I believe this list will continue grow.  Web technology is evolving constantly with fun and efficiency, that's how Gatsby comes, let's make it clear and lead a better life in partnership with Gatsby.
