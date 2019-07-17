@@ -2,7 +2,7 @@
   "name": "ultronele-starter",
   "private": true,
   "description": "A ultron-ele starter to get up and developing the fastest elearning system in the world",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "lwz7512 <lwz7512@gmail.com>",
   "dependencies": {
     "downloadjs": "^1.4.7",

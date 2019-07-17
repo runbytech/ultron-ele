@@ -20,7 +20,7 @@ const TutHeadCard = ({cover, tutorial, path, date}) => (
     <Link to={path} style={{textDecoration: `none`, display: `block`}}>
       <Image fluid={cover.childImageSharp.fluid}/>
       <div className={styles.tutHeadFooter}>
-        <h3 className={styles.tutHeadTitle}>
+        <h3 className={`${styles.tutHeadTitle} tut-head-resp`}>
           {tutorial}
         </h3>
         <p className={styles.tutHeadDate}>{date}</p>

@@ -54,11 +54,9 @@
     width: 100px;
   }
   
-
   .main-avatar-margin {
     margin: 0 2em;
   }
-
 
   .main-menu-expander {
     display: none;
@@ -103,6 +101,9 @@
     min-width: 400px;
   }
 
+  .tut-head-resp {
+    height: 48px;
+  }
 
 }
 
@@ -232,5 +233,10 @@
   .anwser-resp {
     min-width: 300px;
   }
+
+  .tut-head-resp {
+    height: auto;
+  }
+
 
 }

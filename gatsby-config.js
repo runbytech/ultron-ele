@@ -4,7 +4,7 @@ module.exports = {
     description: `The world's fastest LMS based on Gatsby.`,
     author: `@lwz7512`,
     signiture: `Robin w li`,
-    logoImg:`/img/logo_ultronele.png`,
+    logoImg:`/logo_ultronele.png`,
     menus: [
       {name: 'HOME', url: '/'},
       {name: 'PRODUCT', url: '/product'},
@@ -15,20 +15,6 @@ module.exports = {
     ]
   },
   plugins: [
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        path: `${__dirname}/static/poster`,
-        name: 'gbimg',
-      },
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        path: `${__dirname}/static/img`,
-        name: 'gbimg',
-      },
-    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {

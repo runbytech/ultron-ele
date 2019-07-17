@@ -13,7 +13,7 @@ const { fmImagesToRelative } = require('gatsby-remark-relative-images')
 
 // 0. add public directory clean @2019/01/18, 05/20
 exports.onPreInit = () => {
-  console.log('>>>> pre build...');
+  console.log('>>>> ult pre build...');
   let folder = './public';
   // REPLACEMENT: $ gatsby clean
   // fs.emptyDirSync(folder);
