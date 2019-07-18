@@ -21,6 +21,8 @@
   min-height: 160px;
   overflow: hidden;
   margin-top: 6px;
+  /* for accessibility use */
+  padding: 3px 3px 0 3px;
 }
 
 .tutHeadImg {

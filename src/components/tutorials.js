@@ -32,7 +32,7 @@ const TutHeadCard = ({cover, tutorial, path, date}) => (
 const Step = ({title, subtitle}) => (
   <li>
     <p className={tstyle.greyP}>
-      <strong className={tstyle.library}>{title}</strong>
+      <span className={tstyle.library}>{title}</span>
       <br/>
       {subtitle}
     </p>

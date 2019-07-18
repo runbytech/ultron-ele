@@ -20,16 +20,18 @@ ul.timeline li::after {
   left: -9px;
   border-radius: 8px;
   content: '';
-  border: 2px solid #BBBBBB;
+  border: 2px solid #BBB;
   background: #F5F5F5;
 }
 
 .greyP {
-  color: #A1B4C4;
+  color: #999;
+  font-size: 12px;
 }
 
 .library {
-  color: #6f6d85;
+  color: #333;
+  font-size: 14px;
 }
 
 .started {
