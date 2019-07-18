@@ -15,7 +15,7 @@ Logo image is designed in [designevo](https://www.designevo.com/)@2019/01/27
 
 ## Screen Shots
 
-![mobile screen shots](static/poster/ue-mobile-screens-github.png)
+![mobile screen shots](static/img/ue-mobile-screens-github.png)
 
 ## Demo
 
