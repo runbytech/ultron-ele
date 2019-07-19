@@ -85,7 +85,7 @@ Prerequisites: github account and netlify account required
 * fork this repository
 * made your modifications or improvements
 * request a PR
-* notify me by email
+* notify me by email: lwz7512[at]gmail.com 
 * invite you to join collaborators
 
 #### For the Content producer
