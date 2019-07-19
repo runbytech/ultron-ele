@@ -1,7 +1,6 @@
-<!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <p align="center">
-  <a href="https://www.gatsbyjs.org">
-    <img alt="Gatsby" src="logo_ultronele_3.png" width="300" height="180"/>
+  <a href="http://ultronele.com">
+    <img alt="UltronEle" src="logo_ultronele_3.png" width="300" height="180"/>
   </a>
 </p>
 <h1 align="center">
@@ -78,4 +77,20 @@ Prerequisites: github account and netlify account required
 
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/runbytech/ultron-ele)
 
-<!-- AUTO-GENERATED-CONTENT:END -->
+
+## Contribution is Welcome
+
+#### For the ReactJS developer
+
+* fork this repository
+* made your modifications or improvements
+* request a PR
+* notify me by email
+* invite you to join collaborators
+
+#### For the Content producer
+
+* planning your courses that you want to be itegrated to this product permanently
+* send your .pdf/.docx/images/videos to my email
+* reorganize the content to the source file and publish
+* give you credit by recording you to the contributer list
