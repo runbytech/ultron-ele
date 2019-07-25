@@ -12,6 +12,10 @@ This is a gatsby starter project used to generate a LMS(learning management syst
 Logo image is designed in [designevo](https://www.designevo.com/)@2019/01/27
 
 
+## Latest Updates
+
+* [gatsby-theme-ultronele](https://github.com/runbytech/gatsby-theme-ultronele) released @2019/07/19
+
 ## Screen Shots
 
 ![mobile screen shots](static/img/ue-mobile-screens-github.png)
