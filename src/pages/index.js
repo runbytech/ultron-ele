@@ -2,6 +2,9 @@
  * Ultra-ELE homepage
  * 
  * @2019/02/02
+ * 
+ * refactoring to component in order to resolve mobile responsive bug
+ * @2019/08/02
  */
 import React, { useState, useEffect }  from 'react'
 
@@ -15,10 +18,6 @@ import Swiper from '../components/swiper'
 import useMedia480 from '../hooks/useMedia480'
 
 class IndexPage extends React.Component { 
-
-  // const { catedocs, tutorials } = data
-  // responsive layout by media query @2019/05/28
-  // const mobile = useMedia480()
   
   constructor(props) {
     super(props)
@@ -32,7 +31,7 @@ class IndexPage extends React.Component {
     this.setState({ismobile: mq.matches})
   }
 
-  // write here to get window obj @2019/08/02
+  // NOTE: write here to get window obj @2019/08/02
   componentDidMount(){
     const con = "(max-width: 480px)"
     const mq = window.matchMedia(con)
