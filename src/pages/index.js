@@ -12,27 +12,39 @@ import SEO from '../components/seo'
 import Gallery from '../components/gallery'
 import Tutorials, { TutorialList } from '../components/tutorials'
 import Swiper from '../components/swiper'
-import useMedia480 from '../hooks/useMedia480'
+import { useMedia4804Comp } from '../hooks/useMedia480'
 
-const IndexPage = ({data, location}) => { 
+class IndexPage extends React.Component { 
 
-  const { catedocs, tutorials } = data
-  // responsive layout by media query @2019/05/28
-  const mobile = useMedia480()
-  
-  return (
-    <Layout>
-      <SEO title="Home" keywords={[`gatsby`, `elms`, `elearning`]} />
-      
-      
+  render() {
 
-      {!mobile && <h3 style={{paddingTop: `1.45rem`}}>Topics and Skills</h3>} 
-      {!mobile && <Gallery data={catedocs} />}
-      {!mobile && <h3>Start your journey</h3>}
-      {!mobile && <Tutorials data={tutorials} />}
+    const { location, data } = this.props
+    const { catedocs, tutorials } = data
+    const mobile = useMedia4804Comp()
+    
+    return (
+      <Layout>
+        <SEO title="Home" keywords={[`gatsby`, `elms`, `elearning`]} />
+        
+        {!mobile &&
+          <>
+            <h3 style={{paddingTop: `1.45rem`}}>Topics and Skills</h3>
+            <Gallery data={catedocs} />
+            <h3>Start your journey</h3>
+            <Tutorials data={tutorials} />
+          </>
+        }
+        {mobile &&
+          <>
+            <Swiper data={catedocs} />
+            <TutorialList data={tutorials} />
+          </>
+        }
 
-    </Layout>
-  )
+      </Layout>
+    )
+  };
+ 
 }
 
 export default IndexPage
