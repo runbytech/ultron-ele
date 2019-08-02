@@ -44,7 +44,12 @@ class IndexPage extends React.Component {
   }
   
   render(){
-    if(!this.state.ismount) return (<p>loading...</p>)
+    const loadStyle = {
+      display:'block', 
+      textAlign:'center',
+      marginTop: '40px',
+    }
+    if(!this.state.ismount) return (<p style={loadStyle}>loading...</p>)
 
     const { catedocs, tutorials } = this.props.data
 
