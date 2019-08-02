@@ -12,58 +12,38 @@ import SEO from '../components/seo'
 import Gallery from '../components/gallery'
 import Tutorials, { TutorialList } from '../components/tutorials'
 import Swiper from '../components/swiper'
-import { useMedia4804Comp } from '../hooks/useMedia480'
+import useMedia480 from '../hooks/useMedia480'
 
-class IndexPage extends React.Component { 
+const IndexPage = ({data, location}) => { 
 
-  constructor(props) {
-    super(props)
+  const { catedocs, tutorials } = data
+  // responsive layout by media query @2019/05/28
+  const mobile = useMedia480()
   
-    this.state = {
-       ismobile: false
-    }
-  }
-  
-
-  componentWillMount() {
-    const mobile = useMedia4804Comp()
-    this.setState({ismobile: mobile})
-  }
-
-  render() {
-
-    const { location, data } = this.props
-    const { catedocs, tutorials } = data
-
-    console.log('render index:', this.state.ismobile)
-    console.log(new Date().getTime)
-  
+  if(mobile){
     return (
       <Layout>
         <SEO title="Home" keywords={[`gatsby`, `elms`, `elearning`]} />
-        
-        {!this.state.ismobile &&
-          <>
-            <h3 style={{paddingTop: `1.45rem`}}>Topics and Skills</h3>
-            <Gallery data={catedocs} />
-            <h3>Start your journey</h3>
-            <Tutorials data={tutorials} />
-          </>
-        }
-        {this.state.ismobile &&
-          <>
-            <Swiper data={catedocs} />
-            <TutorialList data={tutorials} />
-          </>
-        }
-
+        <Swiper data={catedocs} />
+        <TutorialList data={tutorials} />
       </Layout>
     )
-  };
- 
+  }else{
+    return (
+      <Layout>
+        <SEO title="Home" keywords={[`gatsby`, `elms`, `elearning`]} />
+        <h3 style={{paddingTop: `1.45rem`}}>Topics and Skills</h3>
+        <Gallery data={catedocs} />
+        <h3>Start your journey</h3>
+        <Tutorials data={tutorials} />
+      </Layout>
+    )
+  }
+
 }
 
 export default IndexPage
+
 
 
 export const IndexQuery = graphql`
