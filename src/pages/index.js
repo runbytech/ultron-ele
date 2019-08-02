@@ -23,7 +23,8 @@ class IndexPage extends React.Component {
     super(props)
   
     this.state = {
-       ismobile: false
+       ismobile: false,
+       ismount: false
     }
   }
 
@@ -36,10 +37,14 @@ class IndexPage extends React.Component {
     const con = "(max-width: 480px)"
     const mq = window.matchMedia(con)
     mq.addListener(this.resizeHandler)
-    this.setState({ismobile: mq.matches})
+    this.setState({
+      ismobile: mq.matches,
+      ismount: true
+    })
   }
   
   render(){
+    if(!this.state.ismount) return (<p>loading...</p>)
 
     const { catedocs, tutorials } = this.props.data
 
