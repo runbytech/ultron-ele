@@ -20,7 +20,7 @@ const IndexPage = ({data, location}) => {
   // responsive layout by media query @2019/05/28
   const mobile = useMedia480()
 
-  alert(mobile)
+  if(typeof window != 'undefined') alert(mobile)
   
   return (
     <Layout>
