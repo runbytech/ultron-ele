@@ -19,6 +19,8 @@ const IndexPage = ({data, location}) => {
   const { catedocs, tutorials } = data
   // responsive layout by media query @2019/05/28
   const mobile = useMedia480()
+
+  alert(mobile)
   
   return (
     <Layout>
