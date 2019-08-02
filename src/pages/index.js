@@ -35,6 +35,9 @@ class IndexPage extends React.Component {
   }
   
   render(){
+
+    const { catedocs, tutorials } = this.props.data
+
     if(this.state.ismobile){
       return (
         <Layout>
