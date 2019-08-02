@@ -28,11 +28,20 @@ class IndexPage extends React.Component {
     }
   }
 
-  componentDidMount(){
-    const con = "(max-width: 480px)"
-    const mq = window.matchMedia(con)
+  resizeHandler = mq => {
     this.setState({ismobile: mq.matches})
   }
+
+  componentWillMount(){
+    const con = "(max-width: 480px)"
+    const mq = window.matchMedia(con)
+    mq.addListener(this.resizeHandler)
+    this.setState({ismobile: mq.matches})
+  }
+
+  // componentDidMount(){
+    
+  // }
   
   render(){
 
