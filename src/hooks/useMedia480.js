@@ -8,7 +8,7 @@ import { useState, useEffect } from 'react'
 
   const con = "(max-width: 480px)"
   const mq = (typeof window != 'undefined')?window.matchMedia(con):null
-  const [mobile, setMobile] = useState(mq?mq.matches:true)
+  const [mobile, setMobile] = useState(mq?mq.matches:false)
   const handler = x => setMobile(x.matches)
 
   useEffect(()=>{

@@ -14,30 +14,47 @@ import Tutorials, { TutorialList } from '../components/tutorials'
 import Swiper from '../components/swiper'
 import useMedia480 from '../hooks/useMedia480'
 
-const IndexPage = ({data, location}) => { 
+class IndexPage extends React.Component { 
 
-  const { catedocs, tutorials } = data
+  // const { catedocs, tutorials } = data
   // responsive layout by media query @2019/05/28
-  const mobile = useMedia480()
+  // const mobile = useMedia480()
   
-  if(mobile){
-    return (
-      <Layout>
-        <SEO title="Home" keywords={[`gatsby`, `elms`, `elearning`]} />
-        <Swiper data={catedocs} />
-        <TutorialList data={tutorials} />
-      </Layout>
-    )
-  }else{
-    return (
-      <Layout>
-        <SEO title="Home" keywords={[`gatsby`, `elms`, `elearning`]} />
-        <h3 style={{paddingTop: `1.45rem`}}>Topics and Skills</h3>
-        <Gallery data={catedocs} />
-        <h3>Start your journey</h3>
-        <Tutorials data={tutorials} />
-      </Layout>
-    )
+  constructor(props) {
+    super(props)
+  
+    this.state = {
+       ismobile: false
+    }
+  }
+
+  componentDidMount(){
+    const con = "(max-width: 480px)"
+    const mq = window.matchMedia(con)
+    this.setState({ismobile: mq.matches})
+  }
+  
+  render(){
+    if(this.state.ismobile){
+      return (
+        <Layout>
+          <SEO title="Home" keywords={[`gatsby`, `elms`, `elearning`]} />
+          <Swiper data={catedocs} />
+          <TutorialList data={tutorials} />
+        </Layout>
+      )
+    }else{
+      return (
+        <Layout>
+          <SEO title="Home" keywords={[`gatsby`, `elms`, `elearning`]} />
+          <h3 style={{paddingTop: `1.45rem`}}>Topics and Skills</h3>
+          <Gallery data={catedocs} />
+          <h3>Start your journey</h3>
+          <Tutorials data={tutorials} />
+        </Layout>
+      )
+    }
+  
   }
 
 }
