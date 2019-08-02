@@ -45,7 +45,7 @@
   line-height: 1.5;
   max-height: 48px;
   overflow-y: hidden;
-  height: 48px;
+  /* height: 48px; */
 }
 
 .tutHeadDate {
