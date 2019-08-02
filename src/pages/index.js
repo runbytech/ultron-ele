@@ -31,14 +31,7 @@ const IndexPage = ({data, location}) => {
         </>
       }
 
-      {!mobile &&
-        <>
-          <h3 style={{paddingTop: `1.45rem`}}>Topics and Skills</h3>
-          <Gallery data={catedocs} />
-          <h3>Start your journey</h3>
-          <Tutorials data={tutorials} />
-        </>
-      }
+      
 
     </Layout>
   )
