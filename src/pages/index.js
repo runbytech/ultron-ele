@@ -34,6 +34,9 @@ class IndexPage extends React.Component {
 
     const { location, data } = this.props
     const { catedocs, tutorials } = data
+
+    console.log('render index:', this.state.ismobile)
+    console.log(new Date().getTime)
   
     return (
       <Layout>
