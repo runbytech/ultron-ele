@@ -32,16 +32,13 @@ class IndexPage extends React.Component {
     this.setState({ismobile: mq.matches})
   }
 
-  componentWillMount(){
+  // write here to get window obj @2019/08/02
+  componentDidMount(){
     const con = "(max-width: 480px)"
     const mq = window.matchMedia(con)
     mq.addListener(this.resizeHandler)
     this.setState({ismobile: mq.matches})
   }
-
-  // componentDidMount(){
-    
-  // }
   
   render(){
 
