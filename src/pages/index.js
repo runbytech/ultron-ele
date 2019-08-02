@@ -16,17 +16,30 @@ import { useMedia4804Comp } from '../hooks/useMedia480'
 
 class IndexPage extends React.Component { 
 
+  constructor(props) {
+    super(props)
+  
+    this.state = {
+       ismobile: false
+    }
+  }
+  
+
+  componentWillMount() {
+    const mobile = useMedia4804Comp()
+    this.setState({ismobile: mobile})
+  }
+
   render() {
 
     const { location, data } = this.props
     const { catedocs, tutorials } = data
-    const mobile = useMedia4804Comp()
-    
+  
     return (
       <Layout>
         <SEO title="Home" keywords={[`gatsby`, `elms`, `elearning`]} />
         
-        {!mobile &&
+        {!this.state.ismobile &&
           <>
             <h3 style={{paddingTop: `1.45rem`}}>Topics and Skills</h3>
             <Gallery data={catedocs} />
@@ -34,7 +47,7 @@ class IndexPage extends React.Component {
             <Tutorials data={tutorials} />
           </>
         }
-        {mobile &&
+        {this.state.ismobile &&
           <>
             <Swiper data={catedocs} />
             <TutorialList data={tutorials} />
