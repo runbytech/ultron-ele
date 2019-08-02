@@ -24,14 +24,13 @@ const IndexPage = ({data, location}) => {
     <Layout>
       <SEO title="Home" keywords={[`gatsby`, `elms`, `elearning`]} />
       
-      {mobile &&
-        <>
-          <Swiper data={catedocs} />
-          <TutorialList data={tutorials} />
-        </>
-      }
+      {mobile && <Swiper data={catedocs} />}    
+      {mobile && <TutorialList data={tutorials} />}
 
-      
+      {!mobile && <h3 style={{paddingTop: `1.45rem`}}>Topics and Skills</h3>} 
+      {!mobile && <Gallery data={catedocs} />}
+      {!mobile && <h3>Start your journey</h3>}
+      {!mobile && <Tutorials data={tutorials} />}
 
     </Layout>
   )
