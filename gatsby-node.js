@@ -36,38 +36,34 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 }
 
 // 2. then create pages by template & .md content
-exports.createPages = ({ graphql, actions }) => {
+exports.createPages = async ({ graphql, actions }) => {
   
   const { createPage } = actions
   const categoryTplt = path.resolve(`src/templates/category.js`)
   const tutorialTplt = path.resolve(`src/templates/tutorial.js`)
   const quizTplt     = path.resolve(`src/templates/quiz.js`)
-  
-  return graphql(
-    `
-      {
-        pages: allMarkdownRemark(
-          sort: { fields: [frontmatter___date], order: DESC }
-          limit: 1000
-        ) {
-          edges {
-            node {
-              fields {
-                slug
-              }
-              frontmatter {
-                template
-              }
-            }
+  const markdowns = `{
+    pages: allMarkdownRemark(
+      sort: { fields: [frontmatter___date], order: DESC }
+      limit: 1000
+    ) {
+      edges {
+        node {
+          fields {
+            slug
+          }
+          frontmatter {
+            template
           }
         }
       }
-    `
-  ).then(result => {
-    if (result.errors) {
-      throw result.errors
     }
-
+  }`
+  
+  try {
+    console.log('>>> start query markdowns...')
+    const result = await graphql(markdowns)
+    console.log('>>> start generate pages...')
     // Create site pages by .md file
     const pages = result.data.pages.edges;
 
@@ -133,7 +129,8 @@ exports.createPages = ({ graphql, actions }) => {
 
     // end of pages loop
     });
-  // end of graphql resolve callback
-  });
+  } catch (error) {
+    console.error(error);
+  }
 // end of createPages
 }
