@@ -12,6 +12,11 @@ This is a gatsby starter project used to generate a LMS(learning management syst
 Logo image is designed in [designevo](https://www.designevo.com/)@2019/01/27
 
 
+## Note:
+
+> This project is no longer actively maintained, please use it with proper build environment described below!
+
+
 ## Latest Updates
 
 * [gatsby-theme-ultronele](https://github.com/runbytech/gatsby-theme-ultronele) released @2019/07/19
@@ -37,11 +42,12 @@ is [HERE!](https://ultronele.netlify.com/)
 * mobile screen support
 
 
-## Prerequisite tools
+## Build environment
 
-* node
-* npm
-* gatsby
+* python -- v2.7.14
+* node -- v11.0.0
+* npm -- v6.4.1
+* gatsby-cli -- v2.4.10
 
 
 ## Important 3rd part library used
@@ -59,8 +65,6 @@ Just for a couple of commands, you will have your own LMS, here we go:
 > $ gatsby new my-ultronele https://github.com/runbytech/ultron-ele
 
 > $ cd my-ultronele
-
-> $ npm i
 
 > $ gatsby develop
 
