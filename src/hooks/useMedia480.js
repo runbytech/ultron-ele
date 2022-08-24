@@ -4,7 +4,7 @@
  */
 import { useState, useEffect } from 'react'
 
- export default function uesMedia480() {
+ export default function useMedia480() {
 
   const con = "(max-width: 480px)"
   const mq = (typeof window != 'undefined')?window.matchMedia(con):null
